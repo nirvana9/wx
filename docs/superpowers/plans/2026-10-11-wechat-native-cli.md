@@ -6,9 +6,9 @@
 
 **Architecture:** 先实现可离线验证的 wire 和存储模块，再按代码证据恢复业务、封包及传输契约。一个会话对象拥有账号状态和任务序号，终端调用会话 API；无法证明的网络操作返回明确错误。
 
-**Tech Stack:** Go 1.27.2、标准库；终端阶段固定 `golang.org/x/term v0.47.0`。离线逆向沿用 Python 3.11+ 及仓库现有依赖。当前环境尚未安装 Go，本轮不安装或编写产品代码。
+**Tech Stack:** Go 1.27.2、标准库；终端阶段固定 `golang.org/x/term v0.47.0`。离线逆向沿用 Python 3.11+ 及仓库现有依赖。实施时已校验并配置 Go 1.27.2。
 
-**Spec:** [CLI 设计](../specs/2026-10-11-wechat-native-cli-design.md)。用户于 2026-10-11 确认；以下任务尚未执行。
+**Spec:** [CLI 设计](../specs/2026-10-11-wechat-native-cli-design.md)。用户于 2026-10-11 确认设计、计划及顺序执行方式；状态见[实施进展](../../implementation-progress.md)。已完成项勾选，部分或协议阻塞项保持未勾选。
 
 ## Global Constraints
 
@@ -68,7 +68,7 @@
 
 **Interfaces:** `Limits{MaxBytes,MaxDepth int}`；`DefaultLimits()` 为 16 MiB/64。`Field{Number uint32,WireType uint8,Raw []byte}` 包含 tag+value 的独立拷贝。`Parse([]byte,Limits)([]Field,error)`、`Join([]Field)([]byte,error)`；`EncodeVarint(uint32,uint64)`、`EncodeInt32(uint32,int32)`、`EncodeBytes(uint32,[]byte)` 均返回 `(Field,error)`。`Limits.Child()(Limits,error)` 扣减语义层子消息深度；错误 `ErrMalformed/ErrLimit`。
 
-- [ ] **Step 1:** 写 `TestKnownVarint`、`TestNegativeInt32`、`TestPreserveUnknownAndRepeated`、`TestRejectMalformedAndDepth`；增加 `FuzzParse`，对有效输入断言 Parse/Join 无损，对任意输入检查无 panic、有界返回。具名测试断言：
+- [x] **Step 1:** 写 `TestKnownVarint`、`TestNegativeInt32`、`TestPreserveUnknownAndRepeated`、`TestRejectMalformedAndDepth`；增加 `FuzzParse`，对有效输入断言 Parse/Join 无损，对任意输入检查无 panic、有界返回。具名测试断言：
 
 ```go
 f, err := wire.EncodeVarint(1, 150)
@@ -83,10 +83,10 @@ if err != nil || joinErr != nil || len(fields) != 3 || !bytes.Equal(joined, raw)
 
 拒绝向量 `00/0e/1280/0b14`；65 层 group 返回 ErrLimit；修改输入不改变已返回 Raw。
 
-- [ ] **Step 2:** 配置 Go 1.27.2；`go.mod` 固定 module `github.com/nirvana9/wx`、`go 1.27.0`、`toolchain go1.27.2`。运行 `go test ./internal/wire -v`，预期缺上述 API 而失败。
-- [ ] **Step 3:** 实现 API，支持 wire 0/1/2/3/4/5，group 配对、varint 溢出和长度检查；LEN 不自动递归。补全测试辅助和离线开发说明。
-- [ ] **Step 4:** 运行 `go test ./internal/wire -v`、`go test ./internal/wire -fuzz=FuzzParse -fuzztime=30s`，预期 PASS、无 panic。
-- [ ] **Step 5:** 提交 `feat(wire): add bounded lossless protobuf codec`。
+- [x] **Step 2:** 配置 Go 1.27.2；`go.mod` 固定 module `github.com/nirvana9/wx`、`go 1.27.0`、`toolchain go1.27.2`。运行 `go test ./internal/wire -v`，预期缺上述 API 而失败。
+- [x] **Step 3:** 实现 API，支持 wire 0/1/2/3/4/5，group 配对、varint 溢出和长度检查；LEN 不自动递归。补全测试辅助和离线开发说明。
+- [x] **Step 4:** 运行 `go test ./internal/wire -v`、`go test ./internal/wire -fuzz=FuzzParse -fuzztime=30s`，预期 PASS、无 panic。
+- [x] **Step 5:** 提交 `feat(wire): add bounded lossless protobuf codec`。
 
 ### Task 2：二维码语义和契约验证
 
@@ -130,11 +130,11 @@ if err != nil || joinErr != nil || len(fields) != 3 || !bytes.Equal(joined, raw)
 
 **Interfaces:** `model.Credentials{Version uint32,AccountID string,DeviceID []byte,Secrets map[string][]byte}`；`Contact{ID,Nickname,Remark string}`；`ContactChange{Contact Contact,Deleted bool}`；`Message{ID,From,To,Text string,SentAt time.Time}`；`SyncBatch{Messages []Message,Contacts []ContactChange,NextCursor []byte}`；`State{Credentials Credentials,Contacts []Contact,SyncCursor []byte,SeenMessageIDs []string,Pending []Message}`。`store.DefaultDir()(string,error)`、`Open(string)(*Store,error)`；`Load()(model.State,error)`、`SaveCredentials(model.Credentials) error`、`ApplyBatch(model.SyncBatch) error`、`AckDisplayed([]string) error`、`ClearCredentials() error`、`Close() error`。错误 ErrInUse/ErrPendingFull/ErrCorruptState。
 
-- [ ] **Step 1:** 写 `TestExclusiveAccountLock`：第二进程 ErrInUse；`TestAtomicBatchAfterInterruptedWrite`：rename 前中断仍读旧状态，成功后消息/游标同存；`TestPermissionsAndStateHome`：0700/0600 与指定 XDG；`TestPendingAckAndDedup`：同 ID 一次、确认后删正文；`TestPendingLimitKeepsCursor`：1025 pending 不推进游标。
-- [ ] **Step 2:** 运行 `go test ./internal/store -v`，预期新 Store 未实现而失败。
-- [ ] **Step 3:** 实现文件锁、同目录临时文件、文件 fsync/rename/目录 fsync；默认 `${XDG_STATE_HOME:-$HOME/.local/state}/wx-native/`。坏状态报错不打印内容；Close/进程退出释放锁。保存最近 10000 个服务端消息 ID，游标是主恢复依据。
-- [ ] **Step 4:** 运行 `go test -race ./internal/store -v`，预期 PASS；覆盖旧权限、异常终止和重复 Close。
-- [ ] **Step 5:** 提交 `feat(store): add private atomic session state`，忽略会话、二维码文件和抓包。
+- [x] **Step 1:** 写 `TestExclusiveAccountLock`：第二进程 ErrInUse；`TestAtomicBatchAfterInterruptedWrite`：rename 前中断仍读旧状态，成功后消息/游标同存；`TestPermissionsAndStateHome`：0700/0600 与指定 XDG；`TestPendingAckAndDedup`：同 ID 一次、确认后删正文；`TestPendingLimitKeepsCursor`：1025 pending 不推进游标。
+- [x] **Step 2:** 运行 `go test ./internal/store -v`，预期新 Store 未实现而失败。
+- [x] **Step 3:** 实现文件锁、同目录临时文件、文件 fsync/rename/目录 fsync；默认 `${XDG_STATE_HOME:-$HOME/.local/state}/wx-native/`。坏状态报错不打印内容；Close/进程退出释放锁。保存最近 10000 个服务端消息 ID，游标是主恢复依据。
+- [x] **Step 4:** 运行 `go test -race ./internal/store -v`，预期 PASS；覆盖旧权限、异常终止和重复 Close。
+- [x] **Step 5:** 提交 `feat(store): add private atomic session state`，忽略会话、二维码文件和抓包。
 
 ### Task 6：扫码、首次/自动鉴权与会话
 

@@ -155,7 +155,11 @@
     "PackMMPkg": "0x8dfc840",
     "PackWxPkg": "0x8e035a0",
     "UnPackWxPkg": "0x8e04cc0",
-    "__EncodePackBuffer": "0x8dfe2c0"
+    "__EncodePackBuffer": "0x8dfe2c0",
+    "qr_material_urandom": "0x9abbed0",
+    "qr_hostname_helper": "0x8716ee0",
+    "qr_cocgi_dispatch": "0x77eb130",
+    "packet_dispatcher": "0x8df5900"
   },
   "scope_note": "Sample-specific reverse evidence, not a semantic schema or working WeChat client. Helper meanings were reviewed against their disassembly.",
   "task_constructors": {

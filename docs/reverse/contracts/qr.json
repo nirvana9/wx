@@ -1,0 +1,734 @@
+{
+  "operation": "getloginqrcode",
+  "fields": [
+    {
+      "message": "micromsg.BaseRequest",
+      "number": 1,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.BaseRequest",
+      "number": 2,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.BaseRequest",
+      "number": 3,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.BaseRequest",
+      "number": 4,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.BaseRequest",
+      "number": 5,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.BaseRequest",
+      "number": 6,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 1,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 2,
+      "wire_type": 2,
+      "meaning": "16-byte local material in SKBuiltinBuffer_t",
+      "representation": "message",
+      "presence": "set",
+      "value_source": "0x77beecd produces bytes; 0x77bef54/0x77bef93 set data/length"
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 3,
+      "wire_type": 0,
+      "meaning": "explicit zero in QR flow",
+      "representation": "uint32",
+      "presence": "set",
+      "value_source": "0x77bf083/0x77bf087"
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 4,
+      "wire_type": 2,
+      "meaning": "local hostname returned by gethostname",
+      "representation": "string",
+      "presence": "set",
+      "value_source": "0x77bef9d → 0x8716ee0 → imported gethostname at 0xa66ff00; copied at 0x77befe4"
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 5,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 6,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 7,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 8,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 9,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 10,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeRequest",
+      "number": 11,
+      "wire_type": 2,
+      "meaning": "optional opaque local buffer",
+      "representation": "message",
+      "presence": "conditional",
+      "value_source": "0x84e38c0 result copied at 0x77bf148/0x77bf166"
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 1,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 2,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 3,
+      "wire_type": 2,
+      "meaning": "token copied to context +0x118 then CheckLoginQRCodeRequest field 3",
+      "representation": "string",
+      "presence": "unknown",
+      "value_source": "0x77bf996/0x77bf9a1 and 0x77c33f0/0x77c33f7"
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 4,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 5,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 6,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 7,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 8,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "message",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.GetLoginQRCodeResponse",
+      "number": 9,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.SKBuiltinBuffer_t",
+      "number": 1,
+      "wire_type": 0,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    },
+    {
+      "message": "micromsg.SKBuiltinBuffer_t",
+      "number": 2,
+      "wire_type": 2,
+      "meaning": "",
+      "representation": "",
+      "presence": "unknown",
+      "value_source": ""
+    }
+  ],
+  "roles": {},
+  "parameters": {
+    "cgi_task_id": "502",
+    "request_uri": "/cgi-bin/micromsg-bin/getloginqrcode"
+  },
+  "evidence": [
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3c95",
+      "machine_code_hex": "bf01000000",
+      "explanation": "micromsg.BaseRequest field 1: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3c9d",
+      "machine_code_hex": "e87ee95501",
+      "explanation": "micromsg.BaseRequest field 1: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3cae",
+      "machine_code_hex": "bf02000000",
+      "explanation": "micromsg.BaseRequest field 2: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3cb6",
+      "machine_code_hex": "e8f5e65501",
+      "explanation": "micromsg.BaseRequest field 2: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3cc7",
+      "machine_code_hex": "bf03000000",
+      "explanation": "micromsg.BaseRequest field 3: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3ccf",
+      "machine_code_hex": "e84ce95501",
+      "explanation": "micromsg.BaseRequest field 3: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3ce0",
+      "machine_code_hex": "bf04000000",
+      "explanation": "micromsg.BaseRequest field 4: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3ce8",
+      "machine_code_hex": "e823e65501",
+      "explanation": "micromsg.BaseRequest field 4: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3cf9",
+      "machine_code_hex": "bf05000000",
+      "explanation": "micromsg.BaseRequest field 5: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3d01",
+      "machine_code_hex": "e81ae95501",
+      "explanation": "micromsg.BaseRequest field 5: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3d16",
+      "machine_code_hex": "bf06000000",
+      "explanation": "micromsg.BaseRequest field 6: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x79f3c60",
+      "instruction_va": "0x79f3d25",
+      "machine_code_hex": "e956e65501",
+      "explanation": "micromsg.BaseRequest field 6: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc5fd9",
+      "machine_code_hex": "bf01000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 1: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc5fe1",
+      "machine_code_hex": "e80ac72801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 1: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6009",
+      "machine_code_hex": "bf02000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 2: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6011",
+      "machine_code_hex": "e8dac62801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 2: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6026",
+      "machine_code_hex": "bf03000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 3: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc602e",
+      "machine_code_hex": "e84dc32801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 3: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6043",
+      "machine_code_hex": "bf04000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 4: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc604b",
+      "machine_code_hex": "e800c52801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 4: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6060",
+      "machine_code_hex": "bf05000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 5: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6068",
+      "machine_code_hex": "e8e3c42801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 5: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc607d",
+      "machine_code_hex": "bf06000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 6: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6085",
+      "machine_code_hex": "e8f6c22801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 6: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc609a",
+      "machine_code_hex": "bf07000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 7: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc60a2",
+      "machine_code_hex": "e8a9c42801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 7: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc60b7",
+      "machine_code_hex": "bf08000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 8: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc60bf",
+      "machine_code_hex": "e88cc42801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 8: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc60ea",
+      "machine_code_hex": "bf09000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 9: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc60f2",
+      "machine_code_hex": "e8f9c52801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 9: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc611d",
+      "machine_code_hex": "bf0a000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 10: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6125",
+      "machine_code_hex": "e8c6c52801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 10: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc6150",
+      "machine_code_hex": "bf0b000000",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 11: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc5f50",
+      "instruction_va": "0x7cc615f",
+      "machine_code_hex": "e98cc52801",
+      "explanation": "micromsg.GetLoginQRCodeRequest field 11: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc735f",
+      "machine_code_hex": "bf01000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 1: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc7367",
+      "machine_code_hex": "e884b32801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 1: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc738b",
+      "machine_code_hex": "bf02000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 2: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc7393",
+      "machine_code_hex": "e858b32801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 2: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc73a8",
+      "machine_code_hex": "bf03000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 3: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc73b0",
+      "machine_code_hex": "e89bb12801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 3: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc73c5",
+      "machine_code_hex": "bf04000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 4: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc73cd",
+      "machine_code_hex": "e8aeaf2801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 4: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc73f5",
+      "machine_code_hex": "bf05000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 5: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc73fd",
+      "machine_code_hex": "e8eeb22801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 5: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc7412",
+      "machine_code_hex": "bf06000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 6: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc741a",
+      "machine_code_hex": "e861af2801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 6: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc742f",
+      "machine_code_hex": "bf07000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 7: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc7437",
+      "machine_code_hex": "e814b12801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 7: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc745f",
+      "machine_code_hex": "bf08000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 8: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc7467",
+      "machine_code_hex": "e884b22801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 8: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc747f",
+      "machine_code_hex": "bf09000000",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 9: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc72f0",
+      "instruction_va": "0x7cc748e",
+      "machine_code_hex": "e9bdb02801",
+      "explanation": "micromsg.GetLoginQRCodeResponse field 9: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7ba08a0",
+      "instruction_va": "0x7ba08b5",
+      "machine_code_hex": "bf01000000",
+      "explanation": "micromsg.SKBuiltinBuffer_t field 1: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7ba08a0",
+      "instruction_va": "0x7ba08bd",
+      "machine_code_hex": "e8be1a3b01",
+      "explanation": "micromsg.SKBuiltinBuffer_t field 1: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7ba08a0",
+      "instruction_va": "0x7ba08d6",
+      "machine_code_hex": "bf02000000",
+      "explanation": "micromsg.SKBuiltinBuffer_t field 2: field number at writer"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7ba08a0",
+      "instruction_va": "0x7ba08e5",
+      "machine_code_hex": "e9361d3b01",
+      "explanation": "micromsg.SKBuiltinBuffer_t field 2: writer call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77be9a0",
+      "instruction_va": "0x77beecd",
+      "machine_code_hex": "e8fecf2f02",
+      "explanation": "16-byte helper call"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77be9a0",
+      "instruction_va": "0x77bef54",
+      "machine_code_hex": "ba10000000",
+      "explanation": "copy length 16"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77be9a0",
+      "instruction_va": "0x77bef93",
+      "machine_code_hex": "c7431010000000",
+      "explanation": "buffer length 16"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77be9a0",
+      "instruction_va": "0x77bf087",
+      "machine_code_hex": "c7402000000000",
+      "explanation": "request field 3 set to zero"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77be9a0",
+      "instruction_va": "0x77bef9d",
+      "machine_code_hex": "e83e7ff500",
+      "explanation": "string helper called"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77be9a0",
+      "instruction_va": "0x77bf9a1",
+      "machine_code_hex": "e80ae4d4fc",
+      "explanation": "response field 3 copied to context +0x118"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77c2f40",
+      "instruction_va": "0x77c33f0",
+      "machine_code_hex": "488db018010000",
+      "explanation": "context +0x118 used by polling request"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77c2f40",
+      "instruction_va": "0x77c33f7",
+      "machine_code_hex": "e8b4a9d4fc",
+      "explanation": "copy to polling field 3"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8716ee0",
+      "instruction_va": "0x8716f67",
+      "machine_code_hex": "e8948ff501",
+      "explanation": "hostname helper calls PLT 0xa66ff00, GOT reloc resolves gethostname"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x9abbed0",
+      "instruction_va": "0x9abbf1d",
+      "machine_code_hex": "488d357c7f50f7",
+      "explanation": "material helper uses literal /dev/urandom at 0xfc3ea0"
+    }
+  ],
+  "semantic_verified": false,
+  "packet_verified": false,
+  "live_verified": false,
+  "blocked_reasons": [
+    "BaseRequest population and final request omissions have not been traced through CoCgi/encoder.",
+    "Response field 2 display format and fields 4/6 timing units remain unverified.",
+    "Request-selected cipher material, peer keys/KDF and external transport have not been proven."
+  ]
+}

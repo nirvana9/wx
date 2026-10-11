@@ -8,3 +8,8 @@ sessions/
 captures/
 *.pcap
 *.pcapng
+build/
+login-qr.png
+login-qr.jpg
+.superpowers/
+.worktrees/

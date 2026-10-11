@@ -2,11 +2,14 @@
 
 目标是在不运行官方客户端的情况下，用命令行扫码登录并收发文本消息。当前处于离线逆向阶段，**尚无可用的微信登录或消息客户端**。
 
-本仓库保留原始 `WeChatLinux_x86_64.deb`，新增固定样本的分析脚本、原生任务和 Protobuf 指令证据。
+本仓库保留原始 `WeChatLinux_x86_64.deb`，提供固定样本的分析脚本、原生任务和 Protobuf 指令证据；现已开始实现 Go 离线基础模块。
 
 - [原生协议逆向进展与接口证据](docs/reverse/native-protocol-progress.md)
 - [命令行客户端设计，已确认](docs/superpowers/specs/2026-10-11-wechat-native-cli-design.md)
-- [原生客户端实施计划，待审阅](docs/superpowers/plans/2026-10-11-wechat-native-cli.md)
+- [原生客户端实施计划，已确认](docs/superpowers/plans/2026-10-11-wechat-native-cli.md)
+- [代码实施进展与验证范围](docs/implementation-progress.md)
+- [二维码字段语义与首包恢复进展](docs/reverse/qr-semantics-progress.md)
+- [Go 模块开发与离线测试](docs/development.md)
 - [离线分析程序](tools/recover_native_protocol.py)
 - [样本与恢复结果清单](docs/reverse/evidence/manifest.json)
 
