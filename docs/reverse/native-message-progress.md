@@ -18,7 +18,7 @@ API 的 type=1 对应文本请求形状；实际账号发送仍需完成整个�
 
 响应来源：`0x79eec60`、`0x79ee340`；`0x6957686` 检查子项返回码，
 `0x69577b8` 将子项 +0x28（field8）写到消息对象的新消息 ID 位置。
-更早版本的公开 MicroMsgResponseNew 实现将 field3/4 分别命名为 MsgId/ClientMsgId，
+更早版本的[公开 MicroMsgResponseNew 实现](https://github.com/WangPney/WechaPad832/blob/eff3543184f053d1eef82ee199c2f172f16a90d8/MMPro/micromsg/MicroMsgResponseNew.cs)将 field3/4 分别命名为 MsgId/ClientMsgId，
 与最初推测的 field3=ClientMsgId 不同。当前代码因此保留这些字段，不采用未经当前样本确认的关联规则。
 该旧版本只是研究线索，未复制其代码，也未作为当前协议已恢复的依据。
 

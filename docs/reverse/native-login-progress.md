@@ -24,5 +24,10 @@
 该测试没有手机扫码，不证明其他状态的语义或鉴权成功。原始 token、key、通知和二维码不提交仓库。
 当前没有扫码确认、secmanualauth 会话建立，也没有可用的消息发送/接收命令。
 检查响应会在转为 int32 前验证返回码范围，并拒绝已使用通知字段的错误 wire type，避免截断为 0 或跳过 token/proof 校验。
+审查加固后的提交 `6e51307f89507e41c8863b07520b0d93b59b11bb` 已再次联网验证：
+[运行 38156845945](https://github.com/nirvana9/wx/actions/runs/38156845945)，
+artifact 11709095978，SHA-256 `06307bb2e6abb12fc0da83e41b28547762b49eefa33c89975b5c7e875f7347d4`。
+摘要和 CMS-GCM 认证通过，独立 Begin/Check 再次得到 185×185 图像和原生状态 0。
+这次验证同样没有手机确认、账号鉴权或消息操作。
 
 消息业务体的下一段实现见 [消息编解码进展](native-message-progress.md)。
