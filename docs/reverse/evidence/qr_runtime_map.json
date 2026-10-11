@@ -1,0 +1,39 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "literal": {
+    "va": "0xe14638",
+    "hex": "00"
+  },
+  "request_info": {
+    "type": "mars.account.RequestInfo",
+    "constructor": "0x8e19a80",
+    "get_type_name": "0x8e1ae10",
+    "serialize": "0x8e1a8f0",
+    "parse": "0x8e1a100",
+    "package_choice_field": 12,
+    "package_choice_object_offset": "0x2c"
+  },
+  "encode_selector_table": {
+    "va": "0x2047a90",
+    "hex": "7068db064a80db064a80db064a80db064a80db06946cdb064a80db064a80db064a80db064a80db064a80db06cb69db06df6cdb06576fdb06046cdb06",
+    "targets": {
+      "0": "0x8dfe300",
+      "1": "0x8dffada",
+      "2": "0x8dffada",
+      "3": "0x8dffada",
+      "4": "0x8dffada",
+      "5": "0x8dfe724",
+      "6": "0x8dffada",
+      "7": "0x8dffada",
+      "8": "0x8dffada",
+      "9": "0x8dffada",
+      "10": "0x8dffada",
+      "11": "0x8dfe45b",
+      "12": "0x8dfe76f",
+      "13": "0x8dfe9e7",
+      "14": "0x8dfe694"
+    }
+  },
+  "business_semantics_verified": false,
+  "native_qr_exchange_captured": false
+}

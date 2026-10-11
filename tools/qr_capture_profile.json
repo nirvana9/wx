@@ -1,0 +1,36 @@
+{
+  "format_version": 1,
+  "sample_version": "4.1.13.23",
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "max_bytes": 1048576,
+  "max_requests": 4,
+  "max_records": 12,
+  "task_request_offset": 136,
+  "task_response_offset": 232,
+  "functions": {
+    "qrEncode": {
+      "offset": 125751264,
+      "prefix": "41574156534883ec204989ce4889f349"
+    },
+    "qrDecode": {
+      "offset": 125751440,
+      "prefix": "41574156534889f34989fe4981c6e800"
+    },
+    "serialize": {
+      "offset": 150275904,
+      "prefix": "55415741564155415453504989f64889"
+    },
+    "parse": {
+      "offset": 150274272,
+      "prefix": "41574156534881eca00000004889fb48"
+    },
+    "packMM": {
+      "offset": 148883520,
+      "prefix": "554157415641554154534881ece80500"
+    },
+    "packWx": {
+      "offset": 148911520,
+      "prefix": "554157415641554154534881ec380700"
+    }
+  }
+}

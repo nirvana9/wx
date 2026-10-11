@@ -9,6 +9,7 @@
 - [原生客户端实施计划，已确认](docs/superpowers/plans/2026-10-11-wechat-native-cli.md)
 - [代码实施进展与验证范围](docs/implementation-progress.md)
 - [二维码字段语义与首包恢复进展](docs/reverse/qr-semantics-progress.md)
+- [二维码交换采集工具与新增原生 ABI 证据](docs/reverse/qr-runtime-evidence.md)
 - [Go 模块开发与离线测试](docs/development.md)
 - [离线分析程序](tools/recover_native_protocol.py)
 - [样本与恢复结果清单](docs/reverse/evidence/manifest.json)

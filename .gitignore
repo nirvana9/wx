@@ -1,11 +1,13 @@
 analysis-output/
 .venv/
+.venv-capture/
 __pycache__/
 *.pyc
 # Account state and local research captures must stay outside version control.
 .wx-session/
 sessions/
 captures/
+private-captures/
 *.pcap
 *.pcapng
 build/

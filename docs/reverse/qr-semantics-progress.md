@@ -26,7 +26,9 @@ PLT `0xa66ff00` → GOT `0xacca6d0` → `gethostname`；后续 PLT `0xa66e160` �
 ## 首包封装的进一步定位
 
 [QR CoCgi 调度](evidence/asm/qr_cocgi_dispatch.asm) `0x77eb130`
-拷贝业务请求并通过任务/网络对象的虚方法发起操作；共同请求字段的填充尚未追踪完。
+拷贝业务请求并通过任务/网络对象的虚方法发起操作。
+继续追踪确认编码虚方法 `0x77ecfe0` 和共同字段填充 `0x77ed0f0`；
+BaseRequest 六个字段的来源及 presence 现已记录，配置实际值和部分业务含义仍未知。
 
 封包上层入口 `0x8df5900` 按解析出的上下文选择两条路径，见
 [分派摘录](evidence/asm/packet_dispatch_choice_excerpt.asm)：
@@ -36,13 +38,15 @@ PLT `0xa66ff00` → GOT `0xacca6d0` → `gethostname`；后续 PLT `0xa66e160` �
 - 两次调用都传入栈上 `+0x348` 的参数结构。PackWxPkg 内再按结构中的 selector 分派。
 
 这证明调用路径存在，不证明 getloginqrcode 走哪一条。
-下一处应查上下文解析器 `0x8e19a80/0x8f500e0` 的字段布局、
-QR 任务的编码虚方法，以及它们如何填充 `+0x114`、selector 与公钥材料。
+该上下文已定位为 `mars.account.RequestInfo`，字段 12 的布尔值控制此分派。
+Pack 入参中 `rdx` 为输出 AutoBuffer，`rcx/r8` 为明文指针/长度；
+selector 位于封包参数结构 `+0x08`，已核对 15 项跳表。
+新增 [运行时证据和 QR 专用采集工具](qr-runtime-evidence.md) 用于确认实际分支与独立向量。
 尚未恢复的 KDF、nonce/AAD、端点与外层握手不能用候选值代替。
 
 ## 本轮验证范围
 
-[qr.json](contracts/qr.json) 记录 28 个字段、66 处机器码引用。
+[qr.json](contracts/qr.json) 记录 28 个字段、119 处机器码引用。
 实际对 Git LFS 的完整 deb 执行了契约验证器，固定样本哈希和全部引用字节匹配。
 `semantic_verified/packet_verified/live_verified` 全为 false。
 Go 测试确认该契约不能通过 semantic/packet/live 任一启用条件。

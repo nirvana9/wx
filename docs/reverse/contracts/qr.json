@@ -5,55 +5,55 @@
       "message": "micromsg.BaseRequest",
       "number": 1,
       "wire_type": 2,
-      "meaning": "",
-      "representation": "",
-      "presence": "unknown",
-      "value_source": ""
+      "meaning": "二维码路径明确写入一个 00 字节；业务用途尚未证实",
+      "representation": "bytes",
+      "presence": "set",
+      "value_source": "0x77ed18c/0x77ed193/0x77ed198；固定只读字节 0xe14638"
     },
     {
       "message": "micromsg.BaseRequest",
       "number": 2,
       "wire_type": 0,
-      "meaning": "",
-      "representation": "",
-      "presence": "unknown",
-      "value_source": ""
+      "meaning": "共同管理对象虚方法 +0x20 返回的 64 位值；空时写零",
+      "representation": "uint64",
+      "presence": "set",
+      "value_source": "0x77ed19d–0x77ed20c；0x79f3caa–0x79f3cb6"
     },
     {
       "message": "micromsg.BaseRequest",
       "number": 3,
       "wire_type": 2,
-      "meaning": "",
-      "representation": "",
-      "presence": "unknown",
-      "value_source": ""
+      "meaning": "helper 返回材料的前 16 字节；设备标识生成语义尚未完整恢复",
+      "representation": "bytes",
+      "presence": "set",
+      "value_source": "0x77ed24c、0x77ed294–0x77ed29c；helper 0x6042f70 → 0x73876a0"
     },
     {
       "message": "micromsg.BaseRequest",
       "number": 4,
       "wire_type": 0,
-      "meaning": "",
-      "representation": "",
-      "presence": "unknown",
-      "value_source": ""
+      "meaning": "共同配置对象 +0x60 的有符号 32 位值；业务名称尚未证实",
+      "representation": "int32",
+      "presence": "set",
+      "value_source": "0x77ed2eb–0x77ed2f6；0x79f3cdc–0x79f3ce8；0x8f52310"
     },
     {
       "message": "micromsg.BaseRequest",
       "number": 5,
       "wire_type": 2,
-      "meaning": "",
-      "representation": "",
-      "presence": "unknown",
-      "value_source": ""
+      "meaning": "共同配置对象 +0x88 的字符串存储内容；具体设备类型尚未证实",
+      "representation": "bytes",
+      "presence": "set",
+      "value_source": "0x77ed337–0x77ed3b2；0x79f3cf5–0x79f3d01"
     },
     {
       "message": "micromsg.BaseRequest",
       "number": 6,
       "wire_type": 0,
-      "meaning": "",
-      "representation": "",
-      "presence": "unknown",
-      "value_source": ""
+      "meaning": "QR task 对象 +0x08 的本地任务编号；网络编号对应关系未知",
+      "representation": "uint32",
+      "presence": "set",
+      "value_source": "0x77ed3e6–0x77ed3ee；0x79f3d12–0x79f3d25；0x8f52380"
     },
     {
       "message": "micromsg.GetLoginQRCodeRequest",
@@ -721,13 +721,384 @@
       "instruction_va": "0x9abbf1d",
       "machine_code_hex": "488d357c7f50f7",
       "explanation": "material helper uses literal /dev/urandom at 0xfc3ea0"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ecfe0",
+      "instruction_va": "0x77ecff2",
+      "machine_code_hex": "4c89c6",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rsi, r8; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ecfe0",
+      "instruction_va": "0x77ecff5",
+      "machine_code_hex": "e8f6000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x77ed0f0; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ecfe0",
+      "instruction_va": "0x77ecffd",
+      "machine_code_hex": "4981c788000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: add r15, 0x88; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ecfe0",
+      "instruction_va": "0x77ed01e",
+      "machine_code_hex": "4889e7",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rdi, rsp; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ecfe0",
+      "instruction_va": "0x77ed021",
+      "machine_code_hex": "4c89fe",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rsi, r15; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ecfe0",
+      "instruction_va": "0x77ed024",
+      "machine_code_hex": "e817377601",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x8f50740; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed090",
+      "instruction_va": "0x77ed09b",
+      "machine_code_hex": "4981c6e8000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: add r14, 0xe8; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed090",
+      "instruction_va": "0x77ed0b7",
+      "machine_code_hex": "4c89f7",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rdi, r14; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed090",
+      "instruction_va": "0x77ed0ba",
+      "machine_code_hex": "4c89fe",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rsi, r15; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed090",
+      "instruction_va": "0x77ed0bd",
+      "machine_code_hex": "89c2",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov edx, eax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed090",
+      "instruction_va": "0x77ed0bf",
+      "machine_code_hex": "e81c307601",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x8f500e0; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed0fe",
+      "machine_code_hex": "c70601000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov dword ptr [rsi], 1; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed18c",
+      "machine_code_hex": "488d35a57462f9",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: lea rsi, [rip - 0x69d8b5b]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed193",
+      "machine_code_hex": "ba01000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov edx, 1; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed198",
+      "machine_code_hex": "e863fdd1fc",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x450cf00; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed207",
+      "machine_code_hex": "41804e3402",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: or byte ptr [r14 + 0x34], 2; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed20c",
+      "machine_code_hex": "49894610",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov qword ptr [r14 + 0x10], rax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed24c",
+      "machine_code_hex": "e81f5d85fe",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x6042f70; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed294",
+      "machine_code_hex": "ba10000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov edx, 0x10; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed299",
+      "machine_code_hex": "4c89fe",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rsi, r15; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed29c",
+      "machine_code_hex": "e85ffcd1fc",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x450cf00; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed2ee",
+      "machine_code_hex": "8b4060",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov eax, dword ptr [rax + 0x60]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed2f1",
+      "machine_code_hex": "41834e3408",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: or dword ptr [r14 + 0x34], 8; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed2f6",
+      "machine_code_hex": "41894628",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov dword ptr [r14 + 0x28], eax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed337",
+      "machine_code_hex": "4989c7",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov r15, rax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed378",
+      "machine_code_hex": "41834e3410",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: or dword ptr [r14 + 0x34], 0x10; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed3b2",
+      "machine_code_hex": "e849fbd1fc",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x450cf00; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed3e6",
+      "machine_code_hex": "8b4308",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov eax, dword ptr [rbx + 8]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed3e9",
+      "machine_code_hex": "41834e3420",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: or dword ptr [r14 + 0x34], 0x20; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x77ed0f0",
+      "instruction_va": "0x77ed3ee",
+      "machine_code_hex": "4189462c",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov dword ptr [r14 + 0x2c], eax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc6560",
+      "instruction_va": "0x7cc6560",
+      "machine_code_hex": "8b475c",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov eax, dword ptr [rdi + 0x5c]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc6560",
+      "instruction_va": "0x7cc6563",
+      "machine_code_hex": "f7d0",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: not eax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x7cc6560",
+      "instruction_va": "0x7cc6565",
+      "machine_code_hex": "a803",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: test al, 3; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8e1a8f0",
+      "instruction_va": "0x8e1aaed",
+      "machine_code_hex": "410fb6762c",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: movzx esi, byte ptr [r14 + 0x2c]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8e1a8f0",
+      "instruction_va": "0x8e1aaf2",
+      "machine_code_hex": "bf0c000000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov edi, 0xc; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8e1a8f0",
+      "instruction_va": "0x8e1aafa",
+      "machine_code_hex": "e8e1791300",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x8f524e0; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfc840",
+      "instruction_va": "0x8dfc851",
+      "machine_code_hex": "4c89cb",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rbx, r9; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfc840",
+      "instruction_va": "0x8dfc854",
+      "machine_code_hex": "4d89c5",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov r13, r8; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfc840",
+      "instruction_va": "0x8dfc857",
+      "machine_code_hex": "4889cd",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rbp, rcx; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfc840",
+      "instruction_va": "0x8dfc85a",
+      "machine_code_hex": "4889942408010000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov qword ptr [rsp + 0x108], rdx; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfc840",
+      "instruction_va": "0x8dfd07e",
+      "machine_code_hex": "488bbc2408010000",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rdi, qword ptr [rsp + 0x108]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfc840",
+      "instruction_va": "0x8dfd089",
+      "machine_code_hex": "e892473200",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: call 0x9121820; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfe2c0",
+      "instruction_va": "0x8dfe2d1",
+      "machine_code_hex": "410fb74008",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: movzx eax, word ptr [r8 + 8]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfe2c0",
+      "instruction_va": "0x8dfe2d6",
+      "machine_code_hex": "4883f80e",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: cmp rax, 0xe; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfe2c0",
+      "instruction_va": "0x8dfe2f0",
+      "machine_code_hex": "488d0d999724f9",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: lea rcx, [rip - 0x6db6867]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfe2c0",
+      "instruction_va": "0x8dfe2f7",
+      "machine_code_hex": "48630481",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: movsxd rax, dword ptr [rcx + rax*4]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8dfe2c0",
+      "instruction_va": "0x8dfe2fe",
+      "machine_code_hex": "ffe0",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: jmp rax; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x9121c90",
+      "instruction_va": "0x9121c90",
+      "machine_code_hex": "4889f0",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rax, rsi; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x9121ca0",
+      "instruction_va": "0x9121ca0",
+      "machine_code_hex": "488b4710",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rax, qword ptr [rdi + 0x10]; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8f52310",
+      "instruction_va": "0x8f52327",
+      "machine_code_hex": "85ed",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: test ebp, ebp; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8f52310",
+      "instruction_va": "0x8f5233b",
+      "machine_code_hex": "4863f5",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: movsxd rsi, ebp; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8f52380",
+      "instruction_va": "0x8f5239a",
+      "machine_code_hex": "89ee",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov esi, ebp; see qr-runtime-evidence.md"
+    },
+    {
+      "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+      "function_va": "0x8f523b0",
+      "instruction_va": "0x8f523cc",
+      "machine_code_hex": "4c89f6",
+      "explanation": "QR task/BaseRequest/RequestInfo/packet ABI dataflow: mov rsi, r14; see qr-runtime-evidence.md"
     }
   ],
   "semantic_verified": false,
   "packet_verified": false,
   "live_verified": false,
   "blocked_reasons": [
-    "BaseRequest population and final request omissions have not been traced through CoCgi/encoder.",
+    "BaseRequest values are sourced, but runtime configuration values, device material generation and remaining field semantics/omissions need confirmation.",
     "Response field 2 display format and fields 4/6 timing units remain unverified.",
     "Request-selected cipher material, peer keys/KDF and external transport have not been proven."
   ]

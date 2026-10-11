@@ -27,6 +27,7 @@ ClearCredentials 清除本地账号状态；打开失败后可显式调用 Clear
 
 ```sh
 python3 -m unittest discover -s tools/tests -v
+node tools/tests/test_qr_capture_agent.js
 .venv/bin/python tools/check_protocol_contracts.py --deb WeChatLinux_x86_64.deb --contract docs/reverse/contracts/qr.json
 ```
 
@@ -35,3 +36,6 @@ python3 -m unittest discover -s tools/tests -v
 
 这些是本地解析限制，不代表微信服务端约束。离线测试通过不证明可在线登录。
 不要把账号状态、二维码凭据、真实私钥或抓包提交到 Git。
+
+研究用 [QR 采集程序](reverse/qr-runtime-evidence.md) 的依赖单独保存在
+`requirements-capture.txt`。离线测试不需要 Frida；真实采集需要固定微信进程和本机挂接能力。
