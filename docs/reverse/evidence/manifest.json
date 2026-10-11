@@ -1,0 +1,13 @@
+{
+  "sample_commit": "3c16fee9c1d236828871920638596c15e93d5615",
+  "deb_sha256": "b7d0f8d53e9f648bc2c77a6096a04100d008f2d9f0d3988a2a4859b5992aca0a",
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "fde_entries": 359513,
+  "message_types_mapped": 63,
+  "packet_types_mapped": 4,
+  "field_writer_sites": 561,
+  "packet_field_writer_sites": 29,
+  "native_tasks_mapped": 6,
+  "sample_executed": false,
+  "scope_note": "Sample-specific reverse evidence, not a semantic schema or working WeChat client. Helper meanings were reviewed against their disassembly."
+}

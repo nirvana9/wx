@@ -1,0 +1,46 @@
+[
+  {
+    "type": "alts.PKG",
+    "get_type_name": "0x8e10dd0",
+    "get_type_name_size": 25,
+    "vtable_type_name_slot": "0xaa352a0",
+    "parse_candidate": "0x8e0f8e0",
+    "size_candidate": "0x8e10890",
+    "serialize_candidate": "0x8e10500",
+    "vtable_address_point": "0xaa35290",
+    "constructor": "0x8e0f280"
+  },
+  {
+    "type": "alts.AltsRequest",
+    "get_type_name": "0x8e17b20",
+    "get_type_name_size": 22,
+    "vtable_type_name_slot": "0xaa35b10",
+    "parse_candidate": "0x8e176a0",
+    "size_candidate": "0x8e17a20",
+    "serialize_candidate": "0x8e17980",
+    "vtable_address_point": "0xaa35b00",
+    "constructor": "0x8e173e0"
+  },
+  {
+    "type": "alts.AltsReqContext",
+    "get_type_name": "0x8e14e80",
+    "get_type_name_size": 29,
+    "vtable_type_name_slot": "0xaa35840",
+    "parse_candidate": "0x8e14c50",
+    "size_candidate": "0x8e14e00",
+    "serialize_candidate": "0x8e14dc0",
+    "vtable_address_point": "0xaa35830",
+    "constructor": "0x8e14ab0"
+  },
+  {
+    "type": "alts.AltsReqBodyV1",
+    "get_type_name": "0x8e158b0",
+    "get_type_name_size": 28,
+    "vtable_type_name_slot": "0xaa35930",
+    "parse_candidate": "0x8e15500",
+    "size_candidate": "0x8e15760",
+    "serialize_candidate": "0x8e15700",
+    "vtable_address_point": "0xaa35920",
+    "constructor": "0x8e15290"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "path": "/cgi-bin/micromsg-bin/getloginqrcode",
+    "task_constructor_wrapper": "0x77ecbd0",
+    "task_class_constructor": "0x77ece40",
+    "task_cgi_id": 502,
+    "id_instruction": "0x77ecc07",
+    "id_storage": "[rsp+0x10]",
+    "path_instruction": "0x77ecc3c",
+    "scope_note": "native task metadata, not a proven on-wire header command"
+  },
+  {
+    "path": "/cgi-bin/micromsg-bin/checkloginqrcode",
+    "task_constructor_wrapper": "0x77f0920",
+    "task_class_constructor": "0x77f0b90",
+    "task_cgi_id": 503,
+    "id_instruction": "0x77f0957",
+    "id_storage": "[rsp+0x10]",
+    "path_instruction": "0x77f099a",
+    "scope_note": "native task metadata, not a proven on-wire header command"
+  },
+  {
+    "path": "/cgi-bin/micromsg-bin/secmanualauth",
+    "task_constructor_wrapper": "0x77f6bf0",
+    "task_class_constructor": "0x77f6e60",
+    "task_cgi_id": 252,
+    "id_instruction": "0x77f6c27",
+    "id_storage": "[rsp+0x10]",
+    "path_instruction": "0x77f6c5c",
+    "scope_note": "native task metadata, not a proven on-wire header command"
+  },
+  {
+    "path": "/cgi-bin/micromsg-bin/secautoauth",
+    "task_constructor_wrapper": "0x77fce90",
+    "task_class_constructor": "0x77fd0f0",
+    "task_cgi_id": 763,
+    "id_instruction": "0x77fcec7",
+    "id_storage": "[rsp+0x10]",
+    "path_instruction": "0x77fcefc",
+    "scope_note": "native task metadata, not a proven on-wire header command"
+  },
+  {
+    "path": "/cgi-bin/micromsg-bin/newsendmsg",
+    "task_constructor_wrapper": "0x695bf60",
+    "task_class_constructor": "0x695c1c0",
+    "task_cgi_id": 522,
+    "id_instruction": "0x695bf97",
+    "id_storage": "[rsp+0x10]",
+    "path_instruction": "0x695bfcc",
+    "scope_note": "native task metadata, not a proven on-wire header command"
+  },
+  {
+    "path": "/cgi-bin/micromsg-bin/newsync",
+    "task_constructor_wrapper": "0x61e2350",
+    "task_class_constructor": "0x61e25b0",
+    "task_cgi_id": 138,
+    "id_instruction": "0x61e2387",
+    "id_storage": "[rsp+0x10]",
+    "path_instruction": "0x61e23bc",
+    "scope_note": "native task metadata, not a proven on-wire header command"
+  }
+]

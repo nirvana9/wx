@@ -1,0 +1,67 @@
+{
+  "function": "0x8dfe2c0",
+  "selector_source": "16-bit value at incoming r8+0x8",
+  "jump_table": "0x2047a90",
+  "cases": [
+    {
+      "selector": 0,
+      "destination": "0x8dfe300"
+    },
+    {
+      "selector": 1,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 2,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 3,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 4,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 5,
+      "destination": "0x8dfe724"
+    },
+    {
+      "selector": 6,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 7,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 8,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 9,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 10,
+      "destination": "0x8dffada"
+    },
+    {
+      "selector": 11,
+      "destination": "0x8dfe45b"
+    },
+    {
+      "selector": 12,
+      "destination": "0x8dfe76f"
+    },
+    {
+      "selector": 13,
+      "destination": "0x8dfe9e7"
+    },
+    {
+      "selector": 14,
+      "destination": "0x8dfe694"
+    }
+  ]
+}

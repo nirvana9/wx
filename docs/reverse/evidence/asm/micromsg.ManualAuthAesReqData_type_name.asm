@@ -1,0 +1,15 @@
+0000000007cdb570: 53                           push     rbx
+0000000007cdb571: 4889fb                       mov      rbx, rdi
+0000000007cdb574: bf20000000                   mov      edi, 0x20
+0000000007cdb579: e822289902                   call     0xa66dda0
+0000000007cdb57e: 48894310                     mov      qword ptr [rbx + 0x10], rax
+0000000007cdb582: 48c70321000000               mov      qword ptr [rbx], 0x21
+0000000007cdb589: 48c743081d000000             mov      qword ptr [rbx + 8], 0x1d
+0000000007cdb591: 0f1005f26b1af9               movups   xmm0, xmmword ptr [rip - 0x6e5940e]
+0000000007cdb598: 0f11400d                     movups   xmmword ptr [rax + 0xd], xmm0
+0000000007cdb59c: 0f1005da6b1af9               movups   xmm0, xmmword ptr [rip - 0x6e59426]
+0000000007cdb5a3: 0f1100                       movups   xmmword ptr [rax], xmm0
+0000000007cdb5a6: c6401d00                     mov      byte ptr [rax + 0x1d], 0
+0000000007cdb5aa: 4889d8                       mov      rax, rbx
+0000000007cdb5ad: 5b                           pop      rbx
+0000000007cdb5ae: c3                           ret

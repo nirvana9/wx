@@ -1,0 +1,556 @@
+[
+  {
+    "type": "alts.PKG",
+    "serialize_function": "0x8e10500",
+    "parse_function": "0x8e0f8e0",
+    "fields": [
+      {
+        "field_number": 1,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e105f9",
+        "field_number_instruction": "0x8e105f1",
+        "object_member_source": {
+          "instruction": "0x8e105ed",
+          "base": "r14",
+          "offset": "0x10",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 2,
+        "wire_type": 2,
+        "encoding_kind": "length_delimited",
+        "declaration_type_note": "string/bytes declaration not distinguished",
+        "writer_helper": "0x8f52620",
+        "writer_instruction": "0x8e10616",
+        "field_number_instruction": "0x8e1060e",
+        "object_member_source": {
+          "instruction": "0x8e1060a",
+          "base": "r14",
+          "offset": "0x8",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 3,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10633",
+        "field_number_instruction": "0x8e1062b",
+        "object_member_source": {
+          "instruction": "0x8e10627",
+          "base": "r14",
+          "offset": "0x14",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 4,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10650",
+        "field_number_instruction": "0x8e10648",
+        "object_member_source": {
+          "instruction": "0x8e10644",
+          "base": "r14",
+          "offset": "0x18",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 5,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e1066d",
+        "field_number_instruction": "0x8e10665",
+        "object_member_source": {
+          "instruction": "0x8e10661",
+          "base": "r14",
+          "offset": "0x1c",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 6,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e1068a",
+        "field_number_instruction": "0x8e10682",
+        "object_member_source": {
+          "instruction": "0x8e1067e",
+          "base": "r14",
+          "offset": "0x20",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 7,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e106a7",
+        "field_number_instruction": "0x8e1069f",
+        "object_member_source": {
+          "instruction": "0x8e1069b",
+          "base": "r14",
+          "offset": "0x24",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 8,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e106c4",
+        "field_number_instruction": "0x8e106bc",
+        "object_member_source": {
+          "instruction": "0x8e106b8",
+          "base": "r14",
+          "offset": "0x28",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 9,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e106e4",
+        "field_number_instruction": "0x8e106dc",
+        "object_member_source": {
+          "instruction": "0x8e106d8",
+          "base": "r14",
+          "offset": "0x2c",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 10,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10704",
+        "field_number_instruction": "0x8e106fc",
+        "object_member_source": {
+          "instruction": "0x8e106f8",
+          "base": "r14",
+          "offset": "0x30",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 11,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10724",
+        "field_number_instruction": "0x8e1071c",
+        "object_member_source": {
+          "instruction": "0x8e10718",
+          "base": "r14",
+          "offset": "0x34",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 12,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10744",
+        "field_number_instruction": "0x8e1073c",
+        "object_member_source": {
+          "instruction": "0x8e10738",
+          "base": "r14",
+          "offset": "0x38",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 13,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "negative int32 values are sign-extended and encoded using varint64; declaration not recovered",
+        "writer_helper": "0x8f52310",
+        "writer_instruction": "0x8e10764",
+        "field_number_instruction": "0x8e1075c",
+        "object_member_source": {
+          "instruction": "0x8e10758",
+          "base": "r14",
+          "offset": "0x3c",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 14,
+        "wire_type": 2,
+        "encoding_kind": "length_delimited",
+        "declaration_type_note": "string/bytes declaration not distinguished",
+        "writer_helper": "0x8f52620",
+        "writer_instruction": "0x8e10784",
+        "field_number_instruction": "0x8e1077c",
+        "object_member_source": {
+          "instruction": "0x8e10778",
+          "base": "r14",
+          "offset": "0x40",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 15,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e107a4",
+        "field_number_instruction": "0x8e1079c",
+        "object_member_source": {
+          "instruction": "0x8e10798",
+          "base": "r14",
+          "offset": "0x48",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 16,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e107c2",
+        "field_number_instruction": "0x8e107ba",
+        "object_member_source": {
+          "instruction": "0x8e107b6",
+          "base": "r14",
+          "offset": "0x4c",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 17,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e107e2",
+        "field_number_instruction": "0x8e107da",
+        "object_member_source": {
+          "instruction": "0x8e107d6",
+          "base": "r14",
+          "offset": "0x58",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 18,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "64-bit handling; signedness not distinguished",
+        "writer_helper": "0x8f523b0",
+        "writer_instruction": "0x8e10802",
+        "field_number_instruction": "0x8e107fa",
+        "object_member_source": {
+          "instruction": "0x8e107f6",
+          "base": "r14",
+          "offset": "0x50",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 19,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "64-bit handling; signedness not distinguished",
+        "writer_helper": "0x8f523b0",
+        "writer_instruction": "0x8e10822",
+        "field_number_instruction": "0x8e1081a",
+        "object_member_source": {
+          "instruction": "0x8e10816",
+          "base": "r14",
+          "offset": "0x60",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 20,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10842",
+        "field_number_instruction": "0x8e1083a",
+        "object_member_source": {
+          "instruction": "0x8e10836",
+          "base": "r14",
+          "offset": "0x5c",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 21,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x8e10862",
+        "field_number_instruction": "0x8e1085a",
+        "object_member_source": {
+          "instruction": "0x8e10856",
+          "base": "r14",
+          "offset": "0x70",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 22,
+        "wire_type": 2,
+        "encoding_kind": "length_delimited",
+        "declaration_type_note": "string/bytes declaration not distinguished",
+        "writer_helper": "0x8f52620",
+        "writer_instruction": "0x8e10889",
+        "field_number_instruction": "0x8e1087a",
+        "object_member_source": {
+          "instruction": "0x8e10876",
+          "base": "r14",
+          "offset": "0x68",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      }
+    ],
+    "recovery_scope": "constant field IDs passed to reviewed writer helpers; not a complete semantic schema; member sources are local hints"
+  },
+  {
+    "type": "alts.AltsRequest",
+    "serialize_function": "0x8e17980",
+    "parse_function": "0x8e176a0",
+    "fields": [
+      {
+        "field_number": 1,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "negative int32 values are sign-extended and encoded using varint64; declaration not recovered",
+        "writer_helper": "0x8f52310",
+        "writer_instruction": "0x8e179ad",
+        "field_number_instruction": "0x8e179a5",
+        "object_member_source": {
+          "instruction": "0x8e179a1",
+          "base": "r14",
+          "offset": "0x18",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 2,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x8e179d9",
+        "field_number_instruction": "0x8e179d1",
+        "object_member_source": {
+          "instruction": "0x8e179cd",
+          "base": "rax",
+          "offset": "0x8",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 3,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x8e17a0c",
+        "field_number_instruction": "0x8e179fd",
+        "object_member_source": {
+          "instruction": "0x8e179f9",
+          "base": "rax",
+          "offset": "0x10",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      }
+    ],
+    "recovery_scope": "constant field IDs passed to reviewed writer helpers; not a complete semantic schema; member sources are local hints"
+  },
+  {
+    "type": "alts.AltsReqContext",
+    "serialize_function": "0x8e14dc0",
+    "parse_function": "0x8e14c50",
+    "fields": [
+      {
+        "field_number": 1,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x8e14dd8",
+        "field_number_instruction": "0x8e14dd3",
+        "object_member_source": {
+          "instruction": "0x8e14dca",
+          "base": "rdi",
+          "offset": "0x8",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 1,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x8e14df0",
+        "field_number_instruction": "0x8e14deb",
+        "object_member_source": {
+          "instruction": "0x8e14de7",
+          "base": "rax",
+          "offset": "0x8",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      }
+    ],
+    "recovery_scope": "constant field IDs passed to reviewed writer helpers; not a complete semantic schema; member sources are local hints"
+  },
+  {
+    "type": "alts.AltsReqBodyV1",
+    "serialize_function": "0x8e15700",
+    "parse_function": "0x8e15500",
+    "fields": [
+      {
+        "field_number": 1,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x8e15730",
+        "field_number_instruction": "0x8e15728",
+        "object_member_source": {
+          "instruction": "0x8e15724",
+          "base": "rax",
+          "offset": "0x8",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 2,
+        "wire_type": 2,
+        "encoding_kind": "length_delimited",
+        "declaration_type_note": "string/bytes declaration not distinguished",
+        "writer_helper": "0x8f52620",
+        "writer_instruction": "0x8e15758",
+        "field_number_instruction": "0x8e15749",
+        "object_member_source": {
+          "instruction": "0x8e15745",
+          "base": "r14",
+          "offset": "0x10",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      }
+    ],
+    "recovery_scope": "constant field IDs passed to reviewed writer helpers; not a complete semantic schema; member sources are local hints"
+  }
+]

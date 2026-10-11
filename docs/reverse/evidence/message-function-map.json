@@ -1,0 +1,632 @@
+[
+  {
+    "type": "micromsg.AuthSectResp",
+    "get_type_name": "0x7ce4680",
+    "get_type_name_size": 36,
+    "vtable_type_name_slot": "0xa9a1fc0",
+    "parse_candidate": "0x7ce20c0",
+    "size_candidate": "0x7ce3b30",
+    "serialize_candidate": "0x7ce3570",
+    "vtable_address_point": "0xa9a1fb0"
+  },
+  {
+    "type": "micromsg.AutoAuthAesReqData",
+    "get_type_name": "0x7cdf1b0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a1d68",
+    "parse_candidate": "0x7cdd7b0",
+    "size_candidate": "0x7cde8e0",
+    "serialize_candidate": "0x7cde4e0",
+    "vtable_address_point": "0xa9a1d58"
+  },
+  {
+    "type": "micromsg.AutoAuthKey",
+    "get_type_name": "0x7cdc9a0",
+    "get_type_name_size": 29,
+    "vtable_type_name_slot": "0xa9a1cf0",
+    "parse_candidate": "0x7cdc5a0",
+    "size_candidate": "0x7cdc880",
+    "serialize_candidate": "0x7cdc810",
+    "vtable_address_point": "0xa9a1ce0"
+  },
+  {
+    "type": "micromsg.AutoAuthRequest",
+    "get_type_name": "0x7cdf920",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9a1de0",
+    "parse_candidate": "0x7cdf4f0",
+    "size_candidate": "0x7cdf7d0",
+    "serialize_candidate": "0x7cdf760",
+    "vtable_address_point": "0xa9a1dd0"
+  },
+  {
+    "type": "micromsg.AutoAuthRsaReqData",
+    "get_type_name": "0x7cdc310",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a1c78",
+    "parse_candidate": "0x7cdbf10",
+    "size_candidate": "0x7cdc1f0",
+    "serialize_candidate": "0x7cdc180",
+    "vtable_address_point": "0xa9a1c68"
+  },
+  {
+    "type": "micromsg.AxAuthRequest",
+    "get_type_name": "0x7ceae00",
+    "get_type_name_size": 36,
+    "vtable_type_name_slot": "0xa9a2308",
+    "parse_candidate": "0x7ce9f40",
+    "size_candidate": "0x7cea8e0",
+    "serialize_candidate": "0x7cea6c0",
+    "vtable_address_point": "0xa9a22f8"
+  },
+  {
+    "type": "micromsg.AxAuthResponse",
+    "get_type_name": "0x7ceb920",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9a2380",
+    "parse_candidate": "0x7ceb1c0",
+    "size_candidate": "0x7ceb6e0",
+    "serialize_candidate": "0x7ceb600",
+    "vtable_address_point": "0xa9a2370"
+  },
+  {
+    "type": "micromsg.BaseAuthReqInfo",
+    "get_type_name": "0x7cd5930",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9a18b8",
+    "parse_candidate": "0x7cd4bb0",
+    "size_candidate": "0x7cd5350",
+    "serialize_candidate": "0x7cd51e0",
+    "vtable_address_point": "0xa9a18a8"
+  },
+  {
+    "type": "micromsg.BaseRequest",
+    "get_type_name": "0x79f3f20",
+    "get_type_name_size": 29,
+    "vtable_type_name_slot": "0xa982638",
+    "parse_candidate": "0x79f3900",
+    "size_candidate": "0x79f3d30",
+    "serialize_candidate": "0x79f3c60",
+    "vtable_address_point": "0xa982628"
+  },
+  {
+    "type": "micromsg.BaseResponse",
+    "get_type_name": "0x79f45d0",
+    "get_type_name_size": 36,
+    "vtable_type_name_slot": "0xa9826c8",
+    "parse_candidate": "0x79f42b0",
+    "size_candidate": "0x79f4520",
+    "serialize_candidate": "0x79f44c0",
+    "vtable_address_point": "0xa9826b8"
+  },
+  {
+    "type": "micromsg.CDNUploadMsgImgPrepareRequest",
+    "get_type_name": "0x7d19890",
+    "get_type_name_size": 77,
+    "vtable_type_name_slot": "0xa9a3bc8",
+    "parse_candidate": "0x7d17d50",
+    "size_candidate": "0x7d18fd0",
+    "serialize_candidate": "0x7d18b40",
+    "vtable_address_point": "0xa9a3bb8"
+  },
+  {
+    "type": "micromsg.CDNUploadMsgImgPrepareResponse",
+    "get_type_name": "0x7d1abb0",
+    "get_type_name_size": 77,
+    "vtable_type_name_slot": "0xa9a3c40",
+    "parse_candidate": "0x7d19fc0",
+    "size_candidate": "0x7d1a7d0",
+    "serialize_candidate": "0x7d1a600",
+    "vtable_address_point": "0xa9a3c30"
+  },
+  {
+    "type": "micromsg.CheckLoginQRCodeRequest",
+    "get_type_name": "0x7cc8350",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a0d18",
+    "parse_candidate": "0x7cc7c60",
+    "size_candidate": "0x7cc8130",
+    "serialize_candidate": "0x7cc8050",
+    "vtable_address_point": "0xa9a0d08"
+  },
+  {
+    "type": "micromsg.CheckLoginQRCodeResponse",
+    "get_type_name": "0x7cc8ae0",
+    "get_type_name_size": 65,
+    "vtable_type_name_slot": "0xa9a0d90",
+    "parse_candidate": "0x7cc8620",
+    "size_candidate": "0x7cc8900",
+    "serialize_candidate": "0x7cc8890",
+    "vtable_address_point": "0xa9a0d80"
+  },
+  {
+    "type": "micromsg.ClientMicroMsg",
+    "get_type_name": "0x7c50150",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa99bd38",
+    "parse_candidate": "0x7c4fd00",
+    "size_candidate": "0x7c4fff0",
+    "serialize_candidate": "0x7c4ff60",
+    "vtable_address_point": "0xa99bd28"
+  },
+  {
+    "type": "micromsg.CmdItem",
+    "get_type_name": "0x7bf23c0",
+    "get_type_name_size": 22,
+    "vtable_type_name_slot": "0xa996218",
+    "parse_candidate": "0x7bf2050",
+    "size_candidate": "0x7bf22c0",
+    "serialize_candidate": "0x7bf2260",
+    "vtable_address_point": "0xa996208"
+  },
+  {
+    "type": "micromsg.CmdList",
+    "get_type_name": "0x7bf2a50",
+    "get_type_name_size": 22,
+    "vtable_type_name_slot": "0xa996290",
+    "parse_candidate": "0x7bf25f0",
+    "size_candidate": "0x7bf28a0",
+    "serialize_candidate": "0x7bf2840",
+    "vtable_address_point": "0xa996280"
+  },
+  {
+    "type": "micromsg.DownloadAppAttachRequest",
+    "get_type_name": "0x7c023e0",
+    "get_type_name_size": 65,
+    "vtable_type_name_slot": "0xa997418",
+    "parse_candidate": "0x7c01670",
+    "size_candidate": "0x7c01fd0",
+    "serialize_candidate": "0x7c01db0",
+    "vtable_address_point": "0xa997408"
+  },
+  {
+    "type": "micromsg.DownloadAppAttachResponse",
+    "get_type_name": "0x7c032e0",
+    "get_type_name_size": 69,
+    "vtable_type_name_slot": "0xa997490",
+    "parse_candidate": "0x7c02910",
+    "size_candidate": "0x7c02fc0",
+    "serialize_candidate": "0x7c02e70",
+    "vtable_address_point": "0xa997480"
+  },
+  {
+    "type": "micromsg.DownloadVoiceRequest",
+    "get_type_name": "0x7d1d9f0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a40d8",
+    "parse_candidate": "0x7d1d070",
+    "size_candidate": "0x7d1d750",
+    "serialize_candidate": "0x7d1d5f0",
+    "vtable_address_point": "0xa9a40c8"
+  },
+  {
+    "type": "micromsg.DownloadVoiceResponse",
+    "get_type_name": "0x7d1e970",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a4150",
+    "parse_candidate": "0x7d1de50",
+    "size_candidate": "0x7d1e670",
+    "serialize_candidate": "0x7d1e4d0",
+    "vtable_address_point": "0xa9a4140"
+  },
+  {
+    "type": "micromsg.ECDHKey",
+    "get_type_name": "0x7ba1460",
+    "get_type_name_size": 22,
+    "vtable_type_name_slot": "0xa9917a8",
+    "parse_candidate": "0x7ba1050",
+    "size_candidate": "0x7ba12c0",
+    "serialize_candidate": "0x7ba1260",
+    "vtable_address_point": "0xa991798"
+  },
+  {
+    "type": "micromsg.ExtAuthReqInfo",
+    "get_type_name": "0x7cd4510",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9a1840",
+    "parse_candidate": "0x7cd4260",
+    "size_candidate": "0x7cd4420",
+    "serialize_candidate": "0x7cd43d0",
+    "vtable_address_point": "0xa9a1830"
+  },
+  {
+    "type": "micromsg.GetLoginQRCodeRequest",
+    "get_type_name": "0x7cc6650",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a0c28",
+    "parse_candidate": "0x7cc5740",
+    "size_candidate": "0x7cc6170",
+    "serialize_candidate": "0x7cc5f50",
+    "vtable_address_point": "0xa9a0c18"
+  },
+  {
+    "type": "micromsg.GetLoginQRCodeResponse",
+    "get_type_name": "0x7cc7890",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a0ca0",
+    "parse_candidate": "0x7cc6c50",
+    "size_candidate": "0x7cc74a0",
+    "serialize_candidate": "0x7cc72f0",
+    "vtable_address_point": "0xa9a0c90"
+  },
+  {
+    "type": "micromsg.HeartBeatRequest",
+    "get_type_name": "0x7df09f0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9add50",
+    "parse_candidate": "0x7df04d0",
+    "size_candidate": "0x7df0870",
+    "serialize_candidate": "0x7df07d0",
+    "vtable_address_point": "0xa9add40"
+  },
+  {
+    "type": "micromsg.HeartBeatResponse",
+    "get_type_name": "0x7df10b0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9addc8",
+    "parse_candidate": "0x7df0c50",
+    "size_candidate": "0x7df0f80",
+    "serialize_candidate": "0x7df0f00",
+    "vtable_address_point": "0xa9addb8"
+  },
+  {
+    "type": "micromsg.LoginQRCodeNonStoreExtNotifyData",
+    "get_type_name": "0x7cc91e0",
+    "get_type_name_size": 74,
+    "vtable_type_name_slot": "0xa9a0e80",
+    "parse_candidate": "0x7cc9070",
+    "size_candidate": "0x7cc9190",
+    "serialize_candidate": "0x7cc9170",
+    "vtable_address_point": "0xa9a0e70"
+  },
+  {
+    "type": "micromsg.LoginQRCodeNotify",
+    "get_type_name": "0x7ccaec0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a0ef8",
+    "parse_candidate": "0x7cc9c20",
+    "size_candidate": "0x7cca8b0",
+    "serialize_candidate": "0x7cca5d0",
+    "vtable_address_point": "0xa9a0ee8"
+  },
+  {
+    "type": "micromsg.LoginQRCodeNotifyPkg",
+    "get_type_name": "0x7cc49e0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a0b38",
+    "parse_candidate": "0x7cc46b0",
+    "size_candidate": "0x7cc4920",
+    "serialize_candidate": "0x7cc48c0",
+    "vtable_address_point": "0xa9a0b28"
+  },
+  {
+    "type": "micromsg.ManualAuthAesReqData",
+    "get_type_name": "0x7cdb570",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a1b88",
+    "parse_candidate": "0x7cd9390",
+    "size_candidate": "0x7cdaa00",
+    "serialize_candidate": "0x7cda4a0",
+    "vtable_address_point": "0xa9a1b78"
+  },
+  {
+    "type": "micromsg.ManualAuthRequest",
+    "get_type_name": "0x7cdbc80",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a1c00",
+    "parse_candidate": "0x7cdb850",
+    "size_candidate": "0x7cdbb30",
+    "serialize_candidate": "0x7cdbac0",
+    "vtable_address_point": "0xa9a1bf0"
+  },
+  {
+    "type": "micromsg.ManualAuthRsaReqData",
+    "get_type_name": "0x7cd64f0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a1930",
+    "parse_candidate": "0x7cd5e00",
+    "size_candidate": "0x7cd62a0",
+    "serialize_candidate": "0x7cd61c0",
+    "vtable_address_point": "0xa9a1920"
+  },
+  {
+    "type": "micromsg.MicroMsgRequestNew",
+    "get_type_name": "0x79ed490",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa982230",
+    "parse_candidate": "0x79ecce0",
+    "size_candidate": "0x79ed280",
+    "serialize_candidate": "0x79ed170",
+    "vtable_address_point": "0xa982220"
+  },
+  {
+    "type": "micromsg.MicroMsgResponseNew",
+    "get_type_name": "0x79ee650",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa982320",
+    "parse_candidate": "0x79ede30",
+    "size_candidate": "0x79ee480",
+    "serialize_candidate": "0x79ee340",
+    "vtable_address_point": "0xa982310"
+  },
+  {
+    "type": "micromsg.NetworkSectResp",
+    "get_type_name": "0x7ce1240",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9a1f48",
+    "parse_candidate": "0x7ce08b0",
+    "size_candidate": "0x7ce0fb0",
+    "serialize_candidate": "0x7ce0e70",
+    "vtable_address_point": "0xa9a1f38"
+  },
+  {
+    "type": "micromsg.NewInitRequest",
+    "get_type_name": "0x7deb040",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9ad9d8",
+    "parse_candidate": "0x7dea870",
+    "size_candidate": "0x7deada0",
+    "serialize_candidate": "0x7deacb0",
+    "vtable_address_point": "0xa9ad9c8"
+  },
+  {
+    "type": "micromsg.NewInitResponse",
+    "get_type_name": "0x7debfc0",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9ada50",
+    "parse_candidate": "0x7deb450",
+    "size_candidate": "0x7debc80",
+    "serialize_candidate": "0x7debb00",
+    "vtable_address_point": "0xa9ada40"
+  },
+  {
+    "type": "micromsg.NewSyncRequest",
+    "get_type_name": "0x7ded2d0",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9adaf8",
+    "parse_candidate": "0x7dec790",
+    "size_candidate": "0x7decfb0",
+    "serialize_candidate": "0x7dece20",
+    "vtable_address_point": "0xa9adae8"
+  },
+  {
+    "type": "micromsg.NewSyncResponse",
+    "get_type_name": "0x7dede70",
+    "get_type_name_size": 66,
+    "vtable_type_name_slot": "0xa9adb70",
+    "parse_candidate": "0x7ded5f0",
+    "size_candidate": "0x7dedc20",
+    "serialize_candidate": "0x7dedb00",
+    "vtable_address_point": "0xa9adb60"
+  },
+  {
+    "type": "micromsg.RevokeMsgRequest",
+    "get_type_name": "0x7cf28a0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a2c98",
+    "parse_candidate": "0x7cf1ed0",
+    "size_candidate": "0x7cf25b0",
+    "serialize_candidate": "0x7cf2440",
+    "vtable_address_point": "0xa9a2c88"
+  },
+  {
+    "type": "micromsg.RevokeMsgResponse",
+    "get_type_name": "0x7cf30d0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a2d10",
+    "parse_candidate": "0x7cf2c30",
+    "size_candidate": "0x7cf2f30",
+    "serialize_candidate": "0x7cf2eb0",
+    "vtable_address_point": "0xa9a2d00"
+  },
+  {
+    "type": "micromsg.SKBuiltinBuffer_t",
+    "get_type_name": "0x7ba09b0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9916b8",
+    "parse_candidate": "0x7ba0730",
+    "size_candidate": "0x7ba08f0",
+    "serialize_candidate": "0x7ba08a0",
+    "vtable_address_point": "0xa9916a8"
+  },
+  {
+    "type": "micromsg.SKBuiltinString_t",
+    "get_type_name": "0x7ba0db0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa991730",
+    "parse_candidate": "0x7ba0c00",
+    "size_candidate": "0x7ba0d20",
+    "serialize_candidate": "0x7ba0d00",
+    "vtable_address_point": "0xa991720"
+  },
+  {
+    "type": "micromsg.SKClientMicroMsg",
+    "get_type_name": "0x7c33b60",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa999ff8",
+    "parse_candidate": "0x7c33710",
+    "size_candidate": "0x7c33a00",
+    "serialize_candidate": "0x7c33970",
+    "vtable_address_point": "0xa999fe8"
+  },
+  {
+    "type": "micromsg.SendAppMsgRequest",
+    "get_type_name": "0x7d0ce00",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a35b0",
+    "parse_candidate": "0x7d0bf70",
+    "size_candidate": "0x7d0c970",
+    "serialize_candidate": "0x7d0c730",
+    "vtable_address_point": "0xa9a35a0"
+  },
+  {
+    "type": "micromsg.SendAppMsgResponse",
+    "get_type_name": "0x7d0e400",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a3628",
+    "parse_candidate": "0x7d0d610",
+    "size_candidate": "0x7d0df70",
+    "serialize_candidate": "0x7d0dd50",
+    "vtable_address_point": "0xa9a3618"
+  },
+  {
+    "type": "micromsg.SendMsgRequestNew",
+    "get_type_name": "0x79edb50",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9822a8",
+    "parse_candidate": "0x79ed780",
+    "size_candidate": "0x79eda30",
+    "serialize_candidate": "0x79ed9d0",
+    "vtable_address_point": "0xa982298"
+  },
+  {
+    "type": "micromsg.SendMsgResponseNew",
+    "get_type_name": "0x79eeea0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa982398",
+    "parse_candidate": "0x79ee910",
+    "size_candidate": "0x79eed00",
+    "serialize_candidate": "0x79eec60",
+    "vtable_address_point": "0xa982388"
+  },
+  {
+    "type": "micromsg.SyncKey",
+    "get_type_name": "0x7dee8b0",
+    "get_type_name_size": 22,
+    "vtable_type_name_slot": "0xa9adc60",
+    "parse_candidate": "0x7dee4b0",
+    "size_candidate": "0x7dee760",
+    "serialize_candidate": "0x7dee700",
+    "vtable_address_point": "0xa9adc50"
+  },
+  {
+    "type": "micromsg.SyncKeyBuffer",
+    "get_type_name": "0x7bd52d0",
+    "get_type_name_size": 36,
+    "vtable_type_name_slot": "0xa994a78",
+    "parse_candidate": "0x7bd4ef0",
+    "size_candidate": "0x7bd51e0",
+    "serialize_candidate": "0x7bd5170",
+    "vtable_address_point": "0xa994a68"
+  },
+  {
+    "type": "micromsg.SyncKeyPair",
+    "get_type_name": "0x7bd4ce0",
+    "get_type_name_size": 29,
+    "vtable_type_name_slot": "0xa994a00",
+    "parse_candidate": "0x7bd4aa0",
+    "size_candidate": "0x7bd4c60",
+    "serialize_candidate": "0x7bd4c10",
+    "vtable_address_point": "0xa9949f0"
+  },
+  {
+    "type": "micromsg.UnifyAuthResponse",
+    "get_type_name": "0x7ce8b80",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a21a0",
+    "parse_candidate": "0x7ce8190",
+    "size_candidate": "0x7ce8890",
+    "serialize_candidate": "0x7ce8750",
+    "vtable_address_point": "0xa9a2190"
+  },
+  {
+    "type": "micromsg.UploadAppAttachRequest",
+    "get_type_name": "0x7d12860",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a38f8",
+    "parse_candidate": "0x7d11b90",
+    "size_candidate": "0x7d12460",
+    "serialize_candidate": "0x7d12280",
+    "vtable_address_point": "0xa9a38e8"
+  },
+  {
+    "type": "micromsg.UploadAppAttachResponse",
+    "get_type_name": "0x7d137e0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a3970",
+    "parse_candidate": "0x7d12df0",
+    "size_candidate": "0x7d134a0",
+    "serialize_candidate": "0x7d13330",
+    "vtable_address_point": "0xa9a3960"
+  },
+  {
+    "type": "micromsg.UploadEmojiRequest",
+    "get_type_name": "0x7d15bf0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a3a60",
+    "parse_candidate": "0x7d15590",
+    "size_candidate": "0x7d15a10",
+    "serialize_candidate": "0x7d15950",
+    "vtable_address_point": "0xa9a3a50"
+  },
+  {
+    "type": "micromsg.UploadEmojiResponse",
+    "get_type_name": "0x7d16dc0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a3b50",
+    "parse_candidate": "0x7d16830",
+    "size_candidate": "0x7d16c20",
+    "serialize_candidate": "0x7d16b80",
+    "vtable_address_point": "0xa9a3b40"
+  },
+  {
+    "type": "micromsg.UploadMsgImgRequest",
+    "get_type_name": "0x7cfbe00",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a2f20",
+    "parse_candidate": "0x7cf7950",
+    "size_candidate": "0x7cfa8b0",
+    "serialize_candidate": "0x7cf9d70",
+    "vtable_address_point": "0xa9a2f10"
+  },
+  {
+    "type": "micromsg.UploadMsgImgResponse",
+    "get_type_name": "0x7cfd420",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a2f98",
+    "parse_candidate": "0x7cfc4b0",
+    "size_candidate": "0x7cfcfe0",
+    "serialize_candidate": "0x7cfcd80",
+    "vtable_address_point": "0xa9a2f88"
+  },
+  {
+    "type": "micromsg.UploadVideoRequest",
+    "get_type_name": "0x7d04920",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a3178",
+    "parse_candidate": "0x7d00fe0",
+    "size_candidate": "0x7d03740",
+    "serialize_candidate": "0x7d02de0",
+    "vtable_address_point": "0xa9a3168"
+  },
+  {
+    "type": "micromsg.UploadVideoResponse",
+    "get_type_name": "0x7d056e0",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa9a31f0",
+    "parse_candidate": "0x7d04df0",
+    "size_candidate": "0x7d05430",
+    "serialize_candidate": "0x7d052f0",
+    "vtable_address_point": "0xa9a31e0"
+  },
+  {
+    "type": "micromsg.UploadVoiceRequest",
+    "get_type_name": "0x79f1400",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa982410",
+    "parse_candidate": "0x79efac0",
+    "size_candidate": "0x79f0c40",
+    "serialize_candidate": "0x79f0830",
+    "vtable_address_point": "0xa982400"
+  },
+  {
+    "type": "micromsg.UploadVoiceResponse",
+    "get_type_name": "0x79f2730",
+    "get_type_name_size": 63,
+    "vtable_type_name_slot": "0xa982488",
+    "parse_candidate": "0x79f19b0",
+    "size_candidate": "0x79f2350",
+    "serialize_candidate": "0x79f2130",
+    "vtable_address_point": "0xa982478"
+  }
+]

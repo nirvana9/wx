@@ -1,0 +1,169 @@
+{
+  "sample_commit": "3c16fee9c1d236828871920638596c15e93d5615",
+  "deb_sha256": "b7d0f8d53e9f648bc2c77a6096a04100d008f2d9f0d3988a2a4859b5992aca0a",
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "message_types": [
+    "micromsg.AuthSectResp",
+    "micromsg.AutoAuthAesReqData",
+    "micromsg.AutoAuthKey",
+    "micromsg.AutoAuthRequest",
+    "micromsg.AutoAuthRsaReqData",
+    "micromsg.AxAuthRequest",
+    "micromsg.AxAuthResponse",
+    "micromsg.BaseAuthReqInfo",
+    "micromsg.BaseRequest",
+    "micromsg.BaseResponse",
+    "micromsg.CDNUploadMsgImgPrepareRequest",
+    "micromsg.CDNUploadMsgImgPrepareResponse",
+    "micromsg.CheckLoginQRCodeRequest",
+    "micromsg.CheckLoginQRCodeResponse",
+    "micromsg.ClientMicroMsg",
+    "micromsg.CmdItem",
+    "micromsg.CmdList",
+    "micromsg.DownloadAppAttachRequest",
+    "micromsg.DownloadAppAttachResponse",
+    "micromsg.DownloadVoiceRequest",
+    "micromsg.DownloadVoiceResponse",
+    "micromsg.ECDHKey",
+    "micromsg.ExtAuthReqInfo",
+    "micromsg.GetLoginQRCodeRequest",
+    "micromsg.GetLoginQRCodeResponse",
+    "micromsg.HeartBeatRequest",
+    "micromsg.HeartBeatResponse",
+    "micromsg.LoginQRCodeNonStoreExtNotifyData",
+    "micromsg.LoginQRCodeNotify",
+    "micromsg.LoginQRCodeNotifyPkg",
+    "micromsg.ManualAuthAesReqData",
+    "micromsg.ManualAuthRequest",
+    "micromsg.ManualAuthRsaReqData",
+    "micromsg.MicroMsgRequestNew",
+    "micromsg.MicroMsgResponseNew",
+    "micromsg.NetworkSectResp",
+    "micromsg.NewInitRequest",
+    "micromsg.NewInitResponse",
+    "micromsg.NewSyncRequest",
+    "micromsg.NewSyncResponse",
+    "micromsg.RevokeMsgRequest",
+    "micromsg.RevokeMsgResponse",
+    "micromsg.SKBuiltinBuffer_t",
+    "micromsg.SKBuiltinString_t",
+    "micromsg.SKClientMicroMsg",
+    "micromsg.SendAppMsgRequest",
+    "micromsg.SendAppMsgResponse",
+    "micromsg.SendMsgRequestNew",
+    "micromsg.SendMsgResponseNew",
+    "micromsg.SyncKey",
+    "micromsg.SyncKeyBuffer",
+    "micromsg.SyncKeyPair",
+    "micromsg.UnifyAuthResponse",
+    "micromsg.UploadAppAttachRequest",
+    "micromsg.UploadAppAttachResponse",
+    "micromsg.UploadEmojiRequest",
+    "micromsg.UploadEmojiResponse",
+    "micromsg.UploadMsgImgRequest",
+    "micromsg.UploadMsgImgResponse",
+    "micromsg.UploadVideoRequest",
+    "micromsg.UploadVideoResponse",
+    "micromsg.UploadVoiceRequest",
+    "micromsg.UploadVoiceResponse"
+  ],
+  "packet_constructors": [
+    {
+      "type": "alts.PKG",
+      "constructor": "0x8e0f280"
+    },
+    {
+      "type": "alts.AltsRequest",
+      "constructor": "0x8e173e0"
+    },
+    {
+      "type": "alts.AltsReqContext",
+      "constructor": "0x8e14ab0"
+    },
+    {
+      "type": "alts.AltsReqBodyV1",
+      "constructor": "0x8e15290"
+    }
+  ],
+  "paths": [
+    "/cgi-bin/micromsg-bin/getloginqrcode",
+    "/cgi-bin/micromsg-bin/checkloginqrcode",
+    "/cgi-bin/micromsg-bin/secmanualauth",
+    "/cgi-bin/micromsg-bin/secautoauth",
+    "/cgi-bin/micromsg-bin/newsendmsg",
+    "/cgi-bin/micromsg-bin/newsync"
+  ],
+  "writer_helpers": [
+    {
+      "address": "0x8f52310",
+      "kind": "varint",
+      "wire_type": 0,
+      "value_register": "esi",
+      "note": "negative int32 values are sign-extended and encoded using varint64; declaration not recovered"
+    },
+    {
+      "address": "0x8f52380",
+      "kind": "varint",
+      "wire_type": 0,
+      "value_register": "esi",
+      "note": "32-bit unsigned handling; declaration not recovered"
+    },
+    {
+      "address": "0x8f523b0",
+      "kind": "varint",
+      "wire_type": 0,
+      "value_register": "rsi",
+      "note": "64-bit handling; signedness not distinguished"
+    },
+    {
+      "address": "0x8f52460",
+      "kind": "fixed32",
+      "wire_type": 5,
+      "value_register": "xmm0",
+      "note": "32 bits from xmm0 are written little-endian; declaration not recovered"
+    },
+    {
+      "address": "0x8f524e0",
+      "kind": "varint",
+      "wire_type": 0,
+      "value_register": "esi",
+      "note": "32-bit handling; bool/enum declaration not determined"
+    },
+    {
+      "address": "0x8f52550",
+      "kind": "length_delimited",
+      "wire_type": 2,
+      "value_register": "rsi",
+      "note": "string/bytes declaration not distinguished"
+    },
+    {
+      "address": "0x8f52620",
+      "kind": "length_delimited",
+      "wire_type": 2,
+      "value_register": "rsi",
+      "note": "string/bytes declaration not distinguished"
+    },
+    {
+      "address": "0x8f526f0",
+      "kind": "embedded_message",
+      "wire_type": 2,
+      "value_register": "rsi",
+      "note": "child cached size plus child serialization virtual calls; nested type not yet mapped"
+    }
+  ],
+  "named_functions": {
+    "PackMMPkg": "0x8dfc840",
+    "PackWxPkg": "0x8e035a0",
+    "UnPackWxPkg": "0x8e04cc0",
+    "__EncodePackBuffer": "0x8dfe2c0"
+  },
+  "scope_note": "Sample-specific reverse evidence, not a semantic schema or working WeChat client. Helper meanings were reviewed against their disassembly.",
+  "task_constructors": {
+    "/cgi-bin/micromsg-bin/getloginqrcode": "0x77ece40",
+    "/cgi-bin/micromsg-bin/checkloginqrcode": "0x77f0b90",
+    "/cgi-bin/micromsg-bin/secmanualauth": "0x77f6e60",
+    "/cgi-bin/micromsg-bin/secautoauth": "0x77fd0f0",
+    "/cgi-bin/micromsg-bin/newsendmsg": "0x695c1c0",
+    "/cgi-bin/micromsg-bin/newsync": "0x61e25b0"
+  }
+}
