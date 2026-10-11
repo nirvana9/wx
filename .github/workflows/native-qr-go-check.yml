@@ -7,6 +7,7 @@ on:
       - .github/workflows/native-qr-go-check.yml
       - tools/research/native_qr_probe.go
       - tools/research/native-peer-keys.json
+      - tools/research/qr-go-recipient.pem
 permissions:
   contents: read
 jobs:
@@ -34,7 +35,7 @@ jobs:
           umask 077
           test -d private-go-probe
           tar -czf probe-evidence.tar.gz -C private-go-probe .
-          openssl cms -encrypt -aes-256-gcm -binary -outform DER -in probe-evidence.tar.gz -out independent-qr.cms tools/research/qr-recipient.pem
+          openssl cms -encrypt -aes-256-gcm -binary -outform DER -in probe-evidence.tar.gz -out independent-qr.cms tools/research/qr-go-recipient.pem
           test -s independent-qr.cms
           rm -rf private-go-probe probe-evidence.tar.gz
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
