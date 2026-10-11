@@ -5,7 +5,8 @@
 本仓库保留原始 `WeChatLinux_x86_64.deb`，新增固定样本的分析脚本、原生任务和 Protobuf 指令证据。
 
 - [原生协议逆向进展与接口证据](docs/reverse/native-protocol-progress.md)
-- [命令行客户端设计，待审阅](docs/superpowers/specs/2026-10-11-wechat-native-cli-design.md)
+- [命令行客户端设计，已确认](docs/superpowers/specs/2026-10-11-wechat-native-cli-design.md)
+- [原生客户端实施计划，待审阅](docs/superpowers/plans/2026-10-11-wechat-native-cli.md)
 - [离线分析程序](tools/recover_native_protocol.py)
 - [样本与恢复结果清单](docs/reverse/evidence/manifest.json)
 
