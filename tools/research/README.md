@@ -40,3 +40,21 @@ package installation scripts are never run.
 The public certificate is specific to the 2026-10-11 investigation. Replace it
 with a fresh locally generated recipient before using the workflow in a new
 investigation. Without the corresponding private key the archive cannot be read.
+
+## Independent Go experiment
+
+`native_qr_probe.go` is a separate experimental native-protocol probe. It uses
+only Go code and standard-library cryptography plus the verified Go primitives;
+it never executes, loads or hooks the deb. `native-qr-go-check.yml` checks out
+without LFS and attempts one new pre-login QR request. All output, pairing PNGs
+and failure diagnostics are encrypted with the same recipient before upload.
+
+The public-only `native-peer-keys.json` contains trust keys recovered from the
+pinned ELF's clean startup. Native capture and independent Go checks have
+verified the MMTLS ECDSA signature, Finished HMAC, traffic key derivation and
+Hybrid response signature/GCM against a complete real exchange. The experimental
+request currently omits the native optional device-report Buffer and uses the
+native no-callback notice-ID value. These choices still require a live response
+check; this probe is not yet a supported login command. Scanning, polling and
+messaging are not attempted. Never treat a successful Actions job or saved
+encrypted artifact as proof that the private probe completed.

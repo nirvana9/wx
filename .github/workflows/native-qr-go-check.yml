@@ -1,0 +1,46 @@
+name: Independent Go QR probe (encrypted evidence)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/native-qr-go-check.yml
+      - tools/research/native_qr_probe.go
+      - tools/research/native-peer-keys.json
+permissions:
+  contents: read
+jobs:
+  probe:
+    if: github.repository == 'nirvana9/wx' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          lfs: false
+          persist-credentials: false
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version: '1.27.2'
+          cache: false
+      - name: Independent Go handshake and one QR request
+        run: |
+          umask 077
+          mkdir -p private-go-probe
+          go run tools/research/native_qr_probe.go tools/research/native-peer-keys.json private-go-probe/evidence > private-go-probe/probe.log 2>&1 || echo failed > private-go-probe/status.txt
+      - name: Encrypt independent probe evidence
+        if: always()
+        run: |
+          umask 077
+          test -d private-go-probe
+          tar -czf probe-evidence.tar.gz -C private-go-probe .
+          openssl cms -encrypt -aes-256-gcm -binary -outform DER -in probe-evidence.tar.gz -out independent-qr.cms tools/research/qr-recipient.pem
+          test -s independent-qr.cms
+          rm -rf private-go-probe probe-evidence.tar.gz
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: independent-qr-encrypted
+          path: independent-qr.cms
+          if-no-files-found: error
+          retention-days: 1

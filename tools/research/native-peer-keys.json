@@ -1,0 +1,18 @@
+{
+  "format_version": 1,
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "mmtls_verify_keys": [
+    {
+      "index": 5,
+      "curve_nid": 415,
+      "pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvDq9RQg9ho32ctJGZ1+KtEFksBSF\nEECOCnuhqRPPXQtmvUrUtVvfIdFommkrg/Iyd8vYMdDdtO8GkeoCkJ6FBA==\n-----END PUBLIC KEY-----\n\u0000\u0000"
+    },
+    {
+      "index": 1000,
+      "curve_nid": 415,
+      "pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvNO5sjEzAoQpX1WVHmJEM7sNn4d5\nGRix7PLXtaU+wrQ5LgCEwxu6s7hcEUHMMTc9Tc2I+1cuJMaLgST3Q3yKXg==\n-----END PUBLIC KEY-----\n\u0000\u0000"
+    }
+  ],
+  "hybrid_peer_hex": "0485140cd4892095aecbf79e71cef6348a92eb9b3bbc697e38ab11bd1187cca8e749623dc33c94e0d5166c6de42018258edaf6128ec08a9548927e60c29ed46116",
+  "hybrid_verify_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECh6rXlsE2tI0kPePrkGdqfax3fM4\neqr7vmerVCTDizLW9FVby/9Uz3wxV5IQXjBT9JnLSNrhwPG/CbufQGwMvQ==\n-----END PUBLIC KEY-----\n"
+}
