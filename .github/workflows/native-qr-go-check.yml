@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - .github/workflows/native-qr-go-check.yml
+      - tools/research/native_login_probe.go
       - cmd/wx/**
       - internal/nativeqr/**
       - internal/cryptox/**
@@ -32,6 +33,10 @@ jobs:
           umask 077
           mkdir -p private-go-probe
           go run ./cmd/wx qr --output private-go-probe/qr.png --terminal=false > private-go-probe/probe.log 2>&1 || echo failed > private-go-probe/status.txt
+      - name: Anonymous native QR check
+        run: |
+          umask 077
+          go run tools/research/native_login_probe.go private-go-probe/login-evidence > private-go-probe/login-probe.log 2>&1 || echo failed > private-go-probe/login-status.txt
       - name: Encrypt independent probe evidence
         if: always()
         run: |

@@ -372,6 +372,9 @@ type hybridState struct {
 }
 
 func sealHybrid(cfg peerConfig, plain []byte) ([]byte, hybridState) {
+	return sealHybridCommand(cfg, plain, 502)
+}
+func sealHybridCommand(cfg peerConfig, plain []byte, cgi uint64) ([]byte, hybridState) {
 	key, e := ecdh.P256().GenerateKey(rand.Reader)
 	must(e)
 	peer, e := ecdh.P256().NewPublicKey(decodeHex(cfg.Peer))
@@ -390,7 +393,7 @@ func sealHybrid(cfg peerConfig, plain []byte) ([]byte, hybridState) {
 	must(e)
 	envelope := join(protobufVarint(1, 1), protobufField(2, join(protobufVarint(1, 415), protobufField(2, pub))), protobufField(3, wrapped), protobufField(4, nil), protobufField(5, body))
 	header := join([]byte{0xbf, 0, 0xc0}, make([]byte, 8))
-	for _, v := range []uint64{502, uint64(len(plain)), uint64(len(plain)), 10014, 0, 0} {
+	for _, v := range []uint64{cgi, uint64(len(plain)), uint64(len(plain)), 10014, 0, 0} {
 		header = binary.AppendUvarint(header, v)
 	}
 	header = join(header, []byte{0xff, 0, 0, 0, 0}, randomBytes(2))
@@ -426,11 +429,14 @@ func (h hybridState) open(frame []byte) []byte {
 	return decompress(z)
 }
 func (c *Client) shortRequest(ctx context.Context, psk, ticket, packet []byte) []byte {
+	return c.shortRequestPath(ctx, psk, ticket, packet, "/cgi-bin/micromsg-bin/getloginqrcode")
+}
+func (c *Client) shortRequestPath(ctx context.Context, psk, ticket, packet []byte, path string) []byte {
 	stamp := uint32(time.Now().Unix())
 	ch := clientHello(0xa8, join([]byte{0, 15, 1}, withLength32(ticket)), stamp)
 	extensions := join([]byte{0, 0, 0, 16, 8, 0, 0, 0, 11, 1, 0, 0, 0, 6, 0, 18}, uint32BE(stamp))
 	early := expand(psk, join([]byte("early data key expansion"), digest(ch)), 28)
-	inner := withLength32(join(withLength16([]byte("/cgi-bin/micromsg-bin/getloginqrcode")), withLength16([]byte("short.weixin.qq.com")), withLength32(packet)))
+	inner := withLength32(join(withLength16([]byte(path)), withLength16([]byte("short.weixin.qq.com")), withLength32(packet)))
 	body := encodeRecord(0x19, ch)
 	for i, r := range []record{{0x19, extensions}, {0x17, inner}, {0x15, []byte{0, 0, 0, 3, 0, 1, 1}}} {
 		c, e := recordAEAD(early[:16], early[16:], r, uint64(i+1), true)

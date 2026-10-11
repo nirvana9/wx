@@ -1,7 +1,10 @@
 package nativeqr
 
 import (
+	"bytes"
 	"context"
+	"crypto/aes"
+	"crypto/cipher"
 	"crypto/ecdh"
 	"crypto/ecdsa"
 	"crypto/elliptic"
@@ -18,6 +21,7 @@ import (
 	"os"
 	"strings"
 	"testing"
+	"time"
 
 	"github.com/nirvana9/wx/internal/cryptox"
 )
@@ -25,6 +29,8 @@ import (
 // The service uses test-generated private keys and a synthetic non-login PNG.
 // No recorded traffic, real credentials, or real pairing tokens are fixtures.
 type syntheticService struct {
+	initialDevice          []byte
+	poll, notifyKey        []byte
 	signing, hybridSigning *ecdsa.PrivateKey
 	peer                   *ecdh.PrivateKey
 	psk                    []byte
@@ -171,7 +177,11 @@ func (s *syntheticService) short(b []byte) []byte {
 	n = int(binary.BigEndian.Uint16(inner))
 	host := inner[2 : 2+n]
 	inner = inner[2+n:]
-	if string(path) != "/cgi-bin/micromsg-bin/getloginqrcode" || string(host) != "short.weixin.qq.com" {
+	expected := "/cgi-bin/micromsg-bin/getloginqrcode"
+	if s.calls == 3 {
+		expected = "/cgi-bin/micromsg-bin/checkloginqrcode"
+	}
+	if string(path) != expected || string(host) != "short.weixin.qq.com" {
 		panic("business routing changed")
 	}
 	packet := inner[4:]
@@ -192,6 +202,14 @@ func (s *syntheticService) short(b []byte) []byte {
 	return out
 }
 func (s *syntheticService) hybridState(packet []byte) []byte {
+	cgi, _ := binary.Uvarint(packet[11:])
+	want := uint64(502)
+	if s.calls == 3 {
+		want = 503
+	}
+	if cgi != want {
+		panic("wrong CGI")
+	}
 	fields := protobufBytes(packet[packet[1]>>2:])
 	point := protobufBytes(fields[2])[2]
 	pub, e := ecdh.P256().NewPublicKey(point)
@@ -207,12 +225,35 @@ func (s *syntheticService) hybridState(packet []byte) []byte {
 	body, e := cryptox.OpenAESGCM(expanded[:24], digest(join([]byte("1415"), point, fields[3])), fields[5])
 	must(e)
 	plain := decompress(body)
+	if s.calls == 3 && s.mode == "native-clock" {
+		value := protobufUint(plain, 4)
+		expected := uint64(uint32(time.Now().UnixMilli()) / 1000)
+		if value+1 < expected || value > expected+1 {
+			panic("poll clock diverged from native uint32-ms path")
+		}
+	}
+	device := protobufBytes(protobufBytes(plain)[1])[3]
+	if s.calls == 2 {
+		s.initialDevice = bytes.Clone(device)
+	} else if !bytes.Equal(device, s.initialDevice) {
+		panic("device changed during login")
+	}
 	k, e := ecdh.P256().GenerateKey(rand.Reader)
 	must(e)
 	raw, e = k.ECDH(pub)
 	must(e)
 	secret = digest(raw)
-	cipher, e := cryptox.SealAESGCM(secret[:24], randomBytes(12), digest(join(expanded[24:], plain, []byte("415"), k.PublicKey().Bytes(), []byte("1"))), compress(s.response))
+	reply := s.response
+	if s.calls == 3 {
+		block, e := aes.NewCipher(s.notifyKey)
+		must(e)
+		padding := 16 - len(s.poll)%16
+		padded := append(append([]byte(nil), s.poll...), bytes.Repeat([]byte{byte(padding)}, padding)...)
+		encrypted := make([]byte, len(padded))
+		cipher.NewCBCEncrypter(block, s.notifyKey).CryptBlocks(encrypted, padded)
+		reply = join(protobufField(1, protobufVarint(1, 0)), protobufField(3, join(protobufVarint(1, uint64(len(encrypted))), protobufField(2, encrypted))))
+	}
+	cipher, e := cryptox.SealAESGCM(secret[:24], randomBytes(12), digest(join(expanded[24:], plain, []byte("415"), k.PublicKey().Bytes(), []byte("1"))), compress(reply))
 	must(e)
 	if s.mode == "bad-hybrid-gcm" {
 		cipher[0] ^= 1
