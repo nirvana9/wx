@@ -14,7 +14,7 @@ import time
 ELF_SHA256 = '2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959'
 MAX_BYTES = 1 << 20
 MAX_RECORDS = 12
-KINDS = ('qr_request', 'qr_response', 'qr_frame')
+KINDS = ('qr_request', 'qr_response', 'qr_frame', 'qr_material', 'qr_transport')
 PROFILE_PATH = Path(__file__).with_name('qr_capture_profile.json')
 
 

@@ -10,6 +10,14 @@ owned child. It stops after a correlated request/frame/parsed response, or at th
 diagnostics from the empty runner profile. Child output is piped to Frida rather
 than published in workflow logs.
 
+The extended fixed profile captures the QR packet's Hybrid ECDH curve, public
+peer point, native context strings, ephemeral private DER and raw pack parameters
+only after full-byte QR request matching. They remain private encrypted research
+evidence and must not be added to the public vector corpus.
+The transport diagnostic is capped at 256 KiB and 128 events and records only
+the clean process's connected port-80/443 descriptors. It is included in the
+same encrypted archive immediately before the QR response, never in CI logs.
+
 Only the AES-256-GCM CMS encrypted archive is uploaded, with one-day retention.
 The public recipient certificate is committed; its matching private key stays
 outside version control. Raw captures, pairing tokens, screenshots and client

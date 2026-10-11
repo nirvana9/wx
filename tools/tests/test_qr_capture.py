@@ -101,6 +101,18 @@ class QRCollection(unittest.TestCase):
             self.assertFalse(manifest['messaging_verified'])
             self.assertEqual(manifest['counts']['qr_response'], 1)
 
+    def test_material_is_private_bounded_research_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / 'capture'
+            with CaptureWriter(out, max_bytes=32) as writer:
+                writer.record({'kind': 'qr_material', 'id': 1}, b'SYNTHETIC_EPHEMERAL_MATERIAL')
+                with self.assertRaises(ValueError):
+                    writer.record({'kind': 'qr_material', 'id': 1}, b'x' * 33)
+            self.assertEqual((out / '0001-qr_material.bin').stat().st_mode & 0o777, 0o600)
+            manifest = json.loads((out / 'manifest.json').read_text())
+            self.assertFalse(manifest['complete_qr_exchange'])
+            self.assertFalse(manifest['live_login_verified'])
+
     def test_other_operations_are_not_written(self):
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / 'capture'

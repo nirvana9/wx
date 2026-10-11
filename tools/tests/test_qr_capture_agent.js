@@ -1,7 +1,7 @@
 'use strict';
 // A bounded byte-addressed fixture; no native/client/network execution.
 const assert = require('node:assert/strict');
-const { readString, readAutoBuffer, install } = require('../qr_capture.js');
+const { readString, readAutoBuffer, installTransport, install } = require('../qr_capture.js');
 const profile = require('../qr_capture_profile.json');
 
 class Pointer {
@@ -9,6 +9,7 @@ class Pointer {
   add(n) { return new Pointer(this.memory, this.offset + n); }
   readU8() { return this.memory.readUInt8(this.offset); }
   readU16() { return this.memory.readUInt16LE(this.offset); }
+  readU32() { return this.memory.readUInt32LE(this.offset); }
   readU64() { return this.memory.readBigUInt64LE(this.offset); }
   readPointer() { return this.add(Number(this.readU64()) - this.offset); }
   readByteArray(n) {
@@ -19,7 +20,7 @@ class Pointer {
   toString() { return '0x' + this.offset.toString(16); }
   toInt32() { return this.offset | 0; }
 }
-const mem = Buffer.alloc(512);
+const mem = Buffer.alloc(4096);
 const ptr = n => new Pointer(mem, n);
 const bytes = value => Buffer.from(value);
 mem[0] = 6;
@@ -54,7 +55,7 @@ const runtime = {
   interceptor: { attach(address, callbacks) { hooks.set(address.offset, callbacks); return { detach() {} }; } },
   send(meta, data) { sent.push({ meta, data: data ? bytes(data) : undefined }); },
 };
-install(profile, runtime);
+install({ ...profile, capture_material: false, capture_transport: false }, runtime);
 assert.equal(hooks.size, 6);
 assert.deepEqual(sent.shift().meta, { event: 'ready' });
 function enter(name, args, threadId = 1) {
@@ -95,6 +96,62 @@ leaveDecode();
 assert.equal(sent[2].meta.meta.kind, 'qr_response');
 assert.equal(sent[2].meta.meta.id, id);
 assert.equal(sent[2].meta.meta.native_parse_ok, true);
+
+// Ephemeral material is emitted only for a whole-body-matched QR Hybrid packet.
+hooks.clear(); sent.length = 0;
+install({ ...profile, capture_material: true, capture_transport: false }, runtime);
+sent.shift();
+const leaveMaterialQR = enter('qrEncode', [ptr(200)]);
+enter('serialize', [ptr(0), ptr(336)])();
+leaveMaterialQR();
+mem.writeBigUInt64LE(1600n, 70 + 0xa8);
+mem.writeUInt32LE(415, 1604);
+mem[1608] = 6; Buffer.from([4, 1, 2]).copy(mem, 1609);
+mem[1632] = 4; Buffer.from([8, 9]).copy(mem, 1633);
+mem[1656] = 0;
+mem[1680] = 6; Buffer.from([0x30, 1, 2]).copy(mem, 1681);
+Buffer.from([99, 99, 99]).copy(mem, 100);
+enter('packMM', [ptr(0), ptr(3), ptr(40), ptr(100), ptr(3), ptr(70)])();
+assert.equal(sent.length, 1); // Matching length is insufficient to expose material.
+Buffer.from([0, 255, 1]).copy(mem, 100);
+enter('packMM', [ptr(0), ptr(3), ptr(40), ptr(100), ptr(3), ptr(70)])();
+assert.equal(sent[1].meta.meta.kind, 'qr_material');
+assert.equal(sent[1].meta.meta.id, sent[0].meta.meta.id);
+const material = JSON.parse(sent[1].data.toString('ascii'));
+assert.equal(material.curve_nid, 415);
+assert.equal(material.peer_public_hex, '040102');
+assert.equal(material.prior_key_hex, '');
+assert.equal(material.private_der_hex, '300102');
+assert.equal(material.params_hex.length, 0xf8 * 2);
+assert.equal(sent[2].meta.meta.kind, 'qr_frame');
+
+// Transport traces exclude unconnected descriptors and stop at the byte cap.
+const transportHooks = new Map();
+const transportRuntime = {
+  module: { getGlobalExportByName(name) { return name; } },
+  interceptor: { attach(name, callbacks) { transportHooks.set(name, callbacks); return { detach() {} }; } },
+};
+const trace = installTransport(transportRuntime, 8, 8);
+function transport(name, args, result) {
+  const context = {};
+  transportHooks.get(name).onEnter.call(context, args);
+  if (transportHooks.get(name).onLeave) transportHooks.get(name).onLeave.call(context, ptr(result));
+}
+transport('send', [ptr(10), ptr(100), ptr(3)], 3);
+assert.deepEqual(trace.snapshot(), []);
+mem.writeUInt16LE(2, 1900); mem[1902] = 0; mem[1903] = 80;
+Buffer.from([127, 0, 0, 1]).copy(mem, 1904);
+transport('connect', [ptr(10), ptr(1900), ptr(16)], 0);
+transport('send', [ptr(10), ptr(100), ptr(3)], 2);
+assert.equal(trace.snapshot()[1].data_hex, '00ff'); // Only actual transmitted bytes.
+transport('recv', [ptr(10), ptr(120), ptr(2)], 2);
+assert.equal(trace.snapshot()[2].data_hex, '0908');
+transport('close', [ptr(10)], 0);
+transport('send', [ptr(10), ptr(100), ptr(3)], 3);
+assert.equal(trace.snapshot().length, 4);
+transport('connect', [ptr(11), ptr(1900), ptr(16)], 0);
+transport('send', [ptr(11), ptr(100), ptr(20)], 20);
+assert.equal(trace.snapshot().length, 5); // Byte budget rejects the whole over-limit chunk.
 // Check *all* function bytes before attaching any, then fail without payload.
 let attached = 0;
 runtime.interceptor.attach = () => { attached++; return { detach() {} }; };

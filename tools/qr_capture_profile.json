@@ -5,6 +5,8 @@
   "max_bytes": 1048576,
   "max_requests": 4,
   "max_records": 12,
+  "capture_material": true,
+  "capture_transport": true,
   "task_request_offset": 136,
   "task_response_offset": 232,
   "functions": {
