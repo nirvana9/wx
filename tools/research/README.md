@@ -18,6 +18,13 @@ The transport diagnostic is capped at 256 KiB and 128 events and records only
 the clean process's connected port-80/443 descriptors. It is included in the
 same encrypted archive immediately before the QR response, never in CI logs.
 
+The guarded MMTLS hooks also capture bounded startup key derivation inputs,
+derived traffic key/nonce pairs and serialized public trust keys. MMTLS uses a
+32-byte native string layout, distinct from the business layer's libc++ strings.
+This material is scoped to the clean spawned process before its first QR
+response, with a 64-event / 256-KiB encoded budget; it is not account-session
+capture and is never a backend for the independent Go runtime.
+
 Only the AES-256-GCM CMS encrypted archive is uploaded, with one-day retention.
 The public recipient certificate is committed; its matching private key stays
 outside version control. Raw captures, pairing tokens, screenshots and client

@@ -7,6 +7,7 @@
   "max_records": 12,
   "capture_material": true,
   "capture_transport": true,
+  "capture_tls_material": true,
   "task_request_offset": 136,
   "task_response_offset": 232,
   "functions": {
@@ -29,6 +30,18 @@
     "packMM": {
       "offset": 148883520,
       "prefix": "554157415641554154534881ece80500"
+    },
+    "tlsStageKey": {
+      "offset": 150998768,
+      "prefix": "554157415641554154534881eca80000"
+    },
+    "tlsKeyPair": {
+      "offset": 151000656,
+      "prefix": "554157415641554154534883ec184c89"
+    },
+    "tlsStaticKey": {
+      "offset": 151481184,
+      "prefix": "4156534883ec484989fe48897424200f"
     },
     "packWx": {
       "offset": 148911520,

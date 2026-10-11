@@ -12,6 +12,13 @@ from qr_capture import CaptureWriter, capture, verify_executable
 
 
 class QRCollection(unittest.TestCase):
+    def test_private_tls_material_kind(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with CaptureWriter(Path(tmp) / 'capture') as writer:
+                writer.record({'kind': 'qr_tls_material', 'id': 1}, b'{"events":[]}')
+            manifest = json.loads((Path(tmp) / 'capture/manifest.json').read_text())
+            self.assertEqual(manifest['records'][0]['kind'], 'qr_tls_material')
+
     def test_spawn_resumes_only_after_hooks_and_always_kills_owned_process(self):
         calls = []
         class Script:

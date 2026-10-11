@@ -22,6 +22,13 @@ function readAutoBuffer(object, maximum) {
   return object.readPointer().readByteArray(length);
 }
 
+function readMMTLSString(object, maximum) {
+  const size = object.add(16).readU64();
+  if (size.toString() === '0') return new ArrayBuffer(0);
+  const length = boundedLength(size, maximum);
+  return object.add(8).readPointer().readByteArray(length);
+}
+
 function hex(buffer) {
   return Array.from(new Uint8Array(buffer), b => b.toString(16).padStart(2, '0')).join('');
 }
@@ -106,6 +113,14 @@ function install(profile, runtime) {
   let nextID = 0;
   let recordCount = 0;
   let transport;
+  const tlsEvents = [];
+  let tlsBytes = 0;
+  function tlsAdd(event) {
+    const size = JSON.stringify(event).length;
+    if (tlsEvents.length >= 64 || tlsBytes + size > 262144) throw new Error('TLS material budget');
+    tlsBytes += size;
+    tlsEvents.push(event);
+  }
   function fatal() {
     if (!disabled) {
       disabled = true;
@@ -189,6 +204,11 @@ function install(profile, runtime) {
       },
       onLeave(result) {
         if (this.task) {
+          if (profile.capture_tls_material) {
+            const json = JSON.stringify({ format_version: 1, events: tlsEvents });
+            boundedLength(json.length, profile.max_bytes);
+            emit({ kind: 'qr_tls_material', id: this.task.id }, Uint8Array.from(json, c => c.charCodeAt(0)).buffer);
+          }
           if (transport) {
             const json = JSON.stringify({ format_version: 1, events: transport.snapshot() });
             boundedLength(json.length, profile.max_bytes);
@@ -238,6 +258,37 @@ function install(profile, runtime) {
         },
       });
     }
+    if (profile.capture_tls_material) {
+      // Startup MMTLS state of this clean research process, before the first
+      // QR response. Private encrypted evidence only, never a runtime backend.
+      hook('tlsStageKey', {
+        onEnter(args) {
+          tlsAdd({ kind: 'stage_key',
+            secret_hex: hex(readMMTLSString(args[1], 128)),
+            label_hex: hex(readMMTLSString(args[2], 128)),
+            handshake_hash_hex: hex(readMMTLSString(args[0].add(0x40), 64)),
+          });
+        },
+      });
+      hook('tlsKeyPair', {
+        onEnter(args) {
+          const item = { kind: 'key_pair' };
+          for (const [name, pointer, size, limit] of [
+            ['key0', 1, 2, 32], ['key1', 3, 4, 32],
+            ['nonce0', 5, 6, 16], ['nonce1', 7, 8, 16],
+          ]) {
+            item[name + '_hex'] = hex(args[pointer].readByteArray(boundedLength(args[size], limit)));
+          }
+          tlsAdd(item);
+        },
+      });
+      hook('tlsStaticKey', {
+        onEnter(args) {
+          const size = boundedLength(args[1].add(16).readU64(), 8192);
+          tlsAdd({ kind: 'static_key', encoded_key_hex: hex(args[1].add(8).readPointer().readByteArray(size)) });
+        },
+      });
+    }
     if (profile.capture_transport) {
       transport = installTransport(runtime);
       listeners.push(...transport.listeners);
@@ -251,7 +302,7 @@ function install(profile, runtime) {
 }
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { readString, readAutoBuffer, installTransport, install };
+  module.exports = { readString, readAutoBuffer, readMMTLSString, installTransport, install };
 } else {
   install(QR_PROFILE, { process: Process, interceptor: Interceptor, module: Module, send });
 }

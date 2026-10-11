@@ -43,3 +43,9 @@ node tools/tests/test_qr_capture_agent.js
 独立密码原语及原生 CPU 模拟复核见 [密码恢复进展](reverse/crypto-native-progress.md)。
 研究工具依赖单独固定在 `requirements-emulation.txt`；Go 产品代码仍只使用标准库。
 原生 replay 与 Go 通过 5 组 AES-GCM、7 组 HKDF 向量，不代表完整封包或在线登录验收。
+
+`go run ./cmd/wx qr-preview --response <decoded-response.bin> --output <new.png>`
+解析已解密的真实二维码响应，校验成功状态、嵌套 Buffer 长度及 PNG，再显示或保存图片。
+公开 `testdata/qrcode/display_vector.json` 只保留已验证的字段结构，图片和 token 均为合成数据。
+设置 `WX_NATIVE_QR_RESPONSE` 为私有响应的绝对路径，可以额外运行真实 185×185 图片验证。
+该预览不发送请求，尚不提供 `login`、`send` 或 `receive` 命令。

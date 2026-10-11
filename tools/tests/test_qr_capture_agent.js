@@ -1,7 +1,7 @@
 'use strict';
 // A bounded byte-addressed fixture; no native/client/network execution.
 const assert = require('node:assert/strict');
-const { readString, readAutoBuffer, installTransport, install } = require('../qr_capture.js');
+const { readString, readAutoBuffer, readMMTLSString, installTransport, install } = require('../qr_capture.js');
 const profile = require('../qr_capture_profile.json');
 
 class Pointer {
@@ -55,7 +55,7 @@ const runtime = {
   interceptor: { attach(address, callbacks) { hooks.set(address.offset, callbacks); return { detach() {} }; } },
   send(meta, data) { sent.push({ meta, data: data ? bytes(data) : undefined }); },
 };
-install({ ...profile, capture_material: false, capture_transport: false }, runtime);
+install({ ...profile, capture_material: false, capture_transport: false, capture_tls_material: false }, runtime);
 assert.equal(hooks.size, 6);
 assert.deepEqual(sent.shift().meta, { event: 'ready' });
 function enter(name, args, threadId = 1) {
@@ -99,7 +99,7 @@ assert.equal(sent[2].meta.meta.native_parse_ok, true);
 
 // Ephemeral material is emitted only for a whole-body-matched QR Hybrid packet.
 hooks.clear(); sent.length = 0;
-install({ ...profile, capture_material: true, capture_transport: false }, runtime);
+install({ ...profile, capture_material: true, capture_transport: false, capture_tls_material: false }, runtime);
 sent.shift();
 const leaveMaterialQR = enter('qrEncode', [ptr(200)]);
 enter('serialize', [ptr(0), ptr(336)])();
@@ -124,6 +124,47 @@ assert.equal(material.prior_key_hex, '');
 assert.equal(material.private_der_hex, '300102');
 assert.equal(material.params_hex.length, 0xf8 * 2);
 assert.equal(sent[2].meta.meta.kind, 'qr_frame');
+
+// MMTLS has a different, 32-byte string ABI. Bound private research inputs.
+mem.writeBigUInt64LE(1800n, 1758); mem.writeBigUInt64LE(3n, 1766);
+Buffer.from([1, 0, 255]).copy(mem, 1800);
+assert.deepEqual(bytes(readMMTLSString(ptr(1750), 8)), Buffer.from([1, 0, 255]));
+mem.writeBigUInt64LE(9n, 1766);
+assert.throws(() => readMMTLSString(ptr(1750), 8), /length/);
+mem.writeBigUInt64LE(0n, 1766);
+assert.equal(readMMTLSString(ptr(1750), 8).byteLength, 0);
+
+hooks.clear(); sent.length = 0;
+install({ ...profile, capture_material: false, capture_transport: false, capture_tls_material: true }, runtime);
+assert.equal(hooks.size, 9);
+assert.deepEqual(sent.shift().meta, { event: 'ready' });
+function mmString(offset, dataOffset, data) {
+  mem.writeBigUInt64LE(BigInt(dataOffset), offset + 8);
+  mem.writeBigUInt64LE(BigInt(data.length), offset + 16);
+  data.copy(mem, dataOffset);
+}
+mmString(2000, 3000, Buffer.from([1, 2, 3]));
+mmString(2100, 3100, Buffer.from('handshake key expansion', 'ascii'));
+mmString(2200 + 0x40, 3200, Buffer.alloc(32, 7));
+enter('tlsStageKey', [ptr(2200), ptr(2000), ptr(2100), ptr(0)])();
+enter('tlsKeyPair', [ptr(0), ptr(3200), ptr(16), ptr(3200), ptr(16), ptr(3200), ptr(12), ptr(3200), ptr(12)])();
+mem.writeBigUInt64LE(3000n, 2408); mem.writeBigUInt64LE(3n, 2416);
+enter('tlsStaticKey', [ptr(0), ptr(2400)])();
+assert.equal(sent.length, 0); // Only flush with a correlated QR response.
+const leaveTLSQR = enter('qrEncode', [ptr(200)]);
+enter('serialize', [ptr(0), ptr(336)])(); leaveTLSQR();
+const leaveTLSDecode = enter('qrDecode', [ptr(200)]);
+enter('parse', [ptr(432), ptr(120), ptr(2)])(); leaveTLSDecode();
+assert.equal(sent[1].meta.meta.kind, 'qr_tls_material');
+const tlsMaterial = JSON.parse(sent[1].data.toString('ascii'));
+assert.equal(tlsMaterial.events.length, 3);
+assert.equal(tlsMaterial.events[0].secret_hex, '010203');
+assert.equal(tlsMaterial.events[0].label_hex, Buffer.from('handshake key expansion').toString('hex'));
+assert.equal(tlsMaterial.events[0].handshake_hash_hex, '07'.repeat(32));
+assert.equal(tlsMaterial.events[1].key0_hex, '07'.repeat(16));
+assert.equal(tlsMaterial.events[1].nonce1_hex, '07'.repeat(12));
+assert.equal(tlsMaterial.events[2].encoded_key_hex, '010203');
+assert.equal(sent[2].meta.meta.kind, 'qr_response');
 
 // Transport traces exclude unconnected descriptors and stop at the byte cap.
 const transportHooks = new Map();
