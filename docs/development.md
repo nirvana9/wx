@@ -1,4 +1,4 @@
-# 离线开发
+# Go 开发与验证
 
 工具链固定 Go 1.27.2，模块为 `github.com/nirvana9/wx`。无产品外部依赖。
 官方 Linux amd64 下载归档 SHA-256 为
@@ -32,7 +32,8 @@ node tools/tests/test_qr_capture_agent.js
 ```
 
 契约的机器码匹配、业务语义、封包、真实联通是不同验证层级。
-当前 QR 契约后三层均未通过；Go Require 对其返回 ErrProtocolUnverified。
+历史通用 QR JSON 契约仍保留未验证标记，Go Require 继续返回 ErrProtocolUnverified。
+新 `internal/nativeqr` 只实现已恢复并联网验证的二维码子集，不借该契约启用完整登录流程。
 
 这些是本地解析限制，不代表微信服务端约束。离线测试通过不证明可在线登录。
 不要把账号状态、二维码凭据、真实私钥或抓包提交到 Git。
@@ -49,3 +50,10 @@ node tools/tests/test_qr_capture_agent.js
 公开 `testdata/qrcode/display_vector.json` 只保留已验证的字段结构，图片和 token 均为合成数据。
 设置 `WX_NATIVE_QR_RESPONSE` 为私有响应的绝对路径，可以额外运行真实 185×185 图片验证。
 该预览不发送请求，尚不提供 `login`、`send` 或 `receive` 命令。
+
+`go run ./cmd/wx qr --output login-qr.png` 独立联网获取并显示二维码。
+公钥通过 `go:embed` 内嵌，运行时不读取官方样本或外部密钥文件。
+本地测试服务使用新生成的测试私钥与合成 PNG，完成两个握手、Hybrid 请求解密和回复；
+另覆盖错误签名/Finished/GCM、重复字段与扩展、错误曲线/凭据类型、记录类型、超预算响应和取消。
+真实服务端验证由 `native-qr-go-check.yml` 运行相同 CLI，私有输出经 CMS AES-256-GCM 加密。
+协议公式、范围与联网证据见 [独立二维码恢复](reverse/native-qr-go.md)。

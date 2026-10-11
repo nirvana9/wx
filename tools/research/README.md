@@ -41,20 +41,19 @@ The public certificate is specific to the 2026-10-11 investigation. Replace it
 with a fresh locally generated recipient before using the workflow in a new
 investigation. Without the corresponding private key the archive cannot be read.
 
-## Independent Go experiment
+## Independent Go QR command
 
-`native_qr_probe.go` is a separate experimental native-protocol probe. It uses
-only Go code and standard-library cryptography plus the verified Go primitives;
-it never executes, loads or hooks the deb. `native-qr-go-check.yml` checks out
-without LFS and attempts one new pre-login QR request. All output, pairing PNGs
-and failure diagnostics are encrypted with the same recipient before upload.
+The independent Go experiment obtained a fresh, authenticated 185×185 server
+QR in run 38151243546. Its protocol implementation is now in `internal/nativeqr`
+and invoked by `go run ./cmd/wx qr`. The public-only embedded `peer-keys.json`
+contains trust anchors recovered from the pinned ELF's clean startup.
+No deb, native library or Frida is executed/loaded by this command.
 
-The public-only `native-peer-keys.json` contains trust keys recovered from the
-pinned ELF's clean startup. Native capture and independent Go checks have
-verified the MMTLS ECDSA signature, Finished HMAC, traffic key derivation and
-Hybrid response signature/GCM against a complete real exchange. The experimental
-request currently omits the native optional device-report Buffer and uses the
-native no-callback notice-ID value. These choices still require a live response
-check; this probe is not yet a supported login command. Scanning, polling and
-messaging are not attempted. Never treat a successful Actions job or saved
-encrypted artifact as proof that the private probe completed.
+`native-qr-go-check.yml` checks out without LFS and runs the actual CLI once.
+The PNG, status and log are authenticated-encrypted with the **Go-specific**
+`qr-go-recipient.pem` before upload. Its matching private key stays outside git.
+The client omits the optional device-report Buffer and uses the native
+no-callback notice-ID zero; the fresh live response confirmed these choices.
+Scanning, polling and messaging are not attempted. A successful Actions job
+only confirms the evidence was encrypted: inspect the decrypted command status
+and validated PNG before claiming that the command succeeded.

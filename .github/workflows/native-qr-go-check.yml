@@ -1,12 +1,15 @@
-name: Independent Go QR probe (encrypted evidence)
+name: Independent Go QR command (encrypted evidence)
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
       - .github/workflows/native-qr-go-check.yml
-      - tools/research/native_qr_probe.go
-      - tools/research/native-peer-keys.json
+      - cmd/wx/**
+      - internal/nativeqr/**
+      - internal/cryptox/**
+      - internal/protocol/**
+      - internal/terminal/**
       - tools/research/qr-go-recipient.pem
 permissions:
   contents: read
@@ -24,11 +27,11 @@ jobs:
         with:
           go-version: '1.27.2'
           cache: false
-      - name: Independent Go handshake and one QR request
+      - name: wx qr: independent handshake and one QR request
         run: |
           umask 077
           mkdir -p private-go-probe
-          go run tools/research/native_qr_probe.go tools/research/native-peer-keys.json private-go-probe/evidence > private-go-probe/probe.log 2>&1 || echo failed > private-go-probe/status.txt
+          go run ./cmd/wx qr --output private-go-probe/qr.png --terminal=false > private-go-probe/probe.log 2>&1 || echo failed > private-go-probe/status.txt
       - name: Encrypt independent probe evidence
         if: always()
         run: |
