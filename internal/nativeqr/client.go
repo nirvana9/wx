@@ -307,12 +307,17 @@ func protobufField(n uint32, v []byte) []byte {
 	b = binary.AppendUvarint(b, uint64(len(v)))
 	return append(b, v...)
 }
-func protobufBytes(b []byte) map[uint32][]byte {
+func protobufBytes(b []byte, expected ...map[uint32]uint8) map[uint32][]byte {
 	fs, e := wire.Parse(b, wire.DefaultLimits())
 	must(e)
 	m := map[uint32][]byte{}
 	seen := map[uint32]bool{}
 	for _, f := range fs {
+		if len(expected) != 0 {
+			if kind, known := expected[0][f.Number]; known && f.WireType != kind {
+				panic("protobuf field type")
+			}
+		}
 		if seen[f.Number] {
 			panic("duplicate protobuf field")
 		}

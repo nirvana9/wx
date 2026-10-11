@@ -52,10 +52,10 @@ func (c *Client) Begin(ctx context.Context) (challenge *Challenge, err error) {
 	response := state.open(c.shortRequest(ctx, psk, ticket, packet))
 	image, e := protocol.DecodeQRImage(response)
 	must(e)
-	fields := protobufBytes(response)
+	fields := protobufBytes(response, map[uint32]uint8{3: 2, 4: 0, 5: 2, 6: 0})
 	token := fields[3]
 	keyBuffer := fields[5]
-	key := protobufBytes(keyBuffer)[2]
+	key := protobufBytes(keyBuffer, map[uint32]uint8{1: 0, 2: 2})[2]
 	if len(token) < 1 || len(token) > 256 || protobufUint(keyBuffer, 1) != 16 || len(key) != 16 {
 		panic("polling material")
 	}
@@ -104,7 +104,7 @@ func (ch *Challenge) Check(ctx context.Context) (notice *Notice, err error) {
 				reason := "rejected response"
 				if text, ok := failure.(string); ok {
 					switch text {
-					case "MM header", "Hybrid MM header", "Hybrid fields", "Hybrid signature", "Hybrid scheme", "notify buffer", "notify padding", "notify identity", "notify proof", "missing protobuf integer", "duplicate protobuf field":
+					case "MM header", "Hybrid MM header", "Hybrid fields", "Hybrid signature", "Hybrid scheme", "notify buffer", "notify padding", "notify identity", "notify proof", "missing protobuf integer", "duplicate protobuf field", "protobuf field type", "server return code":
 						reason = text
 					}
 				}
@@ -120,14 +120,18 @@ func (ch *Challenge) Check(ctx context.Context) (notice *Notice, err error) {
 	stage = "hybrid"
 	response := state.open(frame)
 	stage = "server response"
-	fields := protobufBytes(response)
-	if ret := int32(protobufUint(fields[1], 1)); ret != 0 {
+	fields := protobufBytes(response, map[uint32]uint8{1: 2, 3: 2})
+	code := protobufUint(fields[1], 1)
+	if uint64(int64(int32(code))) != code {
+		panic("server return code")
+	}
+	if ret := int32(code); ret != 0 {
 		return nil, fmt.Errorf("%w: check code %d", protocol.ErrQRServer, ret)
 	}
 	stage = "notify decrypt"
-	pkg := protobufBytes(fields[3])
+	pkg := protobufBytes(fields[3], map[uint32]uint8{1: 2, 2: 0})
 	buf := pkg[1]
-	encrypted := protobufBytes(buf)[2]
+	encrypted := protobufBytes(buf, map[uint32]uint8{1: 0, 2: 2})[2]
 	if protobufUint(buf, 1) != uint64(len(encrypted)) || len(encrypted) < 16 || len(encrypted)%16 != 0 || len(ch.notifyKey) != 16 {
 		panic("notify buffer")
 	}
@@ -141,7 +145,7 @@ func (ch *Challenge) Check(ctx context.Context) (notice *Notice, err error) {
 	}
 	stage = "notify parse"
 	plain = plain[:len(plain)-pad]
-	nf := protobufBytes(plain)
+	nf := protobufBytes(plain, map[uint32]uint8{1: 2, 2: 0, 3: 2, 4: 2})
 	if len(nf[1]) > 0 && !bytes.Equal(nf[1], ch.token) {
 		panic("notify identity")
 	}

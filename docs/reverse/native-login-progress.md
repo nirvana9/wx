@@ -16,5 +16,13 @@
 - `0x77c1222`–`0x77c1229`：Notify.2 写入状态；.3/.4 携带后续鉴权材料。状态通知不是鉴权成功。
 
 合成加密服务已完成 Begin→Check 往返并校验设备连续性、CGI503、路径和原生时钟形状。
-匿名 Check 的真实服务端返回正在由加密 CI 证据核对，不能将本地服务通过算作真实登录。
+匿名 Check 已由真实服务端验证：提交 `1e0c51a2cb8b555f7cb2d1bedb7fcabedf2103a9`，
+[运行 38155410280](https://github.com/nirvana9/wx/actions/runs/38155410280)，
+加密 artifact 11707574219 的 SHA-256 为
+`500dcfdc4997b5174edcd45daa58a8b6b725eb1a660138185c353fb26ebc4d21`。
+下载摘要和 CMS-GCM 认证通过后，日志确认独立 Begin 得到 185×185 图像，Check 完成回包认证和 CBC 通知解码，原生状态值为 0。
+该测试没有手机扫码，不证明其他状态的语义或鉴权成功。原始 token、key、通知和二维码不提交仓库。
 当前没有扫码确认、secmanualauth 会话建立，也没有可用的消息发送/接收命令。
+检查响应会在转为 int32 前验证返回码范围，并拒绝已使用通知字段的错误 wire type，避免截断为 0 或跳过 token/proof 校验。
+
+消息业务体的下一段实现见 [消息编解码进展](native-message-progress.md)。

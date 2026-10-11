@@ -259,6 +259,10 @@ func (s *syntheticService) hybridState(packet []byte) []byte {
 	if s.calls == 3 && s.mode == "check-error" {
 		reply = protobufField(1, protobufVarint(1, ^uint64(7)))
 	}
+	if s.calls == 3 && s.mode == "check-overflow" {
+		// The notification is valid; only the authenticated BaseResponse differs.
+		reply = bytes.Replace(reply, protobufField(1, protobufVarint(1, 0)), protobufField(1, protobufVarint(1, 1<<32)), 1)
+	}
 	cipher, e := cryptox.SealAESGCM(secret[:24], randomBytes(12), digest(join(expanded[24:], plain, []byte("415"), k.PublicKey().Bytes(), []byte("1"))), compress(reply))
 	must(e)
 	if s.mode == "bad-hybrid-gcm" {

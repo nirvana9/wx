@@ -1,0 +1,34 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "Pinned ELF virtual size and serialization routines executed in an isolated x86_64 CPU emulator; synthetic inputs only, no client startup, syscalls or network.",
+  "request": {
+    "to": "wxid_synthetic",
+    "text": "synthetic 你好",
+    "client_id": 123456,
+    "created_at": 1700000000,
+    "hex": "080112300a100a0e777869645f73796e746865746963121073796e74686574696320e4bda0e5a5bd18012080e2cfaa0628c0c407"
+  },
+  "replies": [
+    {
+      "name": "accepted",
+      "hex": "0a02080010011a2f080012100a0e777869645f73796e74686574696318c0c4072081e2cfaa06287b3001380040b199dc9d8ef7a1888901"
+    },
+    {
+      "name": "child_rejected",
+      "hex": "0a02080010011a3808fbffffffffffffffff0112100a0e777869645f73796e74686574696318c0c4072081e2cfaa06287b3001380040b199dc9d8ef7a1888901"
+    },
+    {
+      "name": "parent_rejected",
+      "hex": "0a0b08f8ffffffffffffffff0110011a2f080012100a0e777869645f73796e74686574696318c0c4072081e2cfaa06287b3001380040b199dc9d8ef7a1888901"
+    },
+    {
+      "name": "alternate_field3",
+      "hex": "0a02080010011a2f080012100a0e777869645f73796e74686574696318c1c4072081e2cfaa06287b3001380040b199dc9d8ef7a1888901"
+    }
+  ],
+  "imports": {
+    "malloc": 5,
+    "memset": 5,
+    "memcpy": 8
+  }
+}

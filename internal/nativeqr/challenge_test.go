@@ -76,3 +76,37 @@ func TestCheckPreservesAuthenticatedServerError(t *testing.T) {
 		t.Fatal("authenticated server failure hidden", e)
 	}
 }
+
+func TestCheckRejectsReturnCodeOverflow(t *testing.T) {
+	c, s := makeService(t, "check-overflow")
+	key := []byte("synthetic-key16!")
+	s.response = join(s.response, protobufField(5, join(protobufVarint(1, 16), protobufField(2, key))), protobufVarint(6, 290))
+	ch, e := c.Begin(context.Background())
+	if e != nil {
+		t.Fatal(e)
+	}
+	s.poll = join(protobufField(1, ch.token), protobufVarint(2, 0))
+	s.notifyKey = key
+	if notice, e := ch.Check(context.Background()); notice != nil || !errors.Is(e, ErrProtocol) {
+		t.Fatal("overflow return code treated as success", e)
+	}
+}
+
+func TestCheckRejectsWrongKnownNotifyWireTypes(t *testing.T) {
+	for _, field := range []uint32{1, 3, 4} {
+		t.Run(string(rune('0'+field)), func(t *testing.T) {
+			c, s := makeService(t, "valid")
+			key := []byte("synthetic-key16!")
+			s.response = join(s.response, protobufField(5, join(protobufVarint(1, 16), protobufField(2, key))), protobufVarint(6, 290))
+			ch, e := c.Begin(context.Background())
+			if e != nil {
+				t.Fatal(e)
+			}
+			s.poll = join(protobufVarint(field, 1), protobufVarint(2, 0))
+			s.notifyKey = key
+			if notice, e := ch.Check(context.Background()); notice != nil || !errors.Is(e, ErrProtocol) {
+				t.Fatal("known wrong wire type silently ignored", e)
+			}
+		})
+	}
+}
