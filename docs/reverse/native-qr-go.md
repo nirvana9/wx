@@ -2,7 +2,10 @@
 
 2026-10-11，GitHub run [38151243546](https://github.com/nirvana9/wx/actions/runs/38151243546)
 中的独立 Go 程序从真实服务端取得了新二维码，验证得到 185×185 PNG。
-研究过程使用固定 Linux 4.1.13.23 样本恢复协议；最终 Go 运行时不加载或执行客户端。
+随后实际 `wx qr` 命令在 [run 38152646107](https://github.com/nirvana9/wx/actions/runs/38152646107)
+取得新的 185×185 PNG；已核对 artifact 摘要、认证解密后的命令成功输出与图片。
+同一 PNG 经终端渲染生成 23 行 × 45 列。研究过程使用固定 Linux 4.1.13.23 样本恢复协议；
+最终 Go 运行时不加载或执行客户端。
 代码位于 `internal/nativeqr`，命令为 `go run ./cmd/wx qr --output login-qr.png`。
 
 ## 已恢复的交换
