@@ -94,24 +94,37 @@ func (ch *Challenge) Check(ctx context.Context) (notice *Notice, err error) {
 	}
 	ctx, cancel := context.WithTimeout(ctx, 45*time.Second)
 	defer cancel()
+	stage := "request"
 	defer func() {
-		if recover() != nil {
+		if failure := recover(); failure != nil {
 			notice = nil
 			if ctx.Err() != nil {
 				err = ctx.Err()
 			} else {
-				err = fmt.Errorf("%w: QR status", ErrProtocol)
+				reason := "rejected response"
+				if text, ok := failure.(string); ok {
+					switch text {
+					case "MM header", "Hybrid MM header", "Hybrid fields", "Hybrid signature", "Hybrid scheme", "notify buffer", "notify padding", "notify identity", "notify proof", "missing protobuf integer", "duplicate protobuf field":
+						reason = text
+					}
+				}
+				err = fmt.Errorf("%w: QR status %s (%s)", ErrProtocol, stage, reason)
 			}
 		}
 	}()
 	base := join(protobufField(1, []byte{0}), protobufVarint(2, 0), protobufField(3, ch.device), protobufVarint(4, 18446744073482280215), protobufField(5, []byte("UnifiedPCLinux Ubuntu 24.04.5 LTS x86_64")), protobufVarint(6, 0))
 	request := join(protobufField(1, base), protobufField(2, join(protobufVarint(1, 16), protobufField(2, randomBytes(16)))), protobufField(3, ch.token), protobufVarint(4, uint64(uint32(time.Now().UnixMilli())/1000)), protobufVarint(5, 0))
 	packet, state := sealHybridCommand(ch.client.cfg, request, 503)
-	response := state.open(ch.client.shortRequestPath(ctx, ch.psk, ch.ticket, packet, "/cgi-bin/micromsg-bin/checkloginqrcode"))
+	stage = "transport"
+	frame := ch.client.shortRequestPath(ctx, ch.psk, ch.ticket, packet, "/cgi-bin/micromsg-bin/checkloginqrcode")
+	stage = "hybrid"
+	response := state.open(frame)
+	stage = "server response"
 	fields := protobufBytes(response)
-	if int32(protobufUint(fields[1], 1)) != 0 {
-		panic("check server return")
+	if ret := int32(protobufUint(fields[1], 1)); ret != 0 {
+		return nil, fmt.Errorf("%w: check code %d", protocol.ErrQRServer, ret)
 	}
+	stage = "notify decrypt"
 	buf := fields[3]
 	encrypted := protobufBytes(buf)[2]
 	if protobufUint(buf, 1) != uint64(len(encrypted)) || len(encrypted) < 16 || len(encrypted)%16 != 0 || len(ch.notifyKey) != 16 {
@@ -125,6 +138,7 @@ func (ch *Challenge) Check(ctx context.Context) (notice *Notice, err error) {
 	if pad < 1 || pad > 16 || !bytes.Equal(plain[len(plain)-pad:], bytes.Repeat([]byte{byte(pad)}, pad)) {
 		panic("notify padding")
 	}
+	stage = "notify parse"
 	plain = plain[:len(plain)-pad]
 	nf := protobufBytes(plain)
 	if len(nf[1]) > 0 && !bytes.Equal(nf[1], ch.token) {

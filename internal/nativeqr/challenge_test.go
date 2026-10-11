@@ -2,6 +2,9 @@ package nativeqr
 
 import (
 	"context"
+	"errors"
+	"github.com/nirvana9/wx/internal/protocol"
+	"strings"
 	"testing"
 )
 
@@ -55,5 +58,21 @@ func TestCheckUsesNativeClockValue(t *testing.T) {
 	s.notifyKey = key
 	if _, e := ch.Check(context.Background()); e != nil {
 		t.Fatal(e)
+	}
+}
+
+func TestCheckPreservesAuthenticatedServerError(t *testing.T) {
+	c, s := makeService(t, "check-error")
+	key := []byte("synthetic-key16!")
+	s.response = join(s.response, protobufField(5, join(protobufVarint(1, 16), protobufField(2, key))), protobufVarint(6, 290))
+	ch, e := c.Begin(context.Background())
+	if e != nil {
+		t.Fatal(e)
+	}
+	s.poll = join(protobufField(1, ch.token), protobufVarint(2, 0))
+	s.notifyKey = key
+	notice, e := ch.Check(context.Background())
+	if notice != nil || !errors.Is(e, protocol.ErrQRServer) || !strings.Contains(e.Error(), "-8") {
+		t.Fatal("authenticated server failure hidden", e)
 	}
 }

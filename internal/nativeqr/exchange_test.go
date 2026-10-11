@@ -253,6 +253,9 @@ func (s *syntheticService) hybridState(packet []byte) []byte {
 		cipher.NewCBCEncrypter(block, s.notifyKey).CryptBlocks(encrypted, padded)
 		reply = join(protobufField(1, protobufVarint(1, 0)), protobufField(3, join(protobufVarint(1, uint64(len(encrypted))), protobufField(2, encrypted))))
 	}
+	if s.calls == 3 && s.mode == "check-error" {
+		reply = protobufField(1, protobufVarint(1, ^uint64(7)))
+	}
 	cipher, e := cryptox.SealAESGCM(secret[:24], randomBytes(12), digest(join(expanded[24:], plain, []byte("415"), k.PublicKey().Bytes(), []byte("1"))), compress(reply))
 	must(e)
 	if s.mode == "bad-hybrid-gcm" {
