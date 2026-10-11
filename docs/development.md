@@ -39,3 +39,7 @@ node tools/tests/test_qr_capture_agent.js
 
 研究用 [QR 采集程序](reverse/qr-runtime-evidence.md) 的依赖单独保存在
 `requirements-capture.txt`。离线测试不需要 Frida；真实采集需要固定微信进程和本机挂接能力。
+
+独立密码原语及原生 CPU 模拟复核见 [密码恢复进展](reverse/crypto-native-progress.md)。
+研究工具依赖单独固定在 `requirements-emulation.txt`；Go 产品代码仍只使用标准库。
+原生 replay 与 Go 通过 5 组 AES-GCM、7 组 HKDF 向量，不代表完整封包或在线登录验收。

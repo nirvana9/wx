@@ -1,0 +1,79 @@
+{
+  "scope": "isolated native AES-GCM and HKDF functions, not complete WeChat packets",
+  "deb_sha256": "b7d0f8d53e9f648bc2c77a6096a04100d008f2d9f0d3988a2a4859b5992aca0a",
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "vectors_sha256": "08dccd528a452f3b94f71c432ae5e3199833f502ea0b1df98b2a7615d32fec87",
+  "generated_by": "isolated x86-64 native calls; independently replayed by tools/native_crypto_vectors.py",
+  "emulator": "unicorn==2.1.4",
+  "native_code_emulated": true,
+  "host_client_started": false,
+  "account_used": false,
+  "native_primitive_verified": true,
+  "complete_packet_verified": false,
+  "transport_verified": false,
+  "login_verified": false,
+  "messaging_verified": false,
+  "hooks": [
+    {
+      "entry_va": "0x8b1eb00",
+      "replacement": "return zero for unused manager argument; bypass singleton initialization only"
+    },
+    {
+      "entry_va": "0x8b1eb60",
+      "replacement": "write the vector nonce as a native short string and return success; bypass entropy only"
+    }
+  ],
+  "modeled_imports": [
+    "malloc",
+    "free",
+    "memcpy",
+    "memmove",
+    "memset"
+  ],
+  "crypto_imports_replaced": false,
+  "native_functions": [
+    {
+      "name": "gcm_encrypt",
+      "entry_va": "0x8b1c710",
+      "size": 570,
+      "sha256": "18bbc6ed7769386a4c323c463cd01ab2bc5d9904f02116a7320d26f8a4a15abd"
+    },
+    {
+      "name": "gcm_decrypt",
+      "entry_va": "0x8b1c950",
+      "size": 421,
+      "sha256": "823e1b45678785bb23b23665d5fc13f352bdcfb78f2d8c3fe0568c293c983d0d"
+    },
+    {
+      "name": "hkdf_adapter",
+      "entry_va": "0x8b211c0",
+      "size": 177,
+      "sha256": "955018a9bbf7691b50c7262c36e3e51a6c24556030714c1a7d744a31ff0b232b"
+    },
+    {
+      "name": "hkdf_extract_expand",
+      "entry_va": "0x8b21280",
+      "size": 584,
+      "sha256": "bde00745104acd054c77dca155fc4ae05773a419f9097030f995256ec59b8e92"
+    },
+    {
+      "name": "hkdf_expand",
+      "entry_va": "0x8b214d0",
+      "size": 514,
+      "sha256": "9dbbb68e95edf66f4e97d100dec377768cb64a069369cdb5668b180e083e3691"
+    },
+    {
+      "name": "gcm_with_compress",
+      "entry_va": "0x8b1cb00",
+      "size": 286,
+      "sha256": "0e41a9baa089141bad42dfeb9d4bc2ece25634b3c79e97f3259731a43692d58b"
+    },
+    {
+      "name": "zlib_compress",
+      "entry_va": "0x8b1cf50",
+      "size": 535,
+      "sha256": "6604c1f20ddfd7826e6675ca60561fa4b4851b335f5c9852d4980a62b3040821"
+    }
+  ],
+  "error_output_policy": "Discard native output whenever the native return code is nonzero; native EVP may leave unauthenticated bytes in its output string."
+}

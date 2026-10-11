@@ -42,7 +42,7 @@ BaseRequest 六个字段的来源及 presence 现已记录，配置实际值和�
 Pack 入参中 `rdx` 为输出 AutoBuffer，`rcx/r8` 为明文指针/长度；
 selector 位于封包参数结构 `+0x08`，已核对 15 项跳表。
 新增 [运行时证据和 QR 专用采集工具](qr-runtime-evidence.md) 用于确认实际分支与独立向量。
-尚未恢复的 KDF、nonce/AAD、端点与外层握手不能用候选值代替。
+已在独立函数层面核对 [AES-GCM 与 HKDF](crypto-native-progress.md)；实际 QR 的密钥、AAD、端点与外层握手仍需恢复。
 
 ## 本轮验证范围
 

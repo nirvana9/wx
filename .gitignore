@@ -1,6 +1,7 @@
 analysis-output/
 .venv/
 .venv-capture/
+.venv-emulation/
 __pycache__/
 *.pyc
 # Account state and local research captures must stay outside version control.

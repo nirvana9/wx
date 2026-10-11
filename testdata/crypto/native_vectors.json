@@ -1,0 +1,124 @@
+{
+  "aes_gcm": [
+    {
+      "name": "nist-zero",
+      "key_hex": "00000000000000000000000000000000",
+      "nonce_hex": "000000000000000000000000",
+      "aad_hex": "",
+      "plain_hex": "00000000000000000000000000000000",
+      "envelope_hex": "0388dace60b6a392f328c2b971b2fe78000000000000000000000000ab6e47d42cec13bdf53a67b21257bddf",
+      "seal_result": 0,
+      "open_result": 0,
+      "corrupt_tag_result": 4294967295
+    },
+    {
+      "name": "aes128-binary",
+      "key_hex": "000102030405060708090a0b0c0d0e0f",
+      "nonce_hex": "000102030405060708090a0b",
+      "aad_hex": "7778006e6174697665ff616164",
+      "plain_hex": "776563686174006e6174697665ff63727970746f2d766563746f72",
+      "envelope_hex": "e409c4a6076ff73a2aa608fc535c137aca566e897e9b9895924e83000102030405060708090a0b35eae97c96a12e253adab9f795fb6b07",
+      "seal_result": 0,
+      "open_result": 0,
+      "corrupt_tag_result": 4294967295
+    },
+    {
+      "name": "aes192-binary",
+      "key_hex": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "nonce_hex": "000102030405060708090a0b",
+      "aad_hex": "7778006e6174697665ff616164",
+      "plain_hex": "776563686174006e6174697665ff63727970746f2d766563746f72",
+      "envelope_hex": "919c41f3f8cdc960b147b5f49a56bf0277ef476415d733dd0b3019000102030405060708090a0b7e98108c867b39b936394eb793fbd56b",
+      "seal_result": 0,
+      "open_result": 0,
+      "corrupt_tag_result": 4294967295
+    },
+    {
+      "name": "aes256-binary",
+      "key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "nonce_hex": "000102030405060708090a0b",
+      "aad_hex": "7778006e6174697665ff616164",
+      "plain_hex": "776563686174006e6174697665ff63727970746f2d766563746f72",
+      "envelope_hex": "3067b573a491c275ec35fefdd4161b1ffaa6f35bdd0d3a1f4c0897000102030405060708090a0b6bfe983f5d60756d7944f00963a9ce44",
+      "seal_result": 0,
+      "open_result": 0,
+      "corrupt_tag_result": 4294967295
+    },
+    {
+      "name": "aes128-empty",
+      "key_hex": "000102030405060708090a0b0c0d0e0f",
+      "nonce_hex": "000102030405060708090a0b",
+      "aad_hex": "7778006e6174697665ff616164",
+      "plain_hex": "",
+      "envelope_hex": "000102030405060708090a0b565d5d98275ac590c5cb8cae45f0b2fb",
+      "seal_result": 0,
+      "open_result": 0,
+      "corrupt_tag_result": 4294967295
+    }
+  ],
+  "hkdf_sha256": [
+    {
+      "name": "rfc5869-case1",
+      "salt_hex": "000102030405060708090a0b0c",
+      "ikm_hex": "0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b",
+      "info_hex": "f0f1f2f3f4f5f6f7f8f9",
+      "length": 42,
+      "result": 0,
+      "output_hex": "3cb25f25faacd57a90434f64d0362f2a2d2d0a90cf1a5a4c5db02d56ecc4c5bf34007208d5b887185865"
+    },
+    {
+      "name": "binary-56",
+      "salt_hex": "77780073616c74",
+      "ikm_hex": "000102030405060708090a0b0c0d0e0f1011121314151617",
+      "info_hex": "7472616e73637269707400ff",
+      "length": 56,
+      "result": 0,
+      "output_hex": "8ebb3fbce12f8836cd23043196526c097304fec3f05ac7941e98fc35c689a2eca1971e85cacb2aaa018bf3ae2d3f09abb4a05e949531fb41"
+    },
+    {
+      "name": "empty-salt",
+      "salt_hex": "",
+      "ikm_hex": "79",
+      "info_hex": "7a",
+      "length": 32,
+      "result": 0,
+      "output_hex": "4d8a71cc3ac209fe8a9e225d3bc34ba36ed2d451b83d822841ff87ed83667756"
+    },
+    {
+      "name": "empty-ikm",
+      "salt_hex": "78",
+      "ikm_hex": "",
+      "info_hex": "7a",
+      "length": 32,
+      "result": 0,
+      "output_hex": "f7982fb767af6bc896b690c4b73db9e99762eaca011db7ddb7bd5b96a92953b6"
+    },
+    {
+      "name": "empty-info-rejected",
+      "salt_hex": "78",
+      "ikm_hex": "79",
+      "info_hex": "",
+      "length": 32,
+      "result": 4294967295,
+      "output_hex": ""
+    },
+    {
+      "name": "zero-output-rejected",
+      "salt_hex": "78",
+      "ikm_hex": "79",
+      "info_hex": "7a",
+      "length": 0,
+      "result": 4294967295,
+      "output_hex": ""
+    },
+    {
+      "name": "oversized-output-rejected",
+      "salt_hex": "78",
+      "ikm_hex": "79",
+      "info_hex": "7a",
+      "length": 8161,
+      "result": 4294967295,
+      "output_hex": ""
+    }
+  ]
+}
