@@ -251,7 +251,10 @@ func (s *syntheticService) hybridState(packet []byte) []byte {
 		padded := append(append([]byte(nil), s.poll...), bytes.Repeat([]byte{byte(padding)}, padding)...)
 		encrypted := make([]byte, len(padded))
 		cipher.NewCBCEncrypter(block, s.notifyKey).CryptBlocks(encrypted, padded)
-		reply = join(protobufField(1, protobufVarint(1, 0)), protobufField(3, join(protobufVarint(1, uint64(len(encrypted))), protobufField(2, encrypted))))
+		// CheckResponse.3 is LoginQRCodeNotifyPkg, whose .1 is the Buffer.
+		// Verified independently by 0x77c39bd/0x77c39d4/0x77c39eb in the ELF.
+		buf := join(protobufVarint(1, uint64(len(encrypted))), protobufField(2, encrypted))
+		reply = join(protobufField(1, protobufVarint(1, 0)), protobufField(3, join(protobufField(1, buf), protobufVarint(2, 0))))
 	}
 	if s.calls == 3 && s.mode == "check-error" {
 		reply = protobufField(1, protobufVarint(1, ^uint64(7)))

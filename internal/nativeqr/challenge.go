@@ -125,7 +125,8 @@ func (ch *Challenge) Check(ctx context.Context) (notice *Notice, err error) {
 		return nil, fmt.Errorf("%w: check code %d", protocol.ErrQRServer, ret)
 	}
 	stage = "notify decrypt"
-	buf := fields[3]
+	pkg := protobufBytes(fields[3])
+	buf := pkg[1]
 	encrypted := protobufBytes(buf)[2]
 	if protobufUint(buf, 1) != uint64(len(encrypted)) || len(encrypted) < 16 || len(encrypted)%16 != 0 || len(ch.notifyKey) != 16 {
 		panic("notify buffer")

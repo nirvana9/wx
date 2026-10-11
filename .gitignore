@@ -2,6 +2,8 @@ analysis-output/
 .venv/
 .venv-capture/
 .venv-emulation/
+.venv-analysis/
+.WeChatLinux_x86_64.deb.*
 __pycache__/
 *.pyc
 # Account state and local research captures must stay outside version control.
