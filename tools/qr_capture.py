@@ -140,7 +140,7 @@ class CaptureWriter:
         self.close()
 
 
-def capture(pid, seconds, output):
+def capture(pid, seconds, output, *, device=None, on_ready=None):
     if sys.platform != 'linux':
         raise ValueError('this profile supports Linux x86-64 only')
     executable = Path(f'/proc/{pid}/exe')
@@ -185,7 +185,7 @@ def capture(pid, seconds, output):
             stopped.set()
 
         try:
-            session = frida.get_local_device().attach(pid)
+            session = (device or frida.get_local_device()).attach(pid)
             verify_executable(executable)  # Check again after attach, before installing hooks.
             session.on('detached', on_detached)
             script = session.create_script(source, runtime='qjs')
@@ -195,7 +195,11 @@ def capture(pid, seconds, output):
             while not stopped.is_set() and not ready.is_set() and time.monotonic() < deadline:
                 stopped.wait(0.1)
             if ready.is_set() and not stopped.is_set():
-                print('已挂接固定样本。请刷新未登录页的二维码，无需扫描或确认登录。', flush=True)
+                if on_ready is not None:
+                    on_ready()
+                    print('已在启动前挂接固定样本，等待首次二维码请求。', flush=True)
+                else:
+                    print('已挂接固定样本。请刷新未登录页的二维码，无需扫描或确认登录。', flush=True)
                 stopped.wait(max(0, deadline - time.monotonic()))
         except KeyboardInterrupt:
             writer.fail('interrupted')
@@ -219,13 +223,38 @@ def capture(pid, seconds, output):
     return 0 if result['complete_qr_exchange'] else 1
 
 
+def spawn_capture(executable, seconds, output):
+    """Research only: launch a verified client, hook before entry, always kill it.
+
+    Use an isolated, empty user profile. The production CLI never calls this.
+    Child stdout/stderr are piped to Frida and deliberately not printed.
+    """
+    executable = Path(executable).resolve(strict=True)
+    verify_executable(executable)
+    try:
+        import frida
+    except ImportError:
+        raise ValueError('install requirements-capture.txt in a separate analysis environment') from None
+    device = frida.get_local_device()
+    pid = device.spawn([str(executable)], stdio='pipe')
+    try:
+        return capture(pid, seconds, output, device=device, on_ready=lambda: device.resume(pid))
+    finally:
+        try:
+            device.kill(pid)
+        except frida.ProcessNotFoundError:
+            pass  # The owned child already exited.
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--pid', type=int, required=True, help='existing, unlogged-in fixed-version WeChat process')
+    process = parser.add_mutually_exclusive_group(required=True)
+    process.add_argument('--pid', type=int, help='existing, unlogged-in fixed-version WeChat process')
+    process.add_argument('--spawn', type=Path, help='research only: pinned client in an isolated, empty user profile')
     parser.add_argument('--seconds', type=int, default=120, help='30..600 seconds, default 120')
     parser.add_argument('--output', type=Path, help='new directory; default private-captures/<timestamp>')
     args = parser.parse_args(argv)
-    if args.pid <= 0 or not 30 <= args.seconds <= 600:
+    if (args.pid is not None and args.pid <= 0) or not 30 <= args.seconds <= 600:
         parser.error('PID must be positive; seconds must be 30..600')
     if args.output is None:
         root = Path('private-captures')
@@ -234,6 +263,8 @@ def main(argv=None):
         root.mkdir(mode=0o700, exist_ok=True)
         args.output = root / datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S.%fZ')
     try:
+        if args.spawn is not None:
+            return spawn_capture(args.spawn, args.seconds, args.output)
         return capture(args.pid, args.seconds, args.output)
     except (ValueError, OSError) as error:
         print(f'采集未启动：{error}', file=sys.stderr)

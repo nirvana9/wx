@@ -1,0 +1,81 @@
+name: Native QR research (encrypted evidence)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/native-qr-research.yml
+      - tools/qr_capture.py
+      - tools/qr_capture.js
+      - tools/qr_capture_profile.json
+      - tools/research/qr-recipient.pem
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-qr-research
+  cancel-in-progress: false
+
+jobs:
+  capture:
+    if: github.repository == 'nirvana9/wx' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          lfs: true
+          persist-credentials: false
+      - name: Install isolated research dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends xvfb dbus-x11 fonts-noto-cjk imagemagick libgtk-3-0t64 libx11-xcb1 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 libxcb-xfixes0 libxcb-xinerama0 libxcb-xkb1 libxkbcommon-x11-0 libegl1 libgl1 libpulse0 libasound2t64 libnss3 libxss1 libgbm1
+          python3 -m venv .venv-capture
+          .venv-capture/bin/pip install --disable-pip-version-check -r requirements-capture.txt
+      - name: Verify and extract pinned sample without installing it
+        run: |
+          echo 'b7d0f8d53e9f648bc2c77a6096a04100d008f2d9f0d3988a2a4859b5992aca0a  WeChatLinux_x86_64.deb' | sha256sum -c -
+          mkdir -p analysis-output/deb
+          dpkg-deb -x WeChatLinux_x86_64.deb analysis-output/deb
+          echo '2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959  analysis-output/deb/opt/wechat/wechat' | sha256sum -c -
+      - name: Capture initial QR exchange in disposable empty profile
+        env:
+          QT_X11_NO_MITSHM: '1'
+          LIBGL_ALWAYS_SOFTWARE: '1'
+        run: |
+          umask 077
+          mkdir -p private-captures/run private-captures/profile/config private-captures/profile/data
+          export LD_LIBRARY_PATH="$PWD/analysis-output/deb/opt/wechat"
+          export XDG_CONFIG_HOME="$PWD/private-captures/profile/config"
+          export XDG_DATA_HOME="$PWD/private-captures/profile/data"
+          dbus-run-session -- xvfb-run -a -s '-screen 0 1280x800x24 -nolisten tcp' bash <<'SCRIPT'
+          .venv-capture/bin/python tools/qr_capture.py --spawn analysis-output/deb/opt/wechat/wechat --seconds 240 --output private-captures/run/capture > private-captures/run/collector.log 2>&1 &
+          capture_job=$!
+          for snapshot in 1 2 3; do
+            sleep 12
+            import -window root "private-captures/run/screen-$snapshot.png" 2>/dev/null || true
+            kill -0 "$capture_job" 2>/dev/null || break
+          done
+          capture_status=0
+          wait "$capture_job" || capture_status=$?
+          echo "$capture_status" > private-captures/run/collector-status.txt
+          SCRIPT
+      - name: Encrypt evidence before upload
+        if: always()
+        run: |
+          umask 077
+          test -d private-captures/run
+          tar -czf private-captures/evidence.tar.gz -C private-captures/run .
+          mkdir -p analysis-output/encrypted
+          openssl cms -encrypt -aes-256-gcm -binary -outform DER -in private-captures/evidence.tar.gz -out analysis-output/encrypted/qr-evidence.cms tools/research/qr-recipient.pem
+          test -s analysis-output/encrypted/qr-evidence.cms
+          rm -rf private-captures/run private-captures/evidence.tar.gz
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: native-qr-evidence-encrypted
+          path: analysis-output/encrypted/qr-evidence.cms
+          if-no-files-found: error
+          retention-days: 1

@@ -7,10 +7,77 @@ import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+import qr_capture
 from qr_capture import CaptureWriter, capture, verify_executable
 
 
 class QRCollection(unittest.TestCase):
+    def test_spawn_resumes_only_after_hooks_and_always_kills_owned_process(self):
+        calls = []
+        class Script:
+            def on(self, _, callback): self.callback = callback
+            def load(self):
+                calls.append('hooks')
+                self.callback({'type': 'send', 'payload': {'event': 'ready'}}, None)
+            def unload(self): calls.append('unload')
+        class Session:
+            script = Script()
+            def on(self, *args): pass
+            def off(self, *args): pass
+            def create_script(self, *args, **kwargs): return self.script
+            def detach(self): calls.append('detach')
+        class Device:
+            session = Session()
+            def spawn(self, argv, **kwargs):
+                self.argv, self.kwargs = argv, kwargs
+                calls.append('spawn')
+                return 123
+            def attach(self, pid): calls.append('attach'); return self.session
+            def resume(self, pid):
+                calls.append('resume')
+                for meta in ({'kind': 'qr_request', 'id': 1},
+                             {'kind': 'qr_frame', 'id': 1, 'packet_branch': 'PackMMPkg',
+                              'selector': 12, 'package_word': 14, 'request_value': 502},
+                             {'kind': 'qr_response', 'id': 1, 'native_parse_ok': True}):
+                    self.session.script.callback({'type': 'send', 'payload': {'event': 'record', 'meta': meta}}, b'RAW_FIXTURE')
+            def kill(self, pid): calls.append('kill')
+        class Frida:
+            device = Device()
+            def get_local_device(self): return self.device
+        frida = Frida()
+        with tempfile.TemporaryDirectory() as tmp, patch('qr_capture.verify_executable') as verify, \
+                patch.dict(sys.modules, frida=frida), patch('builtins.print'):
+            executable = Path(tmp) / 'fixed-client'
+            executable.touch()
+            self.assertEqual(qr_capture.spawn_capture(executable, 30, Path(tmp) / 'capture'), 0)
+            self.assertEqual(calls, ['spawn', 'attach', 'hooks', 'resume', 'unload', 'detach', 'kill'])
+            self.assertEqual(frida.device.argv, [str(executable.resolve())])
+            self.assertEqual(frida.device.kwargs, {'stdio': 'pipe'})
+            self.assertEqual(verify.call_count, 3)
+        calls.clear()
+        with tempfile.TemporaryDirectory() as tmp, patch('qr_capture.verify_executable', side_effect=ValueError('hash')), \
+                patch.dict(sys.modules, frida=frida):
+            executable = Path(tmp) / 'wrong-elf'
+            executable.touch()
+            with self.assertRaises(ValueError):
+                qr_capture.spawn_capture(executable, 30, Path('/unused'))
+            self.assertEqual(calls, [])
+
+    def test_spawn_failure_still_terminates_the_owned_process(self):
+        from unittest.mock import Mock
+        device = Mock()
+        device.spawn.return_value = 123
+        frida = Mock()
+        frida.get_local_device.return_value = device
+        with tempfile.TemporaryDirectory() as tmp, patch('qr_capture.verify_executable'), patch.dict(sys.modules, frida=frida), \
+                patch('qr_capture.capture', side_effect=ValueError('profile')):
+            executable = Path(tmp) / 'fixed-elf'
+            executable.touch()
+            with self.assertRaises(ValueError):
+                qr_capture.spawn_capture(executable, 30, Path('/unused'))
+        device.kill.assert_called_once_with(123)
+        device.resume.assert_not_called()
+
     def test_wrong_executable_is_rejected_before_instrumentation(self):
         with tempfile.TemporaryDirectory() as tmp:
             p = Path(tmp) / 'synthetic-elf'
