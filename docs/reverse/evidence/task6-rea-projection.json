@@ -1,0 +1,79 @@
+{
+  "scope": "REA 6.4.0 stdio MCP Ghidra 12.1.4 analysis projection, NOT full original ELF decompilation or runtime load image",
+  "original_elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "original_elf_type": "ET_DYN",
+  "original_lowest_pt_load_va": "0x0",
+  "original_ghidra_analysis": "Two full-image procedure_pseudo_code attempts timed out after 1800000 ms; imported image base and pseudocode unavailable",
+  "projection_sha256": "045ad7cfb9f30fe00d0ba2285e190c893c17e0b6c59c99193e20c13a295a8c6a",
+  "projection_entry": null,
+  "projection_va_basis": "0x0",
+  "projection_provenance": "Non-executable analysis projection of the fixed ELF. Selected FDE instruction bytes match original SHA-256. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+  "rea_version": "6.4.0",
+  "mcp_protocol": "2024-11-05",
+  "ghidra_version": "12.1.4",
+  "analysis_profile_digest": "a04af771c3a78edf03c11c3b8652d4812dfce76da00d380345526a333361b5c9",
+  "functions": [
+    {
+      "address": "0x77c0d40",
+      "size": 3485,
+      "source_file_offset": "0x77bfd40",
+      "code_sha256": "b68e777fff0ae1f15f9a1ce9744ace2be168955a11153b4a6dbfe2cbde133667"
+    },
+    {
+      "address": "0x77c2f40",
+      "size": 5050,
+      "source_file_offset": "0x77c1f40",
+      "code_sha256": "d1e9734ffa705367bb8f030d4828160cf1d50d26b2c21d589248fb310093dc98"
+    },
+    {
+      "address": "0x77c7700",
+      "size": 2045,
+      "source_file_offset": "0x77c6700",
+      "code_sha256": "bf6fffc4970829710acaacc2a93c4bef59d456e6830481666bde240305f8a2f2"
+    },
+    {
+      "address": "0x77c7f00",
+      "size": 20162,
+      "source_file_offset": "0x77c6f00",
+      "code_sha256": "0c4f7e6c068c17d9e99f7c69202408728fce27ccc642016a9938c63845124d08"
+    },
+    {
+      "address": "0x77ce110",
+      "size": 1940,
+      "source_file_offset": "0x77cd110",
+      "code_sha256": "67d5304101fe0282a7f77a0971e7634947f85317ee2bf564a3fe1bab4ff79e02"
+    },
+    {
+      "address": "0x77d8d20",
+      "size": 15530,
+      "source_file_offset": "0x77d7d20",
+      "code_sha256": "24e013fe122615be2d29ba1ae3f8b86d4427206f4944f1dd7b8bf7d13e127147"
+    },
+    {
+      "address": "0x77f5210",
+      "size": 1576,
+      "source_file_offset": "0x77f4210",
+      "code_sha256": "87e44df868da3eb84ed52b98d0753292e0cf40c37a0df9c08a85b3c3f9b60a92"
+    },
+    {
+      "address": "0x84e38c0",
+      "size": 84,
+      "source_file_offset": "0x84e28c0",
+      "code_sha256": "751e501dfe67c87373503796cfbfbf854b05e6e18daa2354fd789638cc645c5c"
+    },
+    {
+      "address": "0x8df3d70",
+      "size": 892,
+      "source_file_offset": "0x8df2d70",
+      "code_sha256": "8c14d353d1e6c8f29e097b6631ede2f3f91798a91e31bf59fa5e08d4aab58db6"
+    }
+  ],
+  "evidence_ids": {
+    "secmanualauth_cgi": "ev_9f5a1ad3eb4bfb4752c05ff71bebcfd9f310678ceab8e4bafbb1815c08a1b976",
+    "common_cgi_send": "ev_5a7dff7524ef90e5589c5319fef83b43eb9f73018cf4dadc16e7507c6c8f6ed2",
+    "manual_auth": "ev_6b54551c3e47f8e76ceb4dadcd86f22e895332e75eeed7bd68f543f4148909b0",
+    "auto_auth": "ev_f708aeca241f7fc4f21ebe20adebee92dd806b0341ff4bc7dc88871d69aa4f7e",
+    "account_session_keys": "ev_0edaf918b2d02e133189a11bec338147842e1cd60de95f6d08aee5f9b2da45e2",
+    "secmanualauth_callees": "ev_efd6e4d8ef9b0f781fb6ba60c6f8f86bf65507a63bfc0e990502866e64063e59"
+  }
+}

@@ -3,6 +3,8 @@
 日期：2026-10-11。用户已确认设计、实施计划和主代理顺序实现方式。
 2026-10-12 继续 Task 6，增加 [完整 AES 段 wire 布局与 QR proof 绑定](reverse/native-manualauth-aes.md)，
 用真实原生函数的合成向量核对；不把这一组件增量标为正式鉴权或 Task 6 完成。
+又增加 [ManualAuthRequest 容器](reverse/native-auth-request-container.md)与 REA 投影证据，
+仍缺设备字段、正式鉴权封包和会话安装。
 独立二维码获取与终端显示已实现；扫码登录与文本收发仍未实现。
 
 | 计划任务 | 当前状态 | 已验证范围 |

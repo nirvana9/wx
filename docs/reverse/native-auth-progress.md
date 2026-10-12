@@ -2,6 +2,7 @@
 
 已实现 Go 的临时 P224 密钥、ManualAuthRsaReqData 核心编码、UnifyAuthResponse 密钥解析。
 2026-10-12 新增完整 ManualAuthAesReqData **wire 字段布局**编码，以及原生 QR caller 的 proof/pwd2 绑定；
+随后新增 [ManualAuthRequest 双子消息容器](native-auth-request-container.md)的原生向量及 Go 编码；
 设备字段语义、presence 策略与完整正式鉴权仍未成立，见 [本轮证据与边界](native-manualauth-aes.md)。
 本阶段没有发出 secmanualauth 请求，没有手机确认，也没有安装或持久化已登录会话。
 `wx login`、自动鉴权和在线消息收发仍未接通。
@@ -12,6 +13,7 @@
 | `protocol.EncodeManualAuthCore` | 16 字节随机 key、NID713 公钥、用户名及显式 pwd/pwd2；仅请求的 RSA data 部分 |
 | `protocol.EncodeQRCodeAuthCore` | 固定 QR caller 的 username/proof 直接传递与显式空 pwd2；独立原生 caller/serializer 合成向量 |
 | `protocol.EncodeManualAuthAESFields` | 27 个 wire 字段、23/24 Buffer、26 PubKeyInfo、28 ExtAuthReqInfo；显式输入，不填设备默认值或宣称登录 |
+| `protocol.EncodeManualAuthRequest` | 按原生字段 1/2 组合 RSA/AES 子体，原生 parent 向量核对；仅 protobuf 容器 |
 | `cryptox.DeriveAuthP224` | native KDF0：MD5(P224 共享 X 坐标的固定 28 字节表示) |
 | `cryptox.OpenAuthCBC` | key=IV 的 AES-128-CBC，严格 PKCS7，不解压，不做响应认证 |
 | `protocol.DecodeManualAuthKeys` | 校验返回码、账号匹配和 Buffer；只支持 AuthResultFlag&4/NID713；恢复四类材料，完整保留私有 Raw |
