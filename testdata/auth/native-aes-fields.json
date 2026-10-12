@@ -1,0 +1,162 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "Synthetic explicit field values; actual pinned ManualAuthAesReqData constructor, virtual size and serialization routines in isolated x86-64 CPU emulation. Partial wire serialization only, not a valid login/device profile. No syscall, client startup, crypto replacement or network.",
+  "child_type_observations": [
+    {
+      "field": 1,
+      "input_hex": "0a00",
+      "partial_parse_return": 1,
+      "vtable": "0xa982628",
+      "type_name_entry": "0x79f3f20",
+      "type": "micromsg.BaseRequest"
+    },
+    {
+      "field": 2,
+      "input_hex": "1200",
+      "partial_parse_return": 1,
+      "vtable": "0xa9a18a8",
+      "type_name_entry": "0x7cd5930",
+      "type": "micromsg.BaseAuthReqInfo"
+    },
+    {
+      "field": 23,
+      "input_hex": "ba0100",
+      "partial_parse_return": 1,
+      "vtable": "0xa9916a8",
+      "type_name_entry": "0x7ba09b0",
+      "type": "micromsg.SKBuiltinBuffer_t"
+    },
+    {
+      "field": 24,
+      "input_hex": "c20100",
+      "partial_parse_return": 1,
+      "vtable": "0xa9916a8",
+      "type_name_entry": "0x7ba09b0",
+      "type": "micromsg.SKBuiltinBuffer_t"
+    },
+    {
+      "field": 26,
+      "input_hex": "d20100",
+      "partial_parse_return": 1,
+      "vtable": "0xa9821a8",
+      "type_name_entry": "0x79ec8d0",
+      "type": "micromsg.PubKeyInfo"
+    },
+    {
+      "field": 28,
+      "input_hex": "e20100",
+      "partial_parse_return": 1,
+      "vtable": "0xa9a1830",
+      "type_name_entry": "0x7cd4510",
+      "type": "micromsg.ExtAuthReqInfo"
+    }
+  ],
+  "child_type_scope": "Actual native partial parser allocation and GetTypeName; no IsInitialized or login requiredness assertion.",
+  "cases": [
+    {
+      "name": "absent",
+      "native_presence_mask": "0x0",
+      "hex": ""
+    },
+    {
+      "name": "all_fields",
+      "bytes": {
+        "3": "ff73796e7468657469632d3300",
+        "4": "ff73796e7468657469632d3400",
+        "6": "ff73796e7468657469632d3600",
+        "7": "ff73796e7468657469632d3700",
+        "8": "ff73796e7468657469632d3800",
+        "9": "ff73796e7468657469632d3900",
+        "10": "ff73796e7468657469632d313000",
+        "11": "ff73796e7468657469632d313100",
+        "15": "ff73796e7468657469632d313500",
+        "16": "ff73796e7468657469632d313600",
+        "17": "ff73796e7468657469632d313700",
+        "18": "ff73796e7468657469632d313800",
+        "19": "ff73796e7468657469632d313900",
+        "20": "ff73796e7468657469632d323000",
+        "21": "ff73796e7468657469632d323100",
+        "25": "ff73796e7468657469632d323500"
+      },
+      "uint32": {
+        "5": 4294967295,
+        "14": 1700000000,
+        "22": 22,
+        "27": 4294967295
+      },
+      "int32": {
+        "13": -7
+      },
+      "client_check": "73796e7468657469632d636c69656e742d636865636b",
+      "ext_spam": "00ff73796e7468657469632d7370616d",
+      "pubkey": {
+        "field1": -7,
+        "field2": "73796e7468657469632d7075626c69632d6b6579"
+      },
+      "ext_info": {
+        "2": "73796e7468657469632d65787432",
+        "3": ""
+      },
+      "base_request": "0a0100",
+      "base_auth_info": "0a170813121373796e7468657469632d626173652d61757468",
+      "native_presence_mask": "0x7ffffff",
+      "hex": "0a030a010012190a170813121373796e7468657469632d626173652d617574681a0dff73796e7468657469632d3300220dff73796e7468657469632d340028ffffffff0f320dff73796e7468657469632d36003a0dff73796e7468657469632d3700420dff73796e7468657469632d38004a0dff73796e7468657469632d3900520eff73796e7468657469632d3130005a0eff73796e7468657469632d31310068f9ffffffffffffffff017080e2cfaa067a0eff73796e7468657469632d31350082010eff73796e7468657469632d3136008a010eff73796e7468657469632d31370092010eff73796e7468657469632d3138009a010eff73796e7468657469632d313900a2010eff73796e7468657469632d323000aa010eff73796e7468657469632d323100b00116ba011a0816121673796e7468657469632d636c69656e742d636865636bc201140810121000ff73796e7468657469632d7370616dca010eff73796e7468657469632d323500d2012508f9ffffffffffffffff0112180814121473796e7468657469632d7075626c69632d6b6579d801ffffffff0fe20112120e73796e7468657469632d657874321a00"
+    },
+    {
+      "name": "explicit_empty_and_zero",
+      "base_request": "",
+      "base_auth_info": "",
+      "bytes": {
+        "3": "",
+        "4": "",
+        "6": "",
+        "7": "",
+        "8": "",
+        "9": "",
+        "10": "",
+        "11": "",
+        "15": "",
+        "16": "",
+        "17": "",
+        "18": "",
+        "19": "",
+        "20": "",
+        "21": "",
+        "25": ""
+      },
+      "uint32": {
+        "5": 0,
+        "14": 0,
+        "22": 0,
+        "27": 0
+      },
+      "int32": {
+        "13": 0
+      },
+      "client_check": "",
+      "ext_spam": "",
+      "pubkey": {
+        "field1": 0,
+        "field2": ""
+      },
+      "ext_info": {
+        "2": "",
+        "3": ""
+      },
+      "native_presence_mask": "0x7ffffff",
+      "hex": "0a0012001a002200280032003a0042004a0052005a00680070007a008201008a01009201009a0100a20100aa0100b00100ba010408001200c2010408001200ca0100d201080800120408001200d80100e2010412001a00"
+    },
+    {
+      "name": "empty_nested_extensions",
+      "pubkey": {},
+      "ext_info": {},
+      "native_presence_mask": "0x5000000",
+      "hex": "d20100e20100"
+    }
+  ],
+  "imports": {
+    "malloc": 13,
+    "memset": 5,
+    "memcpy": 57
+  }
+}

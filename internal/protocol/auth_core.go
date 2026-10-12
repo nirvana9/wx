@@ -5,6 +5,14 @@ import (
 	"unicode/utf8"
 )
 
+// EncodeQRCodeAuthCore follows only the pinned QR caller 0x77c7700: username
+// and proof are copied unchanged, while pwd2 is explicitly empty. It serializes
+// the RSA-data component only; a notification is not authenticated account
+// state, and this component must not by itself enable a login request.
+func EncodeQRCodeAuthCore(randomKey, publicPoint []byte, username, proof string) ([]byte, error) {
+	return EncodeManualAuthCore(randomKey, publicPoint, username, proof, "")
+}
+
 // EncodeManualAuthCore serializes only ManualAuthRsaReqData, with explicit proof
 // values. It is NOT a complete auth request: the Aes/device section, task packet
 // and authenticated exchange must be recovered before it can be sent.

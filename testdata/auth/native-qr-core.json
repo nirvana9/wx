@@ -1,0 +1,15 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "Synthetic QR caller 0x77c7700 observed at 0x77c79aa -> 0x77c7f00; account directory lock=true and logging=false explicitly modeled, auth entry never executed. Actual native RSA-data size/serialize with captured proof strings; no proof/hash/crypto shim, syscall, client startup or network. P224 public point reused from prior synthetic scalar1 fixture.",
+  "username": "wxid_qr_synthetic",
+  "password": "qr-proof-synthetic",
+  "password2": "",
+  "random_key": "72616e646f6d2d6b6579313662797465",
+  "public_point": "04b70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21bd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e34",
+  "core_hex": "0a140810121072616e646f6d2d6b6579313662797465124208c905123d0839123904b70e0cbd6bb4bf7f321390b94a03c1d356c21122343280d6115c1d21bd376388b5f723fb4c22dfe6cd4375a05a07476444d5819985007e341a11777869645f71725f73796e746865746963221271722d70726f6f662d73796e7468657469632a00",
+  "imports": {
+    "malloc": 1,
+    "memset": 1,
+    "memcpy": 7
+  }
+}

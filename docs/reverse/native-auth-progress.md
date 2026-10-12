@@ -1,6 +1,8 @@
 # 正式鉴权：请求核心与会话密钥恢复
 
 已实现 Go 的临时 P224 密钥、ManualAuthRsaReqData 核心编码、UnifyAuthResponse 密钥解析。
+2026-10-12 新增完整 ManualAuthAesReqData **wire 字段布局**编码，以及原生 QR caller 的 proof/pwd2 绑定；
+设备字段语义、presence 策略与完整正式鉴权仍未成立，见 [本轮证据与边界](native-manualauth-aes.md)。
 本阶段没有发出 secmanualauth 请求，没有手机确认，也没有安装或持久化已登录会话。
 `wx login`、自动鉴权和在线消息收发仍未接通。
 
@@ -8,6 +10,8 @@
 | --- | --- |
 | `cryptox.NewAuthP224KeyPair` | crypto/rand 生成临时密钥；SEC1 DER 私钥、57 字节非压缩公钥；默认格式化隐藏私钥 |
 | `protocol.EncodeManualAuthCore` | 16 字节随机 key、NID713 公钥、用户名及显式 pwd/pwd2；仅请求的 RSA data 部分 |
+| `protocol.EncodeQRCodeAuthCore` | 固定 QR caller 的 username/proof 直接传递与显式空 pwd2；独立原生 caller/serializer 合成向量 |
+| `protocol.EncodeManualAuthAESFields` | 27 个 wire 字段、23/24 Buffer、26 PubKeyInfo、28 ExtAuthReqInfo；显式输入，不填设备默认值或宣称登录 |
 | `cryptox.DeriveAuthP224` | native KDF0：MD5(P224 共享 X 坐标的固定 28 字节表示) |
 | `cryptox.OpenAuthCBC` | key=IV 的 AES-128-CBC，严格 PKCS7，不解压，不做响应认证 |
 | `protocol.DecodeManualAuthKeys` | 校验返回码、账号匹配和 Buffer；只支持 AuthResultFlag&4/NID713；恢复四类材料，完整保留私有 Raw |
@@ -32,7 +36,7 @@
 - AcctSectResp 新恢复的映射：type name `0x7ce6960`，serialize `0x7ce5df0`，field1 LEN/+0x8；不将 UIN 当作联系人 ID。
 
 请求核心只序列化当前已恢复的字段形状，pwd2 显式传入，不在编码器中猜测密码转换或字段默认值。
-完整 ManualAuthAesReqData 的设备字段、clientCheckData/extSpamInfo（23/24）及当前样本新增字段的来源/必填性，
+ManualAuthAesReqData 的全部 wire 字段已增加独立编码；完整设备字段、clientCheckData/extSpamInfo（23/24）及新增字段的来源/必填性，
 还有请求封包、会话安装和自动鉴权，尚未完成验证；不发送缺少这些契约的登录请求。
 
 ## 独立验证

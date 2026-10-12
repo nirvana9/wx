@@ -1,0 +1,238 @@
+{
+  "scope": "Actual local stdio MCP observation, not a Codex-managed connection. open_binary binds a verified artifact; provider startup/autoanalysis was still pending at this observation.",
+  "server": {
+    "name": "rea",
+    "version": "6.4.0",
+    "mcp_protocol": "2024-11-05"
+  },
+  "target": {
+    "sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+    "format": "elf",
+    "architecture": "x86_64"
+  },
+  "provider": {
+    "provider": {
+      "id": "ghidra",
+      "name": "Ghidra",
+      "version": "12.1.4"
+    },
+    "selection_source": "request",
+    "analysis_profile": {
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "target_kind": "executable",
+        "target_format": "elf",
+        "architecture": "x86_64",
+        "available_architectures": [
+          "x86_64"
+        ],
+        "import_mode": "ephemeral-source-immutable",
+        "annotation_policy": "atomic-function-entry-metadata-v1",
+        "load_image_observations": "source-mappings-entry-context-v2",
+        "function_body_evidence": "complete-inclusive-ranges-v1",
+        "function_references": "complete-body-and-entry-reference-manager-v2",
+        "string_inventory_evidence": "defined-data-coverage-v1",
+        "location_resolution": "explicit-address-exact-entry-symbol-first-v3",
+        "instruction_flow_evidence": "decoded-return-pcode-v1",
+        "function_boundary_observations": "ghidra-terminal-call-limitations-v1",
+        "no_return_repair": "returning-imports-decoded-return-v2",
+        "process_launch": "inspected-jvm-launch-support-v1",
+        "jump_table_evidence": "typed-case-default-blocks-v1",
+        "decompiler_jump_loads": true,
+        "loader": "auto-from-header",
+        "language_id": "auto-from-header",
+        "compiler_spec_id": "auto-default",
+        "analyzer_preset": "ghidra-default"
+      },
+      "digest": "a04af771c3a78edf03c11c3b8652d4812dfce76da00d380345526a333361b5c9"
+    }
+  },
+  "catalog_tool_count": 170,
+  "used_input_schemas": {
+    "procedure_pseudo_code": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "procedure": {
+          "$ref": "#/$defs/__schema0",
+          "description": "The procedure name or address"
+        },
+        "document": {
+          "$ref": "#/$defs/__schema1",
+          "description": "The active target's provider document name; use open_binary to switch targets"
+        }
+      },
+      "required": [
+        "procedure"
+      ],
+      "additionalProperties": false,
+      "$defs": {
+        "__schema0": {
+          "type": "string",
+          "description": "The procedure name or address"
+        },
+        "__schema1": {
+          "description": "The active target's provider document name; use open_binary to switch targets",
+          "$ref": "#/$defs/__schema2"
+        },
+        "__schema2": {
+          "type": "string"
+        }
+      },
+      "examples": [
+        {
+          "procedure": "main"
+        }
+      ]
+    },
+    "open_binary": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/__schema0",
+          "description": "Absolute local filesystem path for the analysis target; relative paths are rejected."
+        },
+        "format": {
+          "$ref": "#/$defs/__schema2",
+          "description": "Explicit headerless DOS COM interpretation; omission preserves header-based detection"
+        },
+        "provider_id": {
+          "$ref": "#/$defs/__schema4",
+          "description": "Exact deep-analysis provider ID, or automatic selection when omitted."
+        },
+        "snapshot_path": {
+          "$ref": "#/$defs/__schema5",
+          "description": "Absolute local filesystem path for the analysis snapshot; relative paths are rejected."
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "additionalProperties": false,
+      "$defs": {
+        "__schema0": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\x00]*$",
+          "description": "Absolute local filesystem path for the analysis target; relative paths are rejected.",
+          "$ref": "#/$defs/__schema1"
+        },
+        "__schema1": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\x00]*$"
+        },
+        "__schema2": {
+          "description": "Explicit headerless DOS COM interpretation; omission preserves header-based detection",
+          "$ref": "#/$defs/__schema3"
+        },
+        "__schema3": {
+          "type": "string",
+          "const": "dos-com"
+        },
+        "__schema4": {
+          "anyOf": [
+            {
+              "type": "string",
+              "const": "auto"
+            },
+            {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "^[a-z][a-z0-9\\x2d]*$"
+            }
+          ]
+        },
+        "__schema5": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\x00]*$",
+          "description": "Absolute local filesystem path for the analysis snapshot; relative paths are rejected.",
+          "$ref": "#/$defs/__schema1"
+        }
+      },
+      "examples": [
+        {
+          "path": "/tmp/fixture"
+        }
+      ]
+    },
+    "close_binary": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "snapshot_path": {
+          "$ref": "#/$defs/__schema0",
+          "description": "Absolute local filesystem path for the analysis snapshot; relative paths are rejected."
+        },
+        "overwrite": {
+          "$ref": "#/$defs/__schema1",
+          "description": "Whether an existing destination may be replaced."
+        }
+      },
+      "additionalProperties": false,
+      "$defs": {
+        "__schema0": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\x00]*$",
+          "description": "Absolute local filesystem path for the analysis snapshot; relative paths are rejected."
+        },
+        "__schema1": {
+          "default": false,
+          "type": "boolean"
+        }
+      },
+      "examples": [
+        {
+          "overwrite": false
+        }
+      ]
+    },
+    "binary_session": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "expected_package_version": {
+          "$ref": "#/$defs/__schema0",
+          "description": "Expected package version used to reject stale or mismatched input."
+        },
+        "expected_catalog_digest": {
+          "$ref": "#/$defs/__schema1",
+          "description": "Expected catalog digest used to reject stale or mismatched input."
+        },
+        "expected_server_path": {
+          "$ref": "#/$defs/__schema2",
+          "description": "Absolute local filesystem path expected for the running server; relative paths are rejected."
+        }
+      },
+      "additionalProperties": false,
+      "$defs": {
+        "__schema0": {
+          "type": "string",
+          "minLength": 1
+        },
+        "__schema1": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "__schema2": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^\\x00]*$",
+          "description": "Absolute local filesystem path expected for the running server; relative paths are rejected."
+        }
+      },
+      "examples": [
+        {}
+      ]
+    }
+  },
+  "ghidra_import_base": null,
+  "ghidra_import_base_status": "Not yet observed; initial whole-sample autoanalysis has not returned bridge metadata. Original ELF VA basis is 0, not an assertion about Ghidra rebase."
+}

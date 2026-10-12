@@ -1,0 +1,23 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "FDE/relocation mapping from the pinned ELF, corroborated by native child allocation and GetTypeName in native-aes-fields.json; ordinary offline tools, not REA decompilation",
+  "messages": [
+    {
+      "type": "micromsg.PubKeyInfo",
+      "get_type_name": "0x79ec8d0",
+      "get_type_name_size": 29,
+      "vtable_type_name_slot": "0xa9821b8",
+      "parse_candidate": "0x79ec580",
+      "size_candidate": "0x79ec7f0",
+      "serialize_candidate": "0x79ec790",
+      "vtable_address_point": "0xa9821a8"
+    }
+  ],
+  "nested_fields": {
+    "ManualAuthAesReqData.23": "micromsg.SKBuiltinBuffer_t",
+    "ManualAuthAesReqData.24": "micromsg.SKBuiltinBuffer_t",
+    "ManualAuthAesReqData.26": "micromsg.PubKeyInfo",
+    "ManualAuthAesReqData.28": "micromsg.ExtAuthReqInfo",
+    "PubKeyInfo.2": "micromsg.SKBuiltinBuffer_t"
+  }
+}
