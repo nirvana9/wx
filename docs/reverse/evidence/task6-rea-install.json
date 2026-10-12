@@ -1,0 +1,406 @@
+{
+  "scope": "Key-refresh path only. Projection decompilation corroborated with original assembly and isolated complete manager refresh replay; no successful authentication or session installation.",
+  "rea_version": "6.4.0",
+  "ghidra_version": "12.1.4",
+  "projection": {
+    "source_elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+    "projection_sha256": "fdccba293baeef0e3d8b88534b8821e761eba916fa257684fd43b4b48f3e8988",
+    "projection_bytes": 157000,
+    "image_va_basis": "0x0",
+    "entry": null,
+    "provenance": "Non-executable analysis projection of the fixed ELF. Selected FDE instruction bytes match original SHA-256. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+    "functions": [
+      {
+        "address": "0x6041790",
+        "size": 252,
+        "source_file_offset": "0x6040790",
+        "code_sha256": "3cf6aee01b428caae8cf24709b94403cd02ae92606d766678719e11f826a7283"
+      },
+      {
+        "address": "0x6041890",
+        "size": 252,
+        "source_file_offset": "0x6040890",
+        "code_sha256": "d62949920301a3b62a63f7eaf51df4c56928f958f14b92f99e007b5689d7e52f"
+      },
+      {
+        "address": "0x6041990",
+        "size": 252,
+        "source_file_offset": "0x6040990",
+        "code_sha256": "a3002b0e30f4fa0958a90791113e420f182a3a1086d36233023e8d774c981ca4"
+      },
+      {
+        "address": "0x619a8d0",
+        "size": 8,
+        "source_file_offset": "0x61998d0",
+        "code_sha256": "ae996224542c45e28bbf4324d093840a75e3162dd185997166eaf8447607b19f"
+      },
+      {
+        "address": "0x619ace0",
+        "size": 8,
+        "source_file_offset": "0x6199ce0",
+        "code_sha256": "1616e363aa6cd3367e0deef5507cdde0dcbbe5998fc4a5f1c90146ad80a46b60"
+      },
+      {
+        "address": "0x619ad00",
+        "size": 8,
+        "source_file_offset": "0x6199d00",
+        "code_sha256": "595c95fd2489378bcf114ae4dce1ad07f3b8e2c8cecfc31fdc22b7dcdcf01de5"
+      },
+      {
+        "address": "0x77d4b80",
+        "size": 16788,
+        "source_file_offset": "0x77d3b80",
+        "code_sha256": "1cbf0199c0576a94a8231e1b5394501f98d2d906b71dc204e9dfe230375d78eb"
+      },
+      {
+        "address": "0x79e2b30",
+        "size": 2045,
+        "source_file_offset": "0x79e1b30",
+        "code_sha256": "efbbecd5e401bf62d7288db877f10e16ddadb8a835dbad4f989668b5f2658d1a"
+      },
+      {
+        "address": "0x79e3330",
+        "size": 9,
+        "source_file_offset": "0x79e2330",
+        "code_sha256": "a8d7356942c76561e2defb9c31865037c162f6afa3192e975900a3395a0cc3ef"
+      }
+    ],
+    "segments": [
+      {
+        "va": "0xd59000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xd5c000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xd80000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xd97000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xdbf000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xdcf000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xe09000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xe39000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xe50000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xebe000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xecb000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xef1000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xf23000",
+        "size": 8192,
+        "flags": 4
+      },
+      {
+        "va": "0xf2f000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xf34000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xf3b000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xf65000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xf6d000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xfaf000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xfd0000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0x104f000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0x1067000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0x6041000",
+        "size": 4096,
+        "flags": 5
+      },
+      {
+        "va": "0x619a000",
+        "size": 4096,
+        "flags": 5
+      },
+      {
+        "va": "0x77d4000",
+        "size": 20480,
+        "flags": 5
+      },
+      {
+        "va": "0x79e2000",
+        "size": 8192,
+        "flags": 5
+      },
+      {
+        "va": "0xa96b000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xa96d000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xaccb000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xacef000",
+        "size": 4096,
+        "flags": 4
+      },
+      {
+        "va": "0xacfb000",
+        "size": 4096,
+        "flags": 4
+      }
+    ]
+  },
+  "observations": [
+    {
+      "evidence_id": "ev_4c049eeef51f8d37678b47b1a0dea52845ecbd1b4bdf2b155fbb2de9daaa881a",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x79e2b30"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ],
+      "pseudocode_path": "rea/cgi_manager_refresh_keys.c",
+      "pseudocode_sha256": "0fe441191ebeaf1d7d583058434c752f93954ec2008a9a8f043059987e19a797",
+      "subject_sha256": "fdccba293baeef0e3d8b88534b8821e761eba916fa257684fd43b4b48f3e8988"
+    },
+    {
+      "evidence_id": "ev_eca3216eb758a4a9ff0c235075bc0cc7b6cce34ec3569d0a18e3b96b8266b318",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x77d4b80"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ],
+      "pseudocode_path": "rea/autoauth_login_handler.c",
+      "pseudocode_sha256": "305b5b6d97467b8fb705f2b8d92163d03926ce889c4e3fca0f93f3ec3aedb60c",
+      "subject_sha256": "fdccba293baeef0e3d8b88534b8821e761eba916fa257684fd43b4b48f3e8988"
+    }
+  ],
+  "relative_relocation": {
+    "slot": "0xa981a28",
+    "target": "0x79e3330",
+    "interface_vtable": "0xa981948",
+    "offset": "0xe0"
+  },
+  "corroborating_original_functions": [
+    {
+      "address": "0x79e2b30",
+      "size": 2045,
+      "file_offset": "0x79e1b30",
+      "code_sha256": "efbbecd5e401bf62d7288db877f10e16ddadb8a835dbad4f989668b5f2658d1a"
+    },
+    {
+      "address": "0x8df1ef0",
+      "size": 9,
+      "file_offset": "0x8df0ef0",
+      "code_sha256": "e3a8616faf54ef724c828ddd4d5a1bae7adf742019d78e96227a04dc2ef69b10"
+    },
+    {
+      "address": "0x8df1f10",
+      "size": 9,
+      "file_offset": "0x8df0f10",
+      "code_sha256": "954a94086cb6a66865aff254882884c5346cf7fa5a8327f2c570238f9a82ff58"
+    },
+    {
+      "address": "0x79e3330",
+      "size": 9,
+      "file_offset": "0x79e2330",
+      "code_sha256": "a8d7356942c76561e2defb9c31865037c162f6afa3192e975900a3395a0cc3ef"
+    },
+    {
+      "address": "0x619a8d0",
+      "size": 8,
+      "file_offset": "0x61998d0",
+      "code_sha256": "ae996224542c45e28bbf4324d093840a75e3162dd185997166eaf8447607b19f"
+    },
+    {
+      "address": "0x619ace0",
+      "size": 8,
+      "file_offset": "0x6199ce0",
+      "code_sha256": "1616e363aa6cd3367e0deef5507cdde0dcbbe5998fc4a5f1c90146ad80a46b60"
+    },
+    {
+      "address": "0x619ad00",
+      "size": 8,
+      "file_offset": "0x6199d00",
+      "code_sha256": "595c95fd2489378bcf114ae4dce1ad07f3b8e2c8cecfc31fdc22b7dcdcf01de5"
+    },
+    {
+      "address": "0x619a8e0",
+      "size": 12,
+      "file_offset": "0x61998e0",
+      "code_sha256": "3b2888141a4344d80ac09111644f70f419e556081091151156a4ccf8b41510ec"
+    },
+    {
+      "address": "0x619acd0",
+      "size": 12,
+      "file_offset": "0x6199cd0",
+      "code_sha256": "d7b4b7c495e7878f7b666cba3dc03347783ec11ae38f7fbfc166d321fa0e1e0c"
+    },
+    {
+      "address": "0x619acf0",
+      "size": 12,
+      "file_offset": "0x6199cf0",
+      "code_sha256": "88450d1d33e61bf5c4378dc0b50e6e6a2e33a85d22736b17ce09880946cee196"
+    },
+    {
+      "address": "0x619ad10",
+      "size": 12,
+      "file_offset": "0x6199d10",
+      "code_sha256": "8d28e3363127b525253307e3cf47c1a0123c95cf2fb6a1ba9ae73369b206116d"
+    },
+    {
+      "address": "0x6041790",
+      "size": 252,
+      "file_offset": "0x6040790",
+      "code_sha256": "3cf6aee01b428caae8cf24709b94403cd02ae92606d766678719e11f826a7283"
+    },
+    {
+      "address": "0x6041890",
+      "size": 252,
+      "file_offset": "0x6040890",
+      "code_sha256": "d62949920301a3b62a63f7eaf51df4c56928f958f14b92f99e007b5689d7e52f"
+    },
+    {
+      "address": "0x6041990",
+      "size": 252,
+      "file_offset": "0x6040990",
+      "code_sha256": "a3002b0e30f4fa0958a90791113e420f182a3a1086d36233023e8d774c981ca4"
+    },
+    {
+      "address": "0x8df3620",
+      "size": 423,
+      "file_offset": "0x8df2620",
+      "code_sha256": "097bab52d94aac446f77135acc9d2aa79ec298161d0570f540c88687ec05f37e"
+    },
+    {
+      "address": "0x8df37d0",
+      "size": 355,
+      "file_offset": "0x8df27d0",
+      "code_sha256": "6775ff8312731c4e15a7f0fcd4d24746fc6a5a1b175c46398f0bec9bccc8af60"
+    },
+    {
+      "address": "0x8df3b60",
+      "size": 522,
+      "file_offset": "0x8df2b60",
+      "code_sha256": "eaf11cc4e5457516c253b1ad1d72c1a972476b0a49148c3d1b96eab043a80680"
+    },
+    {
+      "address": "0x619a8f0",
+      "size": 8,
+      "file_offset": "0x61998f0",
+      "code_sha256": "5e867dc59327f35fa9f855e08f3424b9de05ea1ac3d35978b4627a882f82df31"
+    },
+    {
+      "address": "0x603f150",
+      "size": 316,
+      "file_offset": "0x603e150",
+      "code_sha256": "fb58f06019e44e31c614c0cb74f4ba4280e4f4adbb40cf266334a3ec9fc820e4"
+    },
+    {
+      "address": "0x6042f70",
+      "size": 51,
+      "file_offset": "0x6041f70",
+      "code_sha256": "f487353e156674da4aaccfd03c9e8da337cdce1b3bd19f68f9f3ba7088acacf7"
+    },
+    {
+      "address": "0x77d4b80",
+      "size": 16788,
+      "file_offset": "0x77d3b80",
+      "code_sha256": "1cbf0199c0576a94a8231e1b5394501f98d2d906b71dc204e9dfe230375d78eb"
+    }
+  ]
+}

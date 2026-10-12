@@ -1,0 +1,153 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "Actual 0x79e2b30 CGI manager account refresh, original application accessors, user-info setters, wrapper calls and account setters. Synthetic application virtual service returns and device-ID source; logging off and single-thread locks modeled. No auth/client startup/persistence/network; direct guest syscall instructions refused. All keys and metadata synthetic. Before/update/after slots ordered original/client/server.",
+  "modeled_entries": {
+    "0x9116c90": 48,
+    "0x4e12f00": 24,
+    "0x4e12fa0": 24,
+    "0x70000200": 24,
+    "0x70000220": 18,
+    "0x73876a0": 6
+  },
+  "imports": {},
+  "cases": [
+    {
+      "name": "initial_pair",
+      "before_hex": [
+        "",
+        "",
+        ""
+      ],
+      "update_hex": [
+        "6e65772d6f726967696e2d6b65793136",
+        "6e65772d636c69656e742d6b65793136",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "after_hex": [
+        "6e65772d6f726967696e2d6b65793136",
+        "6e65772d636c69656e742d6b65793136",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "userinfo_derived_hex": "617574682d6465726976656431366221",
+      "device_type": 4660,
+      "client_version": 1432778632,
+      "device_id_hex": "73796e7468657469632d6465766963652d6964",
+      "server_id_hex": "73796e7468657469632d7365727665722d6964"
+    },
+    {
+      "name": "replace_all",
+      "before_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "update_hex": [
+        "6e65772d6f726967696e2d6b65793136",
+        "6e65772d636c69656e742d6b65793136",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "after_hex": [
+        "6e65772d6f726967696e2d6b65793136",
+        "6e65772d636c69656e742d6b65793136",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "userinfo_derived_hex": "617574682d6465726976656431366221",
+      "device_type": 4660,
+      "client_version": 1432778632,
+      "device_id_hex": "73796e7468657469632d6465766963652d6964",
+      "server_id_hex": "73796e7468657469632d7365727665722d6964"
+    },
+    {
+      "name": "empty_preserves_all",
+      "before_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "update_hex": [
+        "",
+        "",
+        ""
+      ],
+      "after_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "userinfo_derived_hex": "617574682d6465726976656431366221",
+      "device_type": 4660,
+      "client_version": 1432778632,
+      "device_id_hex": "73796e7468657469632d6465766963652d6964",
+      "server_id_hex": "73796e7468657469632d7365727665722d6964"
+    },
+    {
+      "name": "partial_client_preserves_pair",
+      "before_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "update_hex": [
+        "6e65772d6f726967696e2d6b65793136",
+        "6e65772d636c69656e742d6b65793136",
+        ""
+      ],
+      "after_hex": [
+        "6e65772d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "userinfo_derived_hex": "617574682d6465726976656431366221",
+      "device_type": 4660,
+      "client_version": 1432778632,
+      "device_id_hex": "73796e7468657469632d6465766963652d6964",
+      "server_id_hex": "73796e7468657469632d7365727665722d6964"
+    },
+    {
+      "name": "partial_server_preserves_pair",
+      "before_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "update_hex": [
+        "",
+        "",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "after_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "userinfo_derived_hex": "617574682d6465726976656431366221",
+      "device_type": 4660,
+      "client_version": 1432778632,
+      "device_id_hex": "73796e7468657469632d6465766963652d6964",
+      "server_id_hex": "73796e7468657469632d7365727665722d6964"
+    },
+    {
+      "name": "replace_pair_keep_origin",
+      "before_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6f6c642d636c69656e742d6b65793136",
+        "6f6c642d7365727665722d6b65793136"
+      ],
+      "update_hex": [
+        "",
+        "6e65772d636c69656e742d6b65793136",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "after_hex": [
+        "6f6c642d6f726967696e2d6b65793136",
+        "6e65772d636c69656e742d6b65793136",
+        "6e65772d7365727665722d6b65793136"
+      ],
+      "userinfo_derived_hex": "617574682d6465726976656431366221",
+      "device_type": 4660,
+      "client_version": 1432778632,
+      "device_id_hex": "73796e7468657469632d6465766963652d6964",
+      "server_id_hex": "73796e7468657469632d7365727665722d6964"
+    }
+  ]
+}
