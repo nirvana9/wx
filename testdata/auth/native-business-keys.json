@@ -1,0 +1,82 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "Actual original/main account setters and GetAuthInfoForCgi key-copy/selection with synthetic keys and an empty route-override tree. Logging=false and single-thread lock wrappers explicitly modeled; no crypto/packet/login/host syscall/network run, guest syscall instructions refused. Selector values are native observations, not proof of an authenticated account or complete business packet.",
+  "modeled_entries": {
+    "0x9116c90": 13,
+    "0x4e12f00": 10,
+    "0x4e12fa0": 10,
+    "0x4e12fd0": 5,
+    "0x4e13050": 5
+  },
+  "imports": {
+    "strlen": 5,
+    "memmove": 5
+  },
+  "cases": [
+    {
+      "name": "main_pair",
+      "original_hex": "6f726967696e616c2d6b657931366221",
+      "client_hex": "636c69656e742d6b6579313662797465",
+      "server_hex": "7365727665722d6b6579313662797465",
+      "installed_original_hex": "6f726967696e616c2d6b657931366221",
+      "installed_client_hex": "636c69656e742d6b6579313662797465",
+      "installed_server_hex": "7365727665722d6b6579313662797465",
+      "identify": "main",
+      "selector": 13,
+      "request_key_hex": "636c69656e742d6b6579313662797465",
+      "response_key_hex": "7365727665722d6b6579313662797465"
+    },
+    {
+      "name": "main_pair_without_original",
+      "original_hex": "",
+      "client_hex": "636c69656e742d6b6579313662797465",
+      "server_hex": "7365727665722d6b6579313662797465",
+      "installed_original_hex": "",
+      "installed_client_hex": "636c69656e742d6b6579313662797465",
+      "installed_server_hex": "7365727665722d6b6579313662797465",
+      "identify": "main",
+      "selector": 13,
+      "request_key_hex": "636c69656e742d6b6579313662797465",
+      "response_key_hex": "7365727665722d6b6579313662797465"
+    },
+    {
+      "name": "original_only",
+      "original_hex": "6f726967696e616c2d6b657931366221",
+      "client_hex": "",
+      "server_hex": "",
+      "installed_original_hex": "6f726967696e616c2d6b657931366221",
+      "installed_client_hex": "",
+      "installed_server_hex": "",
+      "identify": "origin",
+      "selector": 5,
+      "request_key_hex": "6f726967696e616c2d6b657931366221",
+      "response_key_hex": "6f726967696e616c2d6b657931366221"
+    },
+    {
+      "name": "missing_client",
+      "original_hex": "6f726967696e616c2d6b657931366221",
+      "client_hex": "",
+      "server_hex": "7365727665722d6b6579313662797465",
+      "installed_original_hex": "6f726967696e616c2d6b657931366221",
+      "installed_client_hex": "",
+      "installed_server_hex": "7365727665722d6b6579313662797465",
+      "identify": "origin",
+      "selector": 5,
+      "request_key_hex": "6f726967696e616c2d6b657931366221",
+      "response_key_hex": "6f726967696e616c2d6b657931366221"
+    },
+    {
+      "name": "missing_server",
+      "original_hex": "6f726967696e616c2d6b657931366221",
+      "client_hex": "636c69656e742d6b6579313662797465",
+      "server_hex": "",
+      "installed_original_hex": "6f726967696e616c2d6b657931366221",
+      "installed_client_hex": "636c69656e742d6b6579313662797465",
+      "installed_server_hex": "",
+      "identify": "origin",
+      "selector": 5,
+      "request_key_hex": "6f726967696e616c2d6b657931366221",
+      "response_key_hex": "6f726967696e616c2d6b657931366221"
+    }
+  ]
+}

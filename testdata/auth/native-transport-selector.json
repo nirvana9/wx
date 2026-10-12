@@ -1,0 +1,103 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "entry": "0x79e4250",
+  "provenance": "Actual pinned native CGI selector and unordered-set initialization with synthetic integer IDs. One-thread guard locks, libc gettid=1, destructor registration, and libm ceilf for bucket sizing modeled; membership lookup not replaced. No task/packet/network/client startup or host syscall executed; guest syscall instructions refused.",
+  "libc_syscall_model": {
+    "186": "gettid=1; all other syscall-wrapper numbers refused"
+  },
+  "cases": [
+    {
+      "cgi": 0,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 252,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 502,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 503,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 654,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 763,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 987,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 989,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 997,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 7415,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 22312,
+      "ecdh_info": true
+    },
+    {
+      "cgi": 251,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 253,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 433,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 434,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 522,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 138,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 655,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 764,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 2147483648,
+      "ecdh_info": false
+    },
+    {
+      "cgi": 4294967295,
+      "ecdh_info": false
+    }
+  ],
+  "imports": {
+    "pthread_mutex_lock": 2,
+    "syscall": 1,
+    "pthread_mutex_unlock": 2,
+    "malloc": 13,
+    "ceilf": 3,
+    "free": 2,
+    "__cxa_atexit": 1
+  }
+}

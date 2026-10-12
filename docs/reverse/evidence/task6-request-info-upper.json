@@ -1,0 +1,225 @@
+{
+  "mapping": {
+    "type": "micromsg.RequestInfo",
+    "get_type_name": "0x7fc8950",
+    "get_type_name_size": 29,
+    "vtable_type_name_slot": "0xa9c62d8",
+    "parse_candidate": "0x7fc7c60",
+    "size_candidate": "0x7fc8680",
+    "serialize_candidate": "0x7fc8440",
+    "vtable_address_point": "0xa9c62c8",
+    "constructor": "0x7fc76b0"
+  },
+  "fields": {
+    "type": "micromsg.RequestInfo",
+    "serialize_function": "0x7fc8440",
+    "parse_function": "0x7fc7c60",
+    "fields": [
+      {
+        "field_number": 1,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "64-bit handling; signedness not distinguished",
+        "writer_helper": "0x8f523b0",
+        "writer_instruction": "0x7fc84d4",
+        "field_number_instruction": "0x7fc84cc",
+        "object_member_source": {
+          "instruction": "0x7fc84c8",
+          "base": "r14",
+          "offset": "0x8",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 2,
+        "wire_type": 2,
+        "encoding_kind": "length_delimited",
+        "declaration_type_note": "string/bytes declaration not distinguished",
+        "writer_helper": "0x8f52620",
+        "writer_instruction": "0x7fc84f1",
+        "field_number_instruction": "0x7fc84e9",
+        "object_member_source": {
+          "instruction": "0x7fc84e5",
+          "base": "r14",
+          "offset": "0x10",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 3,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "negative int32 values are sign-extended and encoded using varint64; declaration not recovered",
+        "writer_helper": "0x8f52310",
+        "writer_instruction": "0x7fc850e",
+        "field_number_instruction": "0x7fc8506",
+        "object_member_source": {
+          "instruction": "0x7fc8502",
+          "base": "r14",
+          "offset": "0x18",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 4,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit handling; bool/enum declaration not determined",
+        "writer_helper": "0x8f524e0",
+        "writer_instruction": "0x7fc852c",
+        "field_number_instruction": "0x7fc8524",
+        "object_member_source": null,
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 5,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit handling; bool/enum declaration not determined",
+        "writer_helper": "0x8f524e0",
+        "writer_instruction": "0x7fc854a",
+        "field_number_instruction": "0x7fc8542",
+        "object_member_source": null,
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 6,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit unsigned handling; declaration not recovered",
+        "writer_helper": "0x8f52380",
+        "writer_instruction": "0x7fc8567",
+        "field_number_instruction": "0x7fc855f",
+        "object_member_source": {
+          "instruction": "0x7fc855b",
+          "base": "r14",
+          "offset": "0x1c",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 7,
+        "wire_type": 2,
+        "encoding_kind": "length_delimited",
+        "declaration_type_note": "string/bytes declaration not distinguished",
+        "writer_helper": "0x8f52620",
+        "writer_instruction": "0x7fc8584",
+        "field_number_instruction": "0x7fc857c",
+        "object_member_source": {
+          "instruction": "0x7fc8578",
+          "base": "r14",
+          "offset": "0x20",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 8,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit handling; bool/enum declaration not determined",
+        "writer_helper": "0x8f524e0",
+        "writer_instruction": "0x7fc85a2",
+        "field_number_instruction": "0x7fc859a",
+        "object_member_source": null,
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 9,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit handling; bool/enum declaration not determined",
+        "writer_helper": "0x8f524e0",
+        "writer_instruction": "0x7fc85c3",
+        "field_number_instruction": "0x7fc85bb",
+        "object_member_source": null,
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 10,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x7fc85f6",
+        "field_number_instruction": "0x7fc85ee",
+        "object_member_source": {
+          "instruction": "0x7fc85ea",
+          "base": "rax",
+          "offset": "0x30",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 11,
+        "wire_type": 2,
+        "encoding_kind": "embedded_message",
+        "declaration_type_note": "child cached size plus child serialization virtual calls; nested type not yet mapped",
+        "writer_helper": "0x8f526f0",
+        "writer_instruction": "0x7fc8629",
+        "field_number_instruction": "0x7fc8621",
+        "object_member_source": {
+          "instruction": "0x7fc861d",
+          "base": "rax",
+          "offset": "0x38",
+          "index": null
+        },
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 12,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit handling; bool/enum declaration not determined",
+        "writer_helper": "0x8f524e0",
+        "writer_instruction": "0x7fc864a",
+        "field_number_instruction": "0x7fc8642",
+        "object_member_source": null,
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      },
+      {
+        "field_number": 13,
+        "wire_type": 0,
+        "encoding_kind": "varint",
+        "declaration_type_note": "32-bit handling; bool/enum declaration not determined",
+        "writer_helper": "0x8f524e0",
+        "writer_instruction": "0x7fc8672",
+        "field_number_instruction": "0x7fc8663",
+        "object_member_source": null,
+        "semantic_name": null,
+        "requiredness": null,
+        "nested_type": null
+      }
+    ],
+    "recovery_scope": "constant field IDs passed to reviewed writer helpers; not a complete semantic schema; member sources are local hints"
+  }
+}

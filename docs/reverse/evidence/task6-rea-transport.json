@@ -1,0 +1,227 @@
+{
+  "scope": "Actual REA stdio MCP pseudocode of derived function/data projections, not original full ELF decompilation. Raw pinned ELF assembly and bounded native replay provide independent corroboration.",
+  "rea_version": "6.4.0",
+  "ghidra_version": "12.1.4",
+  "original_elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "projections": [
+    {
+      "projection_sha256": "d8b54ced3dabac1f57a709cabad217368b153d05f8d32e13ce92cbe847ca7fc3",
+      "projection_bytes": 41968,
+      "image_va_basis": "0x0",
+      "entry": null,
+      "provenance": "Non-executable analysis projection of the fixed ELF. Selected FDE instruction bytes match original SHA-256. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+      "functions": [
+        {
+          "address": "0x77f6910",
+          "size": 724,
+          "source_file_offset": "0x77f5910",
+          "code_sha256": "f528d7e30e3e59d8b73f5998dffb316fded032580c0090897de74160dd549f30"
+        },
+        {
+          "address": "0x77f6bf0",
+          "size": 483,
+          "source_file_offset": "0x77f5bf0",
+          "code_sha256": "e950769f991f27ba07a6eb54d4a843dcabaf05bc248335e36b20a1d59137c3b9"
+        },
+        {
+          "address": "0x77f6e60",
+          "size": 228,
+          "source_file_offset": "0x77f5e60",
+          "code_sha256": "db3cfe4d53c74bf6c0510f0e239448df328d75ea6b6b4c6fd638ec664346ea62"
+        },
+        {
+          "address": "0x77f7000",
+          "size": 138,
+          "source_file_offset": "0x77f6000",
+          "code_sha256": "312f5589eadf8d44a1808fb79ccd8282a1176dfac0c3b5be48122f7cd7e83a5d"
+        },
+        {
+          "address": "0x77f7090",
+          "size": 60,
+          "source_file_offset": "0x77f6090",
+          "code_sha256": "22a5f5c1c61d2746320335e8baedd2e53e9680fde1c3b09f2307af52ad13f0da"
+        },
+        {
+          "address": "0x79c5c10",
+          "size": 58,
+          "source_file_offset": "0x79c4c10",
+          "code_sha256": "fd414cc6949fc36cfa4072ee42e770001818d0cde78c3209f95ee7415b10462e"
+        }
+      ]
+    },
+    {
+      "projection_sha256": "37de3921fe216d807b6ac2d4049eddc4dc597cc6f5bdc3777a13870d69788409",
+      "projection_bytes": 95448,
+      "image_va_basis": "0x0",
+      "entry": null,
+      "provenance": "Non-executable analysis projection of the fixed ELF. Selected FDE instruction bytes match original SHA-256. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+      "functions": [
+        {
+          "address": "0x79df2b0",
+          "size": 1035,
+          "source_file_offset": "0x79de2b0",
+          "code_sha256": "36664d4f3ee70b8dc49da8077d13df6a97b8df6bf7554c023b527be59ac7a6b1"
+        },
+        {
+          "address": "0x79e3760",
+          "size": 2794,
+          "source_file_offset": "0x79e2760",
+          "code_sha256": "0f462e05df1397776c759da195adf3f5c8fa3990ad21170afa1eb2b17f81ef65"
+        },
+        {
+          "address": "0x79e4250",
+          "size": 471,
+          "source_file_offset": "0x79e3250",
+          "code_sha256": "41e079045155e3ac0e74d5dbcffe99102f6c2b1e3b64053c37e57ae01c8f8e23"
+        },
+        {
+          "address": "0x79e46b0",
+          "size": 9,
+          "source_file_offset": "0x79e36b0",
+          "code_sha256": "cbbd55749e1dbd195efb3ab08ee94bb84e81e9c324b3ff9b1c07defc6516754b"
+        },
+        {
+          "address": "0x79f7040",
+          "size": 281,
+          "source_file_offset": "0x79f6040",
+          "code_sha256": "b1e99b1136f55c3e3284d0783d1231337063ee0436ed425f8b3a67ef3d7273ff"
+        },
+        {
+          "address": "0x7fc66a0",
+          "size": 50,
+          "source_file_offset": "0x7fc56a0",
+          "code_sha256": "2d468aaef37d88cc763f47b2eee7ce295204c6da8d121501e167003efa2c4be7"
+        },
+        {
+          "address": "0x7fc7000",
+          "size": 45,
+          "source_file_offset": "0x7fc6000",
+          "code_sha256": "2cb28910af1bee041d0d1d07f84ba29ce444bb6dd8790321fa925ab69ccc67e1"
+        },
+        {
+          "address": "0x7fc76b0",
+          "size": 74,
+          "source_file_offset": "0x7fc66b0",
+          "code_sha256": "d5da75d243182e542002b9301dc14d5fb4838f98451bb30dc512c144ca6d2ed3"
+        }
+      ]
+    },
+    {
+      "projection_sha256": "49bd0589393ca6014e18900197745b7d812b7d4d52455e8ab26ebca47c348958",
+      "projection_bytes": 70288,
+      "image_va_basis": "0x0",
+      "entry": null,
+      "provenance": "Non-executable analysis projection of the fixed ELF. Selected FDE instruction bytes match original SHA-256. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+      "functions": [
+        {
+          "address": "0x8df3940",
+          "size": 535,
+          "source_file_offset": "0x8df2940",
+          "code_sha256": "22b1fdf075fd1c14ad882ca1052d0f856a0080d9307172c9e9f52ca78250aa74"
+        },
+        {
+          "address": "0x8df3d70",
+          "size": 892,
+          "source_file_offset": "0x8df2d70",
+          "code_sha256": "8c14d353d1e6c8f29e097b6631ede2f3f91798a91e31bf59fa5e08d4aab58db6"
+        },
+        {
+          "address": "0x8df4f20",
+          "size": 2018,
+          "source_file_offset": "0x8df3f20",
+          "code_sha256": "414c842e28ecf32145e6d75144acf80ed1493f9968e5778d81be043e39f67c1b"
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "pseudocode_path": "rea/manualauth_task_serialize.c",
+      "evidence_id": "ev_ac44a0254aaa1fbad282af5abd2c680507f47fd855d696a2193d6a6d40cf5a9a",
+      "subject_sha256": "d8b54ced3dabac1f57a709cabad217368b153d05f8d32e13ce92cbe847ca7fc3",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x77f7000"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ]
+    },
+    {
+      "pseudocode_path": "rea/network_submit_task.c",
+      "evidence_id": "ev_2242f84154e944a0c7769e003f91596ea3e6e3c85fde15aadd7543aecc1f2ccc",
+      "subject_sha256": "37de3921fe216d807b6ac2d4049eddc4dc597cc6f5bdc3777a13870d69788409",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x79e3760"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ]
+    },
+    {
+      "pseudocode_path": "rea/network_ecdh_selector.c",
+      "evidence_id": "ev_c8a5df623a5de41bed47e9363f640dae952936a5fab329d2138c9ceff3970562",
+      "subject_sha256": "37de3921fe216d807b6ac2d4049eddc4dc597cc6f5bdc3777a13870d69788409",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x79e4250"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ]
+    },
+    {
+      "pseudocode_path": "rea/account_get_auth_info_for_cgi.c",
+      "evidence_id": "ev_c338671c32cf37c8e7dcf3d28f46c8031fc5b3874f2ac88402ba28f4bc428bf4",
+      "subject_sha256": "49bd0589393ca6014e18900197745b7d812b7d4d52455e8ab26ebca47c348958",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x8df4f20"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ]
+    }
+  ],
+  "important_projection_limitations": [
+    "network_ecdh_selector pseudocode folds uninitialized globals to zero and removes membership search. Do not use its constant return as native behavior; original asm and actual native selector replay prove membership.",
+    "network_submit_task pseudocode calls address zero where original relative relocation slot 0xac1f2e8 resolves to 0x8f45610. No executable dispatch semantics are inferred from the zero."
+  ]
+}

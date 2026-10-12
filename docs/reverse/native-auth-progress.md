@@ -3,6 +3,8 @@
 已实现 Go 的临时 P224 密钥、ManualAuthRsaReqData 核心编码、UnifyAuthResponse 密钥解析。
 2026-10-12 新增完整 ManualAuthAesReqData **wire 字段布局**编码，以及原生 QR caller 的 proof/pwd2 绑定；
 随后新增 [ManualAuthRequest 双子消息容器](native-auth-request-container.md)的原生向量及 Go 编码；
+又新增 [任务 ECDHInfo 分支和默认候选业务密钥选择](native-auth-transport-progress.md)，
+用真实原生查询和 setter/getter 合成向量核对；
 设备字段语义、presence 策略与完整正式鉴权仍未成立，见 [本轮证据与边界](native-manualauth-aes.md)。
 本阶段没有发出 secmanualauth 请求，没有手机确认，也没有安装或持久化已登录会话。
 `wx login`、自动鉴权和在线消息收发仍未接通。
@@ -14,6 +16,8 @@
 | `protocol.EncodeQRCodeAuthCore` | 固定 QR caller 的 username/proof 直接传递与显式空 pwd2；独立原生 caller/serializer 合成向量 |
 | `protocol.EncodeManualAuthAESFields` | 27 个 wire 字段、23/24 Buffer、26 PubKeyInfo、28 ExtAuthReqInfo；显式输入，不填设备默认值或宣称登录 |
 | `protocol.EncodeManualAuthRequest` | 按原生字段 1/2 组合 RSA/AES 子体，原生 parent 向量核对；仅 protobuf 容器 |
+| `protocol.NativeTaskSelectsECDHInfo` | 固定样本 10 项 CGI 选择表，实际原生集合查询向量；只选择任务元数据 |
+| `protocol.SelectNativeBusinessKeyCandidates` | 默认路由 main/13 与 origin/5 的方向 key 选择、副本和格式化隐藏；不安装或认证会话 |
 | `cryptox.DeriveAuthP224` | native KDF0：MD5(P224 共享 X 坐标的固定 28 字节表示) |
 | `cryptox.OpenAuthCBC` | key=IV 的 AES-128-CBC，严格 PKCS7，不解压，不做响应认证 |
 | `protocol.DecodeManualAuthKeys` | 校验返回码、账号匹配和 Buffer；只支持 AuthResultFlag&4/NID713；恢复四类材料，完整保留私有 Raw |
@@ -34,7 +38,7 @@
 - `0x77cd429`、`0x77cd470`、`0x77cd4a5`：field23 的 Buffer 数据独立复制至第三个输出。
 - `0x77cd4c8`–`0x77cd543`：field24 的 Buffer 数据独立复制至第四个输出。
 - `0x77d0adb`–`0x77d0b1a`：四个输出分别保存到登录信息 +0x88/+0xa0/+0xb8/+0xd0。
-- `0x8df3d70` 的日志及 +0xf0/+0x108 写入区分 client/server session key。公开 [协议实现](https://github.com/G5t4r/WeProtocol/blob/a9b30f7b1b07e9cecae20d1eba380b4b3b779fc2/Cilent/mm/mm123.proto) 的 23/24 标签与当前原生布局、复制顺序一致；方向密钥在实际业务封包中的使用仍需单独验证。
+- `0x8df3d70` 的日志及 +0xf0/+0x108 写入区分 client/server session key。公开 [协议实现](https://github.com/G5t4r/WeProtocol/blob/a9b30f7b1b07e9cecae20d1eba380b4b3b779fc2/Cilent/mm/mm123.proto) 的 23/24 标签与当前原生布局、复制顺序一致；当前已另行核对默认路由 getter、请求参数和响应 decrypt_key 的方向槽，见 [原生证据](native-auth-transport-progress.md)。完整安装及封包仍待验证。
 - AcctSectResp 新恢复的映射：type name `0x7ce6960`，serialize `0x7ce5df0`，field1 LEN/+0x8；不将 UIN 当作联系人 ID。
 
 请求核心只序列化当前已恢复的字段形状，pwd2 显式传入，不在编码器中猜测密码转换或字段默认值。
