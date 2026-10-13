@@ -1,0 +1,97 @@
+{
+  "scope": "REA decompilation of synthetic instruction-span analysis functions inside original FDE 0x9b0c650. These are not original native entries or a whole report decompilation. Caller/stack context is absent; Ghidra may follow neighboring copied page bytes beyond the declared span. Behavioral claims rely on original assembly and actual bounded replay.",
+  "rea_version": "6.4.0",
+  "ghidra_version": "12.1.4",
+  "projection": {
+    "source_elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+    "projection_sha256": "89f34e71ed256b065d700857da91891e2ae51daed3f9ae1c438258c6f86e7e67",
+    "projection_bytes": 21024,
+    "image_va_basis": "0x0",
+    "entry": null,
+    "rip_data_window_bytes": 1024,
+    "provenance": "Non-executable analysis projection of the fixed ELF. Selected original instruction bytes match original SHA-256. Full FDEs and instruction spans are identified separately; a span's declared function is synthetic, its original caller/stack context and control flow outside the span are absent. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+    "functions": [
+      {
+        "address": "0x9b0fefe",
+        "size": 835,
+        "source_file_offset": "0x9b0eefe",
+        "code_sha256": "940e71da219b279b622b1fc94410ba34310faa9d0c26d451825f4f1840e4e4cb",
+        "selection_kind": "instruction-span",
+        "owner_fde": {
+          "entry": "0x9b0c650",
+          "size": 1307867
+        }
+      },
+      {
+        "address": "0x9b10698",
+        "size": 290,
+        "source_file_offset": "0x9b0f698",
+        "code_sha256": "ca5e4c02bb6bb07d4f0f300b8efe2ecd0b5762d89a8c5a62170b0796bdb4f607",
+        "selection_kind": "instruction-span",
+        "owner_fde": {
+          "entry": "0x9b0c650",
+          "size": 1307867
+        }
+      }
+    ],
+    "segments": [
+      {
+        "va": "0x2b65000",
+        "size": 8192,
+        "flags": 4
+      },
+      {
+        "va": "0x9b0f000",
+        "size": 8192,
+        "flags": 5
+      }
+    ]
+  },
+  "observations": [
+    {
+      "evidence_id": "ev_f31209ee6c9de3642f6d5e023e41efe35c2fd8d07b97dbdd844d6b4e666a364a",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x9b0fefe"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit.",
+        "Ghidra Listing reports a terminal call at 0x9b1024e to 0x9b10809 FUN_09b10809 (external=false, thunk=false, hasNoReturn=false); fallthrough is excluded by Ghidra's flow model. The reason for the terminal flow is not established by this observation."
+      ],
+      "pseudocode_path": "rea/extspam_identity_reader_span.c",
+      "pseudocode_sha256": "0faf55635c18b690bd39dc38975daa58984a892b3d5bac795c0f54ae2d18b55b",
+      "subject_sha256": "89f34e71ed256b065d700857da91891e2ae51daed3f9ae1c438258c6f86e7e67"
+    },
+    {
+      "evidence_id": "ev_9c5a923db5572b1164bc8d2398b3efe26db0e2c8b26da4eed83ce5086d0d447b",
+      "provider": {
+        "id": "ghidra",
+        "name": "Ghidra",
+        "version": "12.1.4"
+      },
+      "parameters": {
+        "procedure": "0x9b10698"
+      },
+      "limitations": [
+        "The session serves operations only after Ghidra reports default auto-analysis complete; incomplete analysis does not expose partial results.",
+        "The imported Program and temporary project are ephemeral and deleted on close. Annotation operations edit session database metadata; original executable bytes are never written.",
+        "Cancelling an active Ghidra request terminates its ephemeral database and discards session annotations. The selected target remains open; the next provider query imports the original artifact again.",
+        "Default-space addresses use lowercase 0x-prefixed hexadecimal; other address spaces use <percent-encoded-space>:0x<hex>.",
+        "Pseudocode is Ghidra decompiler output, not original source and not text-equivalent to Hopper output.",
+        "External functions and functions without an analyzable body return null; other decompiler failures remain explicit."
+      ],
+      "pseudocode_path": "rea/extspam_identity_writer_span.c",
+      "pseudocode_sha256": "3aea761e9b5b5fc6cfda7948da8b69d02c693135c38e7f617d25e05816c0335e",
+      "subject_sha256": "89f34e71ed256b065d700857da91891e2ae51daed3f9ae1c438258c6f86e7e67"
+    }
+  ]
+}

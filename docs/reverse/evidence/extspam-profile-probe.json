@@ -1,0 +1,36 @@
+{
+  "scope": "Partial original 0x84e38c0 -> 0x9b0c650 probe under synthetic environment; stopped on refused DMI fopen before any completed extspam report. Supporting observation, not a complete report vector. Independent bounded writer/reader replay is reproducible with the committed generator.",
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "model": {
+    "time": 1700000000,
+    "uid": 1000,
+    "home": "/synthetic/home",
+    "uuid": "12345678-1234-4234-8234-123456789abc",
+    "profile_io": "guest-only in-memory missing/create/write/close/reopen/read; no real FS",
+    "stdio": "virtual kernel UUID file with fread/fseeko/fclose; unknown files refused",
+    "locks": "single-thread mutex/condition/gettid",
+    "locale": "C-only host glibc ctype tables, opaque category reads refused",
+    "glibc_version": "2.35"
+  },
+  "observed_profile": {
+    "path": "/synthetic/home/.sys1og.conf",
+    "open_read_call": "0x9b0fee9",
+    "open_create_call": "0x9b1026a",
+    "create_flags": "0x41",
+    "mode": "0x180",
+    "native_span_write_sizes": [
+      36,
+      4
+    ],
+    "length": 40,
+    "sha256": "6cd210be896ab20c4b9cbec0908124c7124e697e808f88fde09a53be62b4e8ab"
+  },
+  "stop": {
+    "import": "fopen",
+    "path": "/sys/class/dmi/id/bios_date",
+    "mode": "r",
+    "caller": "0x45140e4"
+  },
+  "go_runtime_defaults_installed": false,
+  "completed_report": false
+}

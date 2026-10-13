@@ -1,0 +1,10 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "address": "0x2b65ef0",
+  "length": 1024,
+  "source_file_offset": "0x2b65ef0",
+  "sha256": "12f3e0576d447eb37b36d82ba0c1c5481b8f0d12fdc70347ce4a076b229d4c86",
+  "polynomial": "0xedb88320",
+  "entry_count": 256,
+  "provenance": "All original 256 little-endian entries match the reflected IEEE CRC32 polynomial table. Full table bytes also verified present in the REA instruction-span projection."
+}

@@ -7,6 +7,8 @@
 用真实原生查询和 setter/getter 合成向量核对；
 随后恢复 [自动鉴权路径的账号 key 刷新](native-auth-key-refresh.md)，
 完整局部原生执行核对空值保留、双向 key 成对更新及四类材料的 UserInfo 槽位；
+2026-10-13 新恢复 [extspam 的本地身份记录](native-extspam-identity.md)，
+以原始 writer/reader 片段核对 36 字节身份与 CRC32；完整报告与设备连续性仍未知；
 设备字段语义、presence 策略与完整正式鉴权仍未成立，见 [本轮证据与边界](native-manualauth-aes.md)。
 本阶段没有发出 secmanualauth 请求，没有手机确认，也没有安装或持久化已登录会话。
 `wx login`、自动鉴权和在线消息收发仍未接通。
@@ -21,6 +23,7 @@
 | `protocol.NativeTaskSelectsECDHInfo` | 固定样本 10 项 CGI 选择表，实际原生集合查询向量；只选择任务元数据 |
 | `protocol.SelectNativeBusinessKeyCandidates` | 默认路由 main/13 与 origin/5 的方向 key 选择、副本和格式化隐藏；不安装或认证会话 |
 | `protocol.StageNativeBusinessKeyUpdate` | 原生账号刷新条件的候选槽快照；空 original/partial pair 保留旧槽，不安装或保存会话 |
+| `protocol.Encode/DecodeNativeExtSpamIdentityRecord` | 显式本地身份记录的 36+4 字节格式和 CRC32；不生成或安装设备值，不组装报告 |
 | `cryptox.DeriveAuthP224` | native KDF0：MD5(P224 共享 X 坐标的固定 28 字节表示) |
 | `cryptox.OpenAuthCBC` | key=IV 的 AES-128-CBC，严格 PKCS7，不解压，不做响应认证 |
 | `protocol.DecodeManualAuthKeys` | 校验返回码、账号匹配和 Buffer；只支持 AuthResultFlag&4/NID713；恢复四类材料，完整保留私有 Raw |

@@ -1,0 +1,137 @@
+{
+  "elf_sha256": "2ca28ea56b1a400543d0128ebaf0b93f88172dd66dc0426d3d74fdb971eab959",
+  "provenance": "Original bounded writer/CRC and reader/CRC instruction spans inside 0x9b0c650, not new native functions or a complete extspam report. Synthetic string/stack context and FD=100; write collects guest bytes, read copies supplied synthetic records and close succeeds. No CRC, length guard, comparison or serializer substitute. All values synthetic; host filesystem and direct guest syscalls refused.",
+  "owner_fde": {
+    "entry": "0x9b0c650",
+    "size": 1307867
+  },
+  "span": {
+    "start": "0x9b10698",
+    "exclusive_end": "0x9b107ba",
+    "reject_boundary": "0x9b107c5",
+    "file_offset": "0x9b0f698",
+    "code_sha256": "ca5e4c02bb6bb07d4f0f300b8efe2ecd0b5762d89a8c5a62170b0796bdb4f607"
+  },
+  "reader_span": {
+    "start": "0x9b0fefe",
+    "exclusive_end": "0x9b10241",
+    "reject_boundary": "0x9b10809",
+    "file_offset": "0x9b0eefe",
+    "code_sha256": "940e71da219b279b622b1fc94410ba34310faa9d0c26d451825f4f1840e4e4cb"
+  },
+  "imports": {
+    "write": 7,
+    "__close": 9,
+    "read": 11,
+    "malloc": 3
+  },
+  "cases": [
+    {
+      "name": "uuid_one",
+      "identity_hex": "31323334353637382d313233342d343233342d383233342d313233343536373839616263",
+      "outcome": "complete",
+      "write_sizes": [
+        36,
+        4
+      ],
+      "record_hex": "31323334353637382d313233342d343233342d383233342d3132333435363738396162635cd8f8f2"
+    },
+    {
+      "name": "uuid_two",
+      "identity_hex": "66656463626139382d373635342d343332312d386162632d666564636261393837363534",
+      "outcome": "complete",
+      "write_sizes": [
+        36,
+        4
+      ],
+      "record_hex": "66656463626139382d373635342d343332312d386162632d666564636261393837363534b4d37b4b"
+    },
+    {
+      "name": "opaque_binary",
+      "identity_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223",
+      "outcome": "complete",
+      "write_sizes": [
+        36,
+        4
+      ],
+      "record_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f2021222354587125"
+    },
+    {
+      "name": "short_identity",
+      "identity_hex": "7878787878787878787878787878787878787878787878787878787878787878787878",
+      "outcome": "rejected",
+      "write_sizes": [],
+      "record_hex": ""
+    },
+    {
+      "name": "short_write",
+      "identity_hex": "31323334353637382d313233342d343233342d383233342d313233343536373839616263",
+      "outcome": "rejected",
+      "write_sizes": [
+        35
+      ],
+      "record_hex": "31323334353637382d313233342d343233342d383233342d3132333435363738396162"
+    }
+  ],
+  "reader_cases": [
+    {
+      "name": "uuid_one",
+      "record_hex": "31323334353637382d313233342d343233342d383233342d3132333435363738396162635cd8f8f2",
+      "outcome": "complete",
+      "identity_hex": "31323334353637382d313233342d343233342d383233342d313233343536373839616263",
+      "read_sizes": [
+        36,
+        4
+      ]
+    },
+    {
+      "name": "uuid_two",
+      "record_hex": "66656463626139382d373635342d343332312d386162632d666564636261393837363534b4d37b4b",
+      "outcome": "complete",
+      "identity_hex": "66656463626139382d373635342d343332312d386162632d666564636261393837363534",
+      "read_sizes": [
+        36,
+        4
+      ]
+    },
+    {
+      "name": "opaque_binary",
+      "record_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f2021222354587125",
+      "outcome": "complete",
+      "identity_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f20212223",
+      "read_sizes": [
+        36,
+        4
+      ]
+    },
+    {
+      "name": "bad_crc",
+      "record_hex": "31323334353637382d313233342d343233342d383233342d3132333435363738396162635cd8f8f3",
+      "outcome": "rejected",
+      "identity_hex": "",
+      "read_sizes": [
+        36,
+        4
+      ]
+    },
+    {
+      "name": "bad_identity",
+      "record_hex": "30323334353637382d313233342d343233342d383233342d3132333435363738396162635cd8f8f2",
+      "outcome": "rejected",
+      "identity_hex": "",
+      "read_sizes": [
+        36,
+        4
+      ]
+    },
+    {
+      "name": "short_record",
+      "record_hex": "31323334353637382d313233342d343233342d383233342d3132333435363738396162",
+      "outcome": "rejected",
+      "identity_hex": "",
+      "read_sizes": [
+        35
+      ]
+    }
+  ]
+}

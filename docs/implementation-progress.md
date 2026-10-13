@@ -9,6 +9,8 @@
 以原生集合查询和完整 setter/getter 合成向量核对。
 又恢复 [自动鉴权路径的账号 key 刷新组件](reverse/native-auth-key-refresh.md)，
 以完整原生刷新函数核对候选槽的空值保留和成对更新；完整会话安装仍未接通。
+2026-10-13 恢复 [extspam 本地身份记录](reverse/native-extspam-identity.md)的独立 Go 编解码，
+原生 writer/reader 片段验证通过；完整报告、设备连续性和在线鉴权仍未恢复。
 独立二维码获取与终端显示已实现；扫码登录与文本收发仍未实现。
 
 | 计划任务 | 当前状态 | 已验证范围 |

@@ -41,13 +41,39 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--elf", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--instruction-span", action="append", default=[], metavar="START:END",
+                        help="Original instruction-aligned span within one FDE; creates a synthetic analysis function, not a native entry")
+    parser.add_argument("--rip-data-bytes", type=int, default=256,
+                        help="Bounded data window at each direct RIP target (default: 256)")
     parser.add_argument("addresses", nargs="*", type=lambda value: int(value, 0))
     args = parser.parse_args()
+    if not 1 <= args.rip_data_bytes <= 4096:
+        raise ValueError("RIP data window must be within 1..4096 bytes")
     data = args.elf.read_bytes()
     if hashlib.sha256(data).hexdigest() != ELF_SHA256:
         raise ValueError("fixed WeChat ELF SHA-256 mismatch")
     image = Image(data)
-    entries = sorted(set(args.addresses or DEFAULT_FUNCTIONS))
+    entries = sorted(set(args.addresses or (() if args.instruction_span else DEFAULT_FUNCTIONS)))
+    selections = []
+    for address in entries:
+        owner = image.function(address)
+        if owner is None or owner[0] != address:
+            raise ValueError(f"{address:#x} is not an FDE entry")
+        selections.append((address, owner[1], owner, "full-fde"))
+    for value in args.instruction_span:
+        start, end = (int(part, 0) for part in value.split(":"))
+        owner = image.function(start)
+        if end <= start or owner is None or image.function(end - 1) != owner:
+            raise ValueError("instruction span must stay inside one original FDE")
+        boundaries = {ins.address for ins in image.instructions(owner[0])}
+        boundaries.add(owner[0] + owner[1])
+        if start not in boundaries or end not in boundaries:
+            raise ValueError("span boundary is not an original instruction boundary")
+        selections.append((start, end - start, owner, "instruction-span"))
+    selections.sort()
+    for previous, current in zip(selections, selections[1:]):
+        if previous[0] + previous[1] > current[0]:
+            raise ValueError("overlapping analysis selections")
 
     def segment_for(va):
         return next((seg for seg in image.segments if seg["p_vaddr"] <= va < seg["p_vaddr"] + seg["p_memsz"]), None)
@@ -60,22 +86,23 @@ def main():
                 pages[va] = pages.get(va, 0) | flags
 
     functions = []
-    for address in entries:
-        start, size = image.function(address)
-        if start != address:
-            raise ValueError(f"{address:#x} is inside {start:#x}, not an FDE entry")
+    for address, size, owner, kind in selections:
         code = data[image.fileoff(address):image.fileoff(address) + size]
         if len(code) != size:
             raise ValueError("truncated original function")
         add_pages(address, address + size, 5)
         functions.append({"address": hex(address), "size": size,
                           "source_file_offset": hex(image.fileoff(address)),
-                          "code_sha256": hashlib.sha256(code).hexdigest()})
-        for ins in image.instructions(address):
+                          "code_sha256": hashlib.sha256(code).hexdigest(),
+                          "selection_kind": kind,
+                          "owner_fde": {"entry": hex(owner[0]), "size": owner[1]}})
+        for ins in image.instructions(owner[0]):
+            if not address <= ins.address < address + size:
+                continue
             for operand in ins.operands:
                 if operand.type == 3 and operand.mem.base == X86_REG_RIP:
                     target = ins.address + ins.size + operand.mem.disp
-                    add_pages(target, target + 256, 4)
+                    add_pages(target, target + args.rip_data_bytes, 4)
 
     groups = []
     for va, flags in sorted(pages.items()):
@@ -167,7 +194,8 @@ def main():
         "source_elf_sha256": ELF_SHA256,
         "projection_sha256": hashlib.sha256(output).hexdigest(),
         "projection_bytes": len(output), "image_va_basis": "0x0", "entry": None,
-        "provenance": "Non-executable analysis projection of the fixed ELF. Selected FDE instruction bytes match original SHA-256. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
+        "rip_data_window_bytes": args.rip_data_bytes,
+        "provenance": "Non-executable analysis projection of the fixed ELF. Selected original instruction bytes match original SHA-256. Full FDEs and instruction spans are identified separately; a span's declared function is synthetic, its original caller/stack context and control flow outside the span are absent. Referenced RIP data pages copied at original VAs. Synthetic ELF header and symbols; original sections, unwind metadata, dynamic relocations, and most callees omitted. Check every semantic conclusion against original assembly or isolated replay.",
         "functions": functions,
         "segments": [{"va": hex(va), "size": size, "flags": flags} for va, size, flags in groups],
     }
